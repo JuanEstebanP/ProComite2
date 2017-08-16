@@ -12,6 +12,11 @@ class MdlFichaproyecto extends CI_Model
       JOIN tbl_estados e on e.id_estado=f.estado
       join tbl_cliente c on c.id_cliente=f.id_cliente")->result_array();
     }
+    function consultaAprendices()
+    {
+      return $this->db->query("SELECT * FROM tbl_aprendiz")->result_array();
+    }
+
     function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado)
     {
       $this->db->query("call sp_insertarFichaproyecto('$txtNombre','$txtObjetivo','$destino','$txtVersion','$txtCliente','$txtEstado')");

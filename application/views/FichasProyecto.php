@@ -72,8 +72,21 @@ include 'Master.php';
             </div>
           </div>
 
-
           <input id="txtEstado" name="txtEstado" type="hidden"  value="1"  class="form-control input-md" required="true">
+
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Aprendices</label>
+            <div class="col-md-4">
+              <select class="form-control"  id="txtAprendiz" name="txtAprendiz" >
+                <option value=""></option>
+                <?php foreach ($Aprendiz as $key):?>
+                  <option value="<?= $key['id_aprendiz'] ?>">Nombre:
+                    <?=$key['nombre'];?>
+                  </option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
 
 
 

@@ -14,6 +14,8 @@ class ControllerFichaproyecto extends CI_Controller
   {
     $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
     $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();
+    $data['Aprendiz'] = $this->MdlFichaproyecto->consultaAprendices();
+
     $this->load->view('FichasProyecto',$data);
 
     //$this->load->view('Ficha',$data);
