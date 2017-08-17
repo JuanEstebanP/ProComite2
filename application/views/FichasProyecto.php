@@ -88,6 +88,22 @@ include 'Master.php';
             </div>
           </div>
 
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Ficha grupo</label>
+            <div class="col-md-4">
+              <select class="form-control"  id="txtAprendiz" name="txtAprendiz" >
+                <option value=""></option>
+                <?php foreach ($ficha as $key):?>
+                  <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
+                    <?=$key['numeroFicha'];?>
+                  </option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+
+
+
 
 
           <!-- Button (Double) -->
@@ -149,7 +165,7 @@ include 'Master.php';
         </div>
       </fieldset>
     </div>
-  </div>
+
 <form class="" action="index.html" method="post" enctype="multipart/form-data">
 
 </form>

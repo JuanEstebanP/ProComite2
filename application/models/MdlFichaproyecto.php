@@ -4,7 +4,11 @@ class MdlFichaproyecto extends CI_Model
 {
   public function conCliente()
   {
-    return $this->db->query("Call sp_consultarClientes")->result_array();
+      $query  = $this->db->query("CALL sp_consultarClientes()");
+      $res = $query->result_array();
+      $query->next_result();
+      $query->free_result();
+      return $res;
   }
   function ConsultarFichasproyectos()
   {
@@ -14,7 +18,15 @@ class MdlFichaproyecto extends CI_Model
     }
     function consultaAprendices()
     {
-      return $this->db->query("SELECT * FROM tbl_aprendiz")->result_array();
+      $query  = $this->db->query("CALL sp_consultarAprendices()");
+      $res = $query->result_array();
+      $query->next_result();
+      $query->free_result();
+      return $res;
+    }
+    function ConsultarFichasGrupos()
+    {
+      return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
     }
 
     function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado)
