@@ -181,5 +181,5 @@ include 'Master.php';
     <?php echo form_close(); ?>
   </div>
 </div>
-<script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script>
+<!-- <script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script> -->
 <script src="Plantilla/assets/js/Clientes.js"></script>
