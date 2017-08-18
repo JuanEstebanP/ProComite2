@@ -33,7 +33,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Cliente Del Proyecto:</label>
             <div class="col-md-4">
-              <select class="form-control"  id="txtCliente" name="txtCliente" >
+              <select class="form-control"  id="txtCliente" name="txtCliente" required="true" >
                 <option value=""></option>
                 <?php foreach ($Fichaproyectos as $key):?>
                   <option value="<?= $key['id_cliente'] ?>">Nombre:
@@ -75,9 +75,23 @@ include 'Master.php';
           <input id="txtEstado" name="txtEstado" type="hidden"  value="1"  class="form-control input-md" required="true">
 
           <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Ficha De Grupo</label>
+            <div class="col-md-4">
+              <select class="form-control"  id="txtFichagrupo" name="txtFichagrupo" required="true" >
+                <option value=""></option>
+                <?php foreach ($ficha as $key):?>
+                  <option value="<?= $key['id_fichaGrupo'] ?>">Numero:
+                    <?=$key['numeroFicha'];?>
+                  </option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Aprendices</label>
             <div class="col-md-4">
-              <select class="form-control"  id="txtAprendiz" name="txtAprendiz" >
+              <select class="selectpicker" multiple data-max-options="4">
                 <option value=""></option>
                 <?php foreach ($Aprendiz as $key):?>
                   <option value="<?= $key['id_aprendiz'] ?>">Nombre:
@@ -88,23 +102,6 @@ include 'Master.php';
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Ficha grupo</label>
-            <div class="col-md-4">
-              <select class="form-control"  id="txtAprendiz" name="txtAprendiz" >
-                <option value=""></option>
-                <?php foreach ($ficha as $key):?>
-                  <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
-                    <?=$key['numeroFicha'];?>
-                  </option>
-                <?php endforeach ?>
-              </select>
-            </div>
-          </div>
-
-
-
-
 
           <!-- Button (Double) -->
           <div class="form-group">
@@ -114,7 +111,7 @@ include 'Master.php';
             </div>
           </div>
         </fieldset>
-          <!-- <?php echo form_close(); ?> -->
+          <?php echo form_close(); ?>
         </form>
         </div>
 
@@ -133,6 +130,7 @@ include 'Master.php';
                     <th>Objetivo General</th>
                     <th>Versión</th>
                     <th>Cliente</th>
+                    <th>Ficha De Grupo A La Que Pertenece</th>
                     <th>Estado</th>
                     <th>Editar</th>
                   </tr>
@@ -147,7 +145,9 @@ include 'Master.php';
                       <td><?php echo $f['obj_general']; ?></td>
                       <td><?php echo $f['version']; ?></td>
                       <td><?php echo $f['id_cliente']; ?></td>
+                      <td><?php echo $f['id_fichaGrupo']; ?></td>
                       <td><?php echo $f['estado']; ?></td>
+
                       <td>
 
 
@@ -227,7 +227,7 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
               <div class="col-md-4">
-                <input  name="fileC" type="file" class="form-control input-md" required="true">
+                <input  name="fileC" type="file" class="form-control input-md" >
               </div>
             </div>
 

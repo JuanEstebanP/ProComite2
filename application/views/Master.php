@@ -13,6 +13,8 @@
   <!-- Custom Styles-->
   <link href="Plantilla/assets/css/custom-styles.css" rel="stylesheet" />
   <!-- Google Fonts-->
+  <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   <!-- Datatables bootstrap -->
   <link href="Plantilla/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
@@ -289,6 +291,9 @@
 <!-- jQuery Js -->
 <!-- <script src="Plantilla/assets/js/jquery-1.10.2.js"></script> -->
 <script src="Plantilla/assets/js/alertify.js"> </script>
+
+<script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+
 <script src="Plantilla/assets/js/jquery-3.2.1.min.js"></script>
 <!-- JQuery Validate -->
 <script src="Plantilla/assets/js/jquery.validate.min.js"></script>

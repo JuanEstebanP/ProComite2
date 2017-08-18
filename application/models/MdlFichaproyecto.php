@@ -12,9 +12,10 @@ class MdlFichaproyecto extends CI_Model
   }
   function ConsultarFichasproyectos()
   {
-    return $this->db->query("SELECT f.id_ficha,f.titulo,f.obj_general,f.version,c.nombre id_cliente,e.nombreEstado estado FROM tbl_fichaproyecto f
+    return $this->db->query("SELECT f.id_ficha,f.titulo,f.obj_general,f.version,c.nombre  id_cliente,fi.numeroFicha id_fichaGrupo,e.nombreEstado estado FROM tbl_fichaproyecto f
       JOIN tbl_estados e on e.id_estado=f.estado
-      join tbl_cliente c on c.id_cliente=f.id_cliente")->result_array();
+      join tbl_cliente c on c.id_cliente=f.id_cliente
+      join tbl_fichagrupo fi on fi.id_fichaGrupo=f.id_fichaGrupo")->result_array();
     }
     function consultaAprendices()
     {
@@ -29,9 +30,9 @@ class MdlFichaproyecto extends CI_Model
       return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
     }
 
-    function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado)
+    function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado,$txtFichagrupo)
     {
-      $this->db->query("call sp_insertarFichaproyecto('$txtNombre','$txtObjetivo','$destino','$txtVersion','$txtCliente','$txtEstado')");
+      $this->db->query("call sp_insertarFichaproyecto('$txtNombre','$txtObjetivo','$destino','$txtVersion','$txtCliente','$txtFichagrupo','$txtEstado')");
     }
     function EditCodigo($id_ficha)
     {
