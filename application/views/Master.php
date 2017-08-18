@@ -275,7 +275,7 @@
       </li>
 
       <li>
-        <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class=""></i> Trazabilidad</a>
+        <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
       </li>
 
       <li>

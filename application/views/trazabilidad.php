@@ -19,15 +19,16 @@ include 'Master.php';
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <div class="panel-body">
-              <div class="row">
+          </div>
+          <div class="panel-body">
+            <div class="row">
 
-                <div class="col-lg-12">
+              <div class="col-lg-12">
 
                 <div class="form-group">
                   <form class="form-horizontal" action="index.html" method="post">
                     <div class="col-md-4">
-                        <input type="text" name="" value="" class="form-control">
+                      <input type="text" name="" value="" class="form-control">
                     </div>
                     <div class="col-md-4">
                       <button type="button" name="button" class="btn btn-primary">Consultar</button>
@@ -35,12 +36,46 @@ include 'Master.php';
 
                   </form>
                 </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Listado de Fichas
+      </div>
+      <div class="-panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+</div>
 </div>

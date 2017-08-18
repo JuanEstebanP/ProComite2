@@ -10,9 +10,9 @@ class MdlTrazabilidad extends CI_Model
     # code...
   }
 
-  function fichasBf()
+  function fichasBf($id)
   {
-    
+    $this->db->query("SELECT Url FROM tbl_dtllproyecto WHERE id_ficha = '$id' ");
   }
 }
 

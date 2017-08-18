@@ -17,7 +17,7 @@ class ControllerTrazabilidad extends CI_Controller
     $this->load->view('trazabilidad');
   }
 
-
+  
 }
 
 ?>
