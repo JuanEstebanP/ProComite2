@@ -15,6 +15,7 @@ class ControllerFicha extends CI_Controller
   {
     $data['Ficha2'] = $this->MdlFicha->ConsultarFichas();
     $data['Ficha'] = $this->MdlFicha->conInstructor();
+    $data['Aprendiz'] = $this->MdlFicha->consultaAprendices();
     $this->load->view('Ficha',$data);
 
     //$this->load->view('Ficha',$data);

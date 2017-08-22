@@ -5,7 +5,7 @@ include 'Master.php';
 <div id="page-wrapper" >
   <div class="header">
     <h1 class="page-header">
-      Fichas <small></small>
+      Asociar <small></small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>
@@ -26,68 +26,22 @@ include 'Master.php';
         <!-- Text input-->
 
   <fieldset>
-
-
-  <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="textinput">Fichas Grupos</label>
       <div class="col-md-4">
-          <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitular"name="txtTitular" >
-        <?php foreach ($Ficha as $key):?>
-        <option value="<?= $key['id_instructor'] ?>">Documento:
-        <?=$key['documento'];?> / Nombre completo:
-        <?=$key['nombre'];?>
-        </option>
-        <?php endforeach ?>
-    </select>
-  </div>
-</div>
+        <select select class="form-control"  id="txtFicha" name="txtFicha" required="true" >
+          <option value=""></option>
+          <?php foreach ($Ficha as $key):?>
+            <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
+              <?=$key['numeroFicha'];?>
+            </option>
+          <?php endforeach ?>
+        </select>
+      </div>
+    </div>
 
 
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Numero De Ficha: </label>
-            <div class="col-md-4">
-              <input id="txtNumero" name="txtNumero" type="text" placeholder="11524" class="form-control input-md" required="true">
-
-            </div>
-          </div>
-
-
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Incio Etapa Lectiva:</label>
-            <div class="col-md-4">
-              <input id="txtIniciolectiva" name="txtIniciolectiva" type="date"  class="form-control input-md" required="true">
-
-            </div>
-          </div>
-
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Fin Etapa Lectiva: </label>
-            <div class="col-md-4">
-              <input id="txtFinlectiva" name="txtFinlectiva" type="date"  class="form-control input-md" required="true">
-
-            </div>
-          </div>
           <!--multiple select  -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Aprendices</label>
-            <div class="col-md-4">
-
-              <select class="selectpicker" multiple data-max-options="4" >
-                <option value=""></option>
-                <?php foreach ($Aprendiz as $key):?>
-                  <option value="<?= $key['id_aprendiz'] ?>">Nombre:
-                    <?=$key['nombre'];?>
-                  </option>
-                <?php endforeach ?>
-
-              </select>
-
-            </div>
-          </div>
-
 
 
           <!-- Button (Double) -->
@@ -101,52 +55,50 @@ include 'Master.php';
         </div>
 
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Listado
-          </div>
-          <div class="panel-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                <thead>
-                  <tr>
-                    <th class="center">#</th>
-                    <th>Nombre Ficha</th>
-                    <th>Titular Ficha</th>
-                    <th>Inicio Lectiva</th>
-                    <th>Fin Lectiva</th>
-                    <th>Editar</th>
-                  </tr>
-                </thead>
-                <tbody id="tblAprendiz">
-
-                  <?php   foreach ($Ficha2 as $f) { ?>
-
-                <tr class="odd gradeX">
-                  <td><?php echo $f['id_fichaGrupo']; ?></td>
-                  <td><?php echo $f['numeroFicha']; ?></td>
-                  <td><?php echo $f['titularFicha']; ?></td>
-                  <td><?php echo $f['iniciolectiva']; ?></td>
-                  <td><?php echo $f['finlectiva']; ?></td>
-                  <td>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    Listado
+                  </div>
+                  <div class="panel-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                          <tr>
+                            <th class="center">#</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Documento</th>
+                            <th>Correo</th>
+                            <th>Asociar</th>
 
 
-          <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_fichaGrupo']; ?>)">
-            <i class="fa fa-pencil" aria-hidden="true"></i></button>
-        </td>
-                </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
-            </div>
+                          </tr>
+                        </thead>
+                        <tbody id="tblAprendiz">
+
+                          <?php   foreach ($Aprendiz as $a) { ?>
+
+                            <tr class="odd gradeX">
+                              <td><?php echo $a['id_aprendiz']; ?></td>
+                              <td><?php echo $a['nombre']; ?></td>
+                              <td><?php echo $a['apellido']; ?></td>
+                              <td><?php echo $a['documento']; ?></td>
+                              <td class="center"><?php echo $a['correo']; ?></td>
+                              <td>
+                                <input type="checkbox" value="<?php echo $a['id_aprendiz'];?>"></input>
+                              </td>
+                              </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
           </div>
         </div>
-      </div>
-    </div>
-  </fieldset>
-</div>
-</div>
-
 
 ---------------------------------------------------
 MODAL PARA EDITAR
