@@ -273,7 +273,9 @@
       <li>
         <a href="<?php base_url(); ?>ControllerEvaluarFichas" ><i class="fa fa-edit"></i> Evaluar Ficha </a>
       </li>
-
+      <li>
+        <a href="<?php base_url(); ?>ControllerLlenarfichagrupo" ><i class="fa fa-edit"></i> Asociar Aprendices </a>
+      </li>
       <li>
         <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
       </li>

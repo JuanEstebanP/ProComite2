@@ -17,6 +17,10 @@ class MdlFichaproyecto extends CI_Model
       join tbl_cliente c on c.id_cliente=f.id_cliente
       join tbl_fichagrupo fi on fi.id_fichaGrupo=f.id_fichaGrupo")->result_array();
     }
+    function ConsultarFichasGrupos()
+    {
+      return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
+    }
     function consultaAprendices()
     {
       $query  = $this->db->query("CALL sp_consultarAprendices()");
@@ -24,10 +28,6 @@ class MdlFichaproyecto extends CI_Model
       $query->next_result();
       $query->free_result();
       return $res;
-    }
-    function ConsultarFichasGrupos()
-    {
-      return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
     }
 
     function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado,$txtFichagrupo)
