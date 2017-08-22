@@ -26,12 +26,12 @@ include 'Master.php';
               <div class="col-lg-12">
 
                 <div class="form-group">
-                  <form class="form-horizontal" action="index.html" method="post">
+                  <form class="form-horizontal" action="<?php base_url(); ?>ControllerTrazabilidad" method="post">
                     <div class="col-md-4">
-                      <input type="text" name="" value="" class="form-control">
+                      <input type="number" name="txtidficha" value="" class="form-control">
                     </div>
                     <div class="col-md-4">
-                      <button type="button" name="button" class="btn btn-primary">Consultar</button>
+                      <button type="submit" name="button" class="btn btn-primary">Consultar</button>
                     </div>
 
                   </form>
@@ -54,19 +54,20 @@ include 'Master.php';
               <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                 <thead>
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th>wa</th>
+
                   </tr>
 
                 </thead>
                 <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                  <?php foreach ($fichasB as $key ){ ?>
 
+
+                    <tr>
+                      <td><?php echo '<a href="'.$key['Url'].'"> '.substr($key['Url'],10).' </a>' ?></td>
+                    </tr>
+
+                  <?php } ?>
                 </tbody>
               </table>
 
