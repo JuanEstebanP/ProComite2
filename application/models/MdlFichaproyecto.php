@@ -39,9 +39,9 @@ class MdlFichaproyecto extends CI_Model
       return $this->db->query("call sp_idFichaProyecto('$id_ficha')")->row_array();
     }
 
-    function EditarFichaproyecto($txtIdModificar,$txtNombreModificar,$txtObjetivoModificar,$txtVersionModificar,$destino,$txtClienteModificar,$txtEstadoModificar)
+    function EditarFichaproyecto($txtIdModificar,$txtNombreModificar,$txtObjetivoModificar,$txtVersionModificar,$destino,$txtClienteModificar,$txtFichagrupoM,$txtEstadoModificar)
     {
-      $this->db->query("call sp_editarFichaproyecto('$txtIdModificar','$txtNombreModificar','$txtObjetivoModificar','$txtVersionModificar','$destino','$txtClienteModificar','$txtEstadoModificar')");
+      $this->db->query("call sp_editarFichaproyecto('$txtIdModificar','$txtNombreModificar','$txtObjetivoModificar','$txtVersionModificar','$destino','$txtClienteModificar','$txtFichagrupoM','$txtEstadoModificar')");
     }
 
   }

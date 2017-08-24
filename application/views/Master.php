@@ -251,9 +251,7 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
-      <li>
-        <a href="<?php base_url(); ?>Upload"><i class="fa fa-upload" aria-hidden="true"></i>Subir Ficha</a>
-      </li>
+      
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
       </li>

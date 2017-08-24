@@ -50,15 +50,17 @@ class ControllerFichaproyecto extends CI_Controller
     $txtNombre = $this->input->post('txtNombreModificar');
     $txtObjetivo = $this->input->post('txtObjetivoModificar');
     $txtVersion = $this->input->post('txtVersionModificar');
-    $txtCliente = $this->input->post('txtClienteModificar');
-    $txtEstado = $this->input->post('txtEstadoModificar');
-
     $carpeta = "./uploads/";
     opendir($carpeta);
     $destino =  $carpeta.$_FILES['fileC']['name'];
     copy($_FILES['fileC']['tmp_name'],$destino);
+    $txtCliente = $this->input->post('txtClienteModificar');
+      $txtFichagrupoM = $this->input->post('txtFichagrupoM');
+    $txtEstado = $this->input->post('txtEstadoModificar');
 
-    $this->MdlFichaproyecto->EditarFichaproyecto($txtId, $txtNombre,$txtObjetivo,$txtVersion,$destino,$txtCliente, $txtEstado);
+
+
+    $this->MdlFichaproyecto->EditarFichaproyecto($txtId, $txtNombre,$txtObjetivo,$txtVersion,$destino,$txtCliente, $txtFichagrupoM ,$txtEstado);
     redirect('ControllerFichaproyecto?ok=1');
 
   }

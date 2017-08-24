@@ -28,6 +28,7 @@ function Editar(data){
       $('[name="txtNombreModificar"]').val(datos.titulo);
       $('[name="txtObjetivoModificar"]').val(datos.obj_general);
       $('[name="txtVersionModificar"]').val(datos.version);
+      $('[name="txtFichagrupoM"]').val(datos.id_fichaGrupo)
       $('[name="txtEstadoModificar"]').val(datos.estado);
       $('#myModal').modal('show');
     }).fail(function(datos){

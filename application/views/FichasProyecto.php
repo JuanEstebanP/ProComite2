@@ -238,6 +238,21 @@ include 'Master.php';
               </div>
             </div>
 
+            <!-- <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Ficha De Grupo</label>
+              <div class="col-md-4">
+                <select class="form-control" name="txtFichagrupoM" required="true" >
+                  <option value=""></option>
+                  <?php foreach ($ficha as $key):?>
+                    <option value="<?= $key['id_fichaGrupo'] ?>">Numero:
+                      <?=$key['numeroFicha'];?>
+                    </option>
+                  <?php endforeach ?>
+                </select>
+              </div>
+            </div> -->
+
+            <input type="hidden" name="txtFichagrupoM" value="">
             <input id="txtEstadoModificar" name="txtEstadoModificar" type="hidden"   class="form-control input-md" required="true">
 
             <!-- Text input-->

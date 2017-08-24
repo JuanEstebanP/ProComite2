@@ -51,20 +51,16 @@ include 'Master.php';
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+              <table class="table table-striped table-bordered table-hover"  >
                 <thead>
                   <tr>
-                    <th>wa</th>
-
+                    <th>Fichas: </th>
                   </tr>
-
                 </thead>
                 <tbody>
-                  <?php foreach ($fichasB as $key ){ ?>
-
-
-                    <tr>
-                      <td><?php echo '<a href="'.$key['Url'].'"> '.substr($key['Url'],10).' </a>' ?></td>
+                  <?php foreach ($fichasB as $f ){ ?>
+                    <tr class="odd gradeX">
+                    <td><?php echo '<a href="'.$f['Url'].'"> '.substr($f['Url'],10).' </a>' ?></td>
                     </tr>
 
                   <?php } ?>
@@ -77,6 +73,4 @@ include 'Master.php';
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
