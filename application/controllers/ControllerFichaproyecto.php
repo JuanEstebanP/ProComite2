@@ -12,6 +12,9 @@ class ControllerFichaproyecto extends CI_Controller
   }
   function index()
   {
+    // $dt = $this->input->post('id_ficha');
+    // $data['fichasB'] = $this->MdlFichaproyecto->fichasBf($dt);
+
     $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
     $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();
     $data['Aprendiz'] = $this->MdlFichaproyecto->consultaAprendices();
@@ -19,7 +22,9 @@ class ControllerFichaproyecto extends CI_Controller
     $this->load->view('FichasProyecto',$data);
 
     //$this->load->view('Ficha',$data);
+
   }
+
   function InsertarFichaproyecto()
   {
 
@@ -65,9 +70,20 @@ class ControllerFichaproyecto extends CI_Controller
 
   }
 
-
+function abrirM()
+{
+  // $dt = $this->input->post('id_ficha');
+  // $data['fichasB'] = $this->MdlFichaproyecto->fichasBf($dt);
+  // //  $this->load->view('FichasProyecto', $data);
+  // echo json_encode($data);
+  $this->MdlFichaproyecto->$_POST['id_ficha'];
+    echo json_encode($this->MdlFichaproyecto->fichasBf());
+}
 
 }
+
+
+
 
 
 

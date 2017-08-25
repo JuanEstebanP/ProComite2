@@ -22,7 +22,7 @@ include 'Master.php';
           Registrar Ficha De Grupo
         </div></center>
 
-        <?php echo form_open('ControllerFicha/InsertarFicha', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post')); ?>
+        <?php echo form_open('ControllerFicha/InsertarFicha', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post'));?>
         <!-- Text input-->
 
   <fieldset>
@@ -88,7 +88,12 @@ include 'Master.php';
                                 <input type="checkbox" value="<?php echo $a['id_aprendiz'];?>"></input>
                               </td>
                               </tr>
-                            <?php } ?>
+                            <?php
+
+
+
+
+                           } ?>
                           </tbody>
                         </table>
                       </div>
@@ -99,6 +104,8 @@ include 'Master.php';
             </fieldset>
           </div>
         </div>
+
+
 
 ---------------------------------------------------
 MODAL PARA EDITAR
