@@ -22,7 +22,7 @@ include 'Master.php';
           Registrar Ficha De Grupo
         </div></center>
 
-        <?php echo form_open('ControllerFicha/InsertarFicha', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post'));?>
+        <?php echo form_open('ControllerLlenarfichagrupo/insertChecks', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post'));?>
         <!-- Text input-->
 
   <fieldset>
@@ -51,7 +51,7 @@ include 'Master.php';
               <button name="buttonRegistrar" type="submit" class="btn btn-success">Registrar</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
+          <!-- <?php echo form_close(); ?> -->
         </div>
 
 
@@ -85,15 +85,12 @@ include 'Master.php';
                               <td><?php echo $a['documento']; ?></td>
                               <td class="center"><?php echo $a['correo']; ?></td>
                               <td>
-                                <input type="checkbox" value="<?php echo $a['id_aprendiz'];?>"></input>
+                                <input type="checkbox"  name="aprendiz[]" value="<?php echo $a['id_aprendiz'];?>"></input>
                               </td>
                               </tr>
-                            <?php
 
 
-
-
-                           } ?>
+                            <?php   echo form_close();  } ?>
                           </tbody>
                         </table>
                       </div>
