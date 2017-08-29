@@ -17,7 +17,7 @@ class MdlLlenarfichagrupo extends CI_Model
 
   function insertarDetallefichagrupo($idficha,$idaprendiz)
   {
-    $this->db->query("INSERT INTO tbl_fichagrupo VALUES (fk_ficha = '$idficha', fk_aprendiz='$idaprendiz')");
+    $this->db->query("INSERT INTO `tbl_detallesaprendizgrupo` (`id_detalle`, `id_aprendiz`, `id_fichaGrupo`) VALUES (null,'$idaprendiz','$idficha')");
   }
 
 }

@@ -22,8 +22,6 @@ include 'Master.php';
           Registrar Ficha De Grupo
         </div></center>
 
-        <?php echo form_open('ControllerFicha/InsertarFicha', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post'));?>
-        <!-- Text input-->
 
   <fieldset>
     <div class="form-group">
@@ -40,18 +38,15 @@ include 'Master.php';
       </div>
     </div>
 
-
+<!-- <input type="hidden" name="txtAprendiz" value="10"> -->
           <!--multiple select  -->
-
-
           <!-- Button (Double) -->
           <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-              <button name="buttonRegistrar" type="submit" class="btn btn-success">Registrar</button>
+              <button name="buttonRegistrar" type="submit" class="btn btn-success" id="hola">Registrar</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
         </div>
 
 
@@ -85,7 +80,7 @@ include 'Master.php';
                               <td><?php echo $a['documento']; ?></td>
                               <td class="center"><?php echo $a['correo']; ?></td>
                               <td>
-                                <input type="checkbox" value="<?php echo $a['id_aprendiz'];?>"></input>
+                                <input class="listaapren" type="checkbox" value="<?php echo $a['id_aprendiz'];?>"></input>
                               </td>
                               </tr>
                             <?php
@@ -104,7 +99,6 @@ include 'Master.php';
             </fieldset>
           </div>
         </div>
-
 
 
 ---------------------------------------------------
@@ -187,4 +181,4 @@ MODAL PARA EDITAR
 
   </div>
 </div>
-<script src="Plantilla/assets/js/Fichas.js"></script>
+<script src="Plantilla/assets/js/llenarfichasgrupos.js"></script>

@@ -18,6 +18,15 @@ class ControllerLlenarfichagrupo extends CI_Controller
     $this->load->view('Llenarfichagrupo',$data);
 
   }
+  function insertarDetallefichagrupo()
+  {
+  $idficha=$this->input->post('txtFicha');
+  $idaprendiz=$this->input->post('txtAprendiz');
+  foreach ($idaprendiz as $ida) {
+  $this->MdlLlenarfichagrupo->insertarDetallefichagrupo($ida,$idficha);
+  }
+  echo json_encode(array("status" => TRUE));
+  }
 
 }
 
