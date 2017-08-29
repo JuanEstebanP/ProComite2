@@ -13,7 +13,7 @@
   <!-- Custom Styles-->
   <link href="Plantilla/assets/css/custom-styles.css" rel="stylesheet" />
   <!-- Google Fonts-->
-  <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+  <!-- <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" /> -->
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   <!-- Datatables bootstrap -->
@@ -251,7 +251,7 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
-      
+
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
       </li>
@@ -292,7 +292,7 @@
 <!-- <script src="Plantilla/assets/js/jquery-1.10.2.js"></script> -->
 <script src="Plantilla/assets/js/alertify.js"> </script>
 
-<script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script>
+<!-- <script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script> -->
 
 <script src="Plantilla/assets/js/jquery-3.2.1.min.js"></script>
 <!-- JQuery Validate -->

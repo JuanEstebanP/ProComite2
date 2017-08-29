@@ -6,20 +6,20 @@ $('#hola').click(function () {
   });
   if (lista.length > 0) {
         $.ajax({
-          url: "ControllerLlenarfichagrupo/insertarDetallefichagrupo",
+          url: 'ControllerLlenarfichagrupo/insertarDetallefichagrupo',
           type:"POST",
           data:{id:grup,apren:lista},
           dataType:"JSON",
-          success: function(data){
-            if(data.status){
-              reload_table();
-              alertify.success("Exitoso");
-            }
-            else {
-              alert("Error");
-            }
+        }).done(function(data){
+          if(data.status){
+            //reload_table();
+            alertify.success("Exitoso");
           }
+          else {
+            alert("Error");
+          }
+        }).fail(function(jqXHR, textStatus, errorThrown){
+          alert("oh rayos!");
         });
-
   }
 });
