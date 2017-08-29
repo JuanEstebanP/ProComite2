@@ -23,7 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+<<<<<<< HEAD
 $config['base_url'] = 'http://localhost:81/ProComite2/';
+=======
+$config['base_url'] = 'http://localhost/ProComite2/';
+>>>>>>> 0e2dd0c90c7ee3520696113b2784bc9da2ba93d4
 
 /*
 |--------------------------------------------------------------------------

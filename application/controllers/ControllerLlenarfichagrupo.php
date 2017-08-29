@@ -9,6 +9,7 @@ class ControllerLlenarfichagrupo extends CI_Controller
     $this->load->database();
     $this->load->helper('form');
     $this->load->model('MdlLlenarfichagrupo');
+    $this->load->helper('array');
   }
 
   function index()
@@ -26,6 +27,15 @@ class ControllerLlenarfichagrupo extends CI_Controller
   $this->MdlLlenarfichagrupo->insertarDetallefichagrupo($ida,$idficha);
   }
   echo json_encode(array("status" => TRUE));
+  }
+
+  function insertChecks()
+  {
+    $ficha = $this->input->post('id_ficha');
+    $aprendices = $this->input->post('aprendiz');
+
+    var_dump($aprendices, $ficha);
+    exit();
   }
 
 }
