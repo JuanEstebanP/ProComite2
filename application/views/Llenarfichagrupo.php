@@ -19,15 +19,15 @@ include 'Master.php';
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading"><center>
-          Registrar Ficha De Grupo
+          Asociar Aprendices A Ficha de Grupo
         </div></center>
 
 
   <fieldset>
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Fichas Grupos</label>
+      <label class="col-md-4 control-label" for="textinput">Fichas Grupos:</label>
       <div class="col-md-4">
-        <select select class="form-control"  id="txtFicha" name="txtFicha" required="true" >
+        <select class="form-control"    data-live-search="true" id="txtFicha" name="txtFicha" required="true" >
           <option value=""></option>
           <?php foreach ($Ficha as $key):?>
             <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
@@ -56,7 +56,7 @@ include 'Master.php';
                   </div>
                   <div class="panel-body">
                     <div class="table-responsive">
-                      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                      <table class="table table-striped table-bordered table-hover" id="dataTables-example"  >
                         <thead>
                           <tr>
                             <th class="center">#</th>

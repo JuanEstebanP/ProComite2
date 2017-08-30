@@ -8,16 +8,13 @@ class MdlLlenarfichagrupo extends CI_Model
   }
   function consultaAprendices()
   {
-    $query  = $this->db->query("CALL sp_consultarAprendices()");
-    $res = $query->result_array();
-    $query->next_result();
-    $query->free_result();
-    return $res;
+    return $this->db->query("SELECT * from tbl_aprendiz where estado =!1 ")->result_array();
+
   }
 
   function insertarDetallefichagrupo($idficha,$idaprendiz)
   {
-    $this->db->query("INSERT INTO `tbl_detallesaprendizgrupo` (`id_detalle`, `id_aprendiz`, `id_fichaGrupo`) VALUES (null,'$idaprendiz','$idficha')");
+    return $this->db->query("CALL sp_regdetalleGrupo('$idaprendiz','$idficha')");
   }
 
 }

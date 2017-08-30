@@ -12,14 +12,18 @@ $('#hola').click(function () {
           dataType:"JSON",
         }).done(function(data){
           if(data.status){
-            //reload_table();
             alertify.success("Exitoso");
+            setTimeout(function(){location.reload()}, 1000);
           }
           else {
             alert("Error");
           }
         }).fail(function(jqXHR, textStatus, errorThrown){
-          alert("oh rayos!");
+          alertify.error("Seleccione ficha de grupo.");
+          // alert("oh rayos!");
         });
+  }
+  else {
+    alertify.error("Seleccione aprendiz.");
   }
 });

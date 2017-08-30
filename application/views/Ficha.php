@@ -71,22 +71,7 @@ include 'Master.php';
             </div>
           </div>
           <!--multiple select  -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Aprendices</label>
-            <div class="col-md-4">
 
-              <select class="selectpicker" multiple data-max-options="4" >
-                <option value=""></option>
-                <?php foreach ($Aprendiz as $key):?>
-                  <option value="<?= $key['id_aprendiz'] ?>">Nombre:
-                    <?=$key['nombre'];?>
-                  </option>
-                <?php endforeach ?>
-
-              </select>
-
-            </div>
-          </div>
 
 
 
