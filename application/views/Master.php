@@ -13,13 +13,15 @@
   <!-- Custom Styles-->
   <link href="Plantilla/assets/css/custom-styles.css" rel="stylesheet" />
   <!-- Google Fonts-->
+  <link href="Plantilla/assets/css/sweetalert.css" rel="stylesheet"/>
+
   <!-- <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" /> -->
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
   <!-- Datatables bootstrap -->
   <link href="Plantilla/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-  <link href="Plantilla/assets/css/alertify.css" rel="stylesheet" />
+  <!-- <link href="Plantilla/assets/css/alertify.css" rel="stylesheet" /> -->
 </head>
 <body>
   <div id="wrapper">
@@ -290,7 +292,7 @@
 <!-- JS Scripts-->
 <!-- jQuery Js -->
 <!-- <script src="Plantilla/assets/js/jquery-1.10.2.js"></script> -->
-<script src="Plantilla/assets/js/alertify.js"> </script>
+<!-- <script src="Plantilla/assets/js/alertify.js"> </script> -->
 
 <!-- <script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script> -->
 
@@ -308,6 +310,9 @@
 <script src="Plantilla/assets/js/dataTables/jquery.dataTables.js"></script>
 <!-- Datatables Styles -->
 <script src="Plantilla/assets/js/dataTables/dataTables.bootstrap.js"></script>
+
+<script src="Plantilla/assets/js/sweetalert.min.js"></script>
+
 <script>
 $(document).ready(function () {
   $('#dataTables-example').dataTable();

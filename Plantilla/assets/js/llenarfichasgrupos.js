@@ -12,18 +12,30 @@ $('#hola').click(function () {
           dataType:"JSON",
         }).done(function(data){
           if(data.status){
-            alertify.success("Exitoso");
-            setTimeout(function(){location.reload()}, 1000);
-          }
+            swal({
+    title: "¿Esta seguro de asociar los aprendices seleccionados?",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#5cb85c",
+    confirmButtonText: "Asociarlos!",
+    closeOnConfirm: false
+  },
+function(){
+  swal("Asociados", "Los aprendices fueron asociados.", "success");
+
+  setTimeout(function(){location.reload()}, 2000);
+});
+
+}
           else {
             alert("Error");
           }
         }).fail(function(jqXHR, textStatus, errorThrown){
-          alertify.error("Seleccione ficha de grupo.");
+          swal("Seleccione ficha de grupo");
           // alert("oh rayos!");
         });
   }
   else {
-    alertify.error("Seleccione aprendiz.");
+    swal("Seleccione un aprendiz");
   }
 });

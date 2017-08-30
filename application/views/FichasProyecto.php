@@ -190,7 +190,7 @@ include 'Master.php';
           <div class="row">
             <div class="col-md-12">
               <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example" >
                   <thead>
                     <tr>
                       <th>Titulo </th>
@@ -347,5 +347,5 @@ MODAL PARA EDITAR -->
 
 </div>
 </div>
-</div>
+
 <script src="Plantilla/assets/js/FichasProyectos.js"></script>

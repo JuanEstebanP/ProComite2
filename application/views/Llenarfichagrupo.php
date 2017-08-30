@@ -18,35 +18,39 @@ include 'Master.php';
   <div id="page-inner">
     <div class="col-lg-12">
       <div class="panel panel-default">
-        <div class="panel-heading"><center>
+        <!-- <div class="panel-heading"><center>
           Asociar Aprendices A Ficha de Grupo
-        </div></center>
+        </div></center> -->
 
 
   <fieldset>
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Fichas Grupos:</label>
-      <div class="col-md-4">
-        <select class="form-control"    data-live-search="true" id="txtFicha" name="txtFicha" required="true" >
-          <option value=""></option>
-          <?php foreach ($Ficha as $key):?>
-            <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
-              <?=$key['numeroFicha'];?>
-            </option>
-          <?php endforeach ?>
-        </select>
-      </div>
-    </div>
 
-<!-- <input type="hidden" name="txtAprendiz" value="10"> -->
-          <!--multiple select  -->
-          <!-- Button (Double) -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="button1id"></label>
-            <div class="col-md-8">
-              <button name="buttonRegistrar" type="submit" class="btn btn-success" id="hola">Registrar</button>
-            </div>
-          </div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
+  <label class="control-label" for="textinput" style="float:right; margin-top:3%;">Fichas Grupos:</label>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
+<div class="form-group">
+  <select class="form-control" data-live-search="true" id="txtFicha" name="txtFicha" required="true" style="width:30%; margin-top:2%;" >
+    <option value=""></option>
+    <?php foreach ($Ficha as $key):?>
+      <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
+        <?=$key['numeroFicha'];?>
+      </option>
+    <?php endforeach ?>
+  </select>
+</div>
+</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:40px;">
+  <div class="form-group">
+    <div>
+      <center><button name="buttonRegistrar" type="submit" class="btn btn-success" id="hola">Asociar</button></center>
+    </div>
+  </div>
+</div>
+
         </div>
 
 

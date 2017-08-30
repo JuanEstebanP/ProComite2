@@ -45,7 +45,7 @@ class MdlFichaproyecto extends CI_Model
     }
     function FichasBG($id)
     {
-      return $this->db->query("SELECT titulo, obj_general, version FROM tbl_fichaproyecto WHERE id_fichaGrupo = '$id' ")->result_array();
+      return $this->db->query("SELECT fp.titulo, fp.obj_general, fp.version FROM tbl_fichaproyecto fp JOIN tbl_fichagrupo fg ON (fp.id_fichaGrupo=fg.id_fichaGrupo) WHERE numeroFicha = '$id' ")->result_array();
     }
 
 
