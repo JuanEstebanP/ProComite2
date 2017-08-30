@@ -43,9 +43,9 @@ class MdlFichaproyecto extends CI_Model
     {
       $this->db->query("call sp_editarFichaproyecto('$txtIdModificar','$txtNombreModificar','$txtObjetivoModificar','$txtVersionModificar','$destino','$txtClienteModificar','$txtFichagrupoM','$txtEstadoModificar')");
     }
-    function fichasBf($id)
+    function FichasBG($id)
     {
-      return  $this->db->query("SELECT Url FROM tbl_dtllproyecto WHERE id_ficha = '$id' ")->result_array();
+      return $this->db->query("SELECT titulo, obj_general, version FROM tbl_fichaproyecto WHERE id_fichaGrupo = '$id' ")->result_array();
     }
 
 

@@ -12,8 +12,8 @@ class ControllerFichaproyecto extends CI_Controller
   }
   function index()
   {
-    // $dt = $this->input->post('id_ficha');
-    // $data['fichasB'] = $this->MdlFichaproyecto->fichasBf($dt);
+    $dt = $this->input->post('txtidfichaG');
+    $data['fichasG'] = $this->MdlFichaproyecto->FichasBG($dt);
 
     $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
     $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();

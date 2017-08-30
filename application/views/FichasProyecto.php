@@ -102,6 +102,8 @@ include 'Master.php';
       </div>
 
 
+
+
       <div class="panel panel-default">
         <div class="panel-heading">
           Listado
@@ -141,12 +143,67 @@ include 'Master.php';
                       <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_ficha']; ?>)">
                         <i class="fa fa-pencil" aria-hidden="true"></i></button>
                       </td>
-                      <!-- <td>
 
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+    </fieldset>
 
-                        <button class="btn btn-primary" id="hoa" name="hoa" onclick="abrirM(<?php echo $f['id_ficha']; ?>)">
-                          <i class="fa fa-search" aria-hidden="true"></i></button>
-                        </td> -->
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <div class="col-lg-12">
+
+              <div class="form-group">
+                <form class="form-horizontal" action="<?php base_url();?>ControllerFichaproyecto" method="post">
+                  <div class="col-md-4">
+                    <input type="text" name="txtidfichaG" value="" class="form-control">
+                  </div>
+                  <div class="col-md-4">
+                    <button type="submit" name="button" class="btn btn-primary">Consultar</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+        Fichas por grupo:
+        </div>
+        <div class="-panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <thead>
+                    <tr>
+                      <th>Titulo </th>
+                      <th>Objetivo general</th>
+                      <th>Version</th>
+                    </tr>
+                  </thead>
+                  <?php foreach ($fichasG as $g) { ?>
+                    <tbody>
+                      <tr class="odd gradeX">
+                        <td><?php echo $g['titulo']; ?></td>
+                        <td><?php echo $g['obj_general']; ?></td>
+                        <td><?php echo $g['version'] ?></td>
                       </tr>
                     <?php } ?>
                   </tbody>
@@ -156,139 +213,139 @@ include 'Master.php';
           </div>
         </div>
       </div>
-    </fieldset>
-  </div>
-
-  <form class="" action="index.html" method="post" enctype="multipart/form-data">
-
-  </form>
-
-  ---------------------------------------------------
-  MODAL PARA EDITAR
-  ---------------------------------------------------
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar Ficha De Proyecto</h4>
-        </div>
-        <div class="modal-body">
-          <!-- <form class="form-horizontal"> -->
-          <!-- <?php echo form_open('ControllerFichaproyecto/EditarFichaproyecto', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?> -->
-          <form class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/EditarFichaproyecto" method="post" enctype="multipart/form-data">
-            <fieldset>
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
-                <div class="col-md-4">
-                  <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
-                </div>
-              </div>
-
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Cliente Del Proyecto:</label>
-                <div class="col-md-4">
-                  <select class="form-control" id="txtClienteModificar"name="txtClienteModificar">
-                    <option value=""></option>
-                    <?php foreach ($Fichaproyectos as $key):?>
-                      <option value="<?= $key['id_cliente'] ?>">Nombre:
-                        <?=$key['nombre'];?>
-                      </option>
-                    <?php endforeach ?>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Nombre Del Poyecto: </label>
-                <div class="col-md-4">
-                  <input id="txtNombreModificar" name="txtNombreModificar" type="text" placeholder="11524" class="form-control input-md" required="true">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Objetivo General:</label>
-                <div class="col-md-4">
-                  <input id="txtObjetivoModificar" name="txtObjetivoModificar" type="text" placeholder="Falta alcance."  class="form-control input-md" required="true">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
-                <div class="col-md-4">
-                  <input  name="fileC" type="file" class="form-control input-md" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
-                <div class="col-md-4">
-                  <input id="txtVersionModificar" name="txtVersionModificar" type="text" placeholder="1.1..."  class="form-control input-md" required="true">
-                </div>
-              </div>
-
-
-              <input type="hidden" name="txtFichagrupoM" value="">
-              <input id="txtEstadoModificar" name="txtEstadoModificar" type="hidden"   class="form-control input-md" required="true">
-
-              <!-- Text input-->
-            </fieldset>
-            <!-- </form> -->
-          </div>
-          <div class="modal-footer">
-            <button type="submit" name="fileC" class="btn btn-primary">Enviar</button>
-
-          </div>
-          <!-- <?php echo form_close(); ?> -->
-        </form>
-      </div>
 
     </div>
   </div>
-  <!-- Modal consultar fichas -->
-  <div id="myModalC" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+</div>
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar Ficha De Proyecto</h4>
-        </div>
-        <div class="modal-body">
 
-          <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover"  >
-              <thead>
-                <tr>
-                  <th>Fichas: </th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- <?php foreach ($fichasB as $f ){ ?>
-                  <tr class="odd gradeX">
-                    <td name="Url"><?php echo '<a href="'.$f['Url'].'"> '.substr($f['Url'],10).' </a>' ?></td>
-                  </tr>
 
-                <?php } ?> -->
-              </tbody>
-            </table>
 
-          </div>
+<!---
+MODAL PARA EDITAR -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Ficha De Proyecto</h4>
+      </div>
+      <div class="modal-body">
+        <!-- <form class="form-horizontal"> -->
+        <!-- <?php echo form_open('ControllerFichaproyecto/EditarFichaproyecto', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?> -->
+        <form class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/EditarFichaproyecto" method="post" enctype="multipart/form-data">
+          <fieldset>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
+              <div class="col-md-4">
+                <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Cliente Del Proyecto:</label>
+              <div class="col-md-4">
+                <select class="form-control" id="txtClienteModificar"name="txtClienteModificar">
+                  <option value=""></option>
+                  <?php foreach ($Fichaproyectos as $key):?>
+                    <option value="<?= $key['id_cliente'] ?>">Nombre:
+                      <?=$key['nombre'];?>
+                    </option>
+                  <?php endforeach ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Nombre Del Poyecto: </label>
+              <div class="col-md-4">
+                <input id="txtNombreModificar" name="txtNombreModificar" type="text" placeholder="11524" class="form-control input-md" required="true">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Objetivo General:</label>
+              <div class="col-md-4">
+                <input id="txtObjetivoModificar" name="txtObjetivoModificar" type="text" placeholder="Falta alcance."  class="form-control input-md" required="true">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
+              <div class="col-md-4">
+                <input  name="fileC" type="file" class="form-control input-md" >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
+              <div class="col-md-4">
+                <input id="txtVersionModificar" name="txtVersionModificar" type="text" placeholder="1.1..."  class="form-control input-md" required="true">
+              </div>
+            </div>
+
+
+            <input type="hidden" name="txtFichagrupoM" value="">
+            <input id="txtEstadoModificar" name="txtEstadoModificar" type="hidden"   class="form-control input-md" required="true">
+
+            <!-- Text input-->
+          </fieldset>
+          <!-- </form> -->
         </div>
         <div class="modal-footer">
           <button type="submit" name="fileC" class="btn btn-primary">Enviar</button>
 
         </div>
+        <!-- <?php echo form_close(); ?> -->
+      </form>
+    </div>
 
+  </div>
+</div>
+<!-- Modal consultar fichas -->
+<div id="myModalC" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Ficha De Proyecto</h4>
       </div>
+      <div class="modal-body">
+
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover"  >
+            <thead>
+              <tr>
+                <th>Fichas: </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <?php foreach ($fichasB as $f ){ ?>
+              <tr class="odd gradeX">
+              <td name="Url"><?php echo '<a href="'.$f['Url'].'"> '.substr($f['Url'],10).' </a>' ?></td>
+            </tr>
+
+          <?php } ?> -->
+        </tbody>
+      </table>
 
     </div>
   </div>
+  <div class="modal-footer">
+    <button type="submit" name="fileC" class="btn btn-primary">Enviar</button>
 
-  <script src="Plantilla/assets/js/FichasProyectos.js"></script>
+  </div>
+
+
+</div>
+
+</div>
+</div>
+</div>
+<script src="Plantilla/assets/js/FichasProyectos.js"></script>
