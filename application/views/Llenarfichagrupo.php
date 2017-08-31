@@ -46,7 +46,7 @@ include 'Master.php';
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:40px;">
   <div class="form-group">
     <div>
-      <center><button name="buttonRegistrar" type="submit" class="btn btn-success" id="hola">Asociar</button></center>
+      <center><button name="buttonRegistrar" type="submit" class="btn btn-success" id="hola" >Asociar</button></center>
     </div>
   </div>
 </div>
@@ -88,10 +88,6 @@ include 'Master.php';
                               </td>
                               </tr>
                             <?php
-
-
-
-
                            } ?>
                           </tbody>
                         </table>

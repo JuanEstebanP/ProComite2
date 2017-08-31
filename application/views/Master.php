@@ -281,7 +281,16 @@
       </li>
 
       <li>
-        <a href="<?PHP base_url(); ?>ControllerFichaproyecto"><i class="fa fa-fw fa-file"></i> Ficha de Proyecto</a>
+        <a href="#"><i class="fa fa-fw fa-file"></i>Fichas de Proyecto <span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+              <a href="<?PHP base_url(); ?>ControllerFichaproyecto">Gestionar fichas</a>
+          </li>
+          <li>
+              <a href="<?php base_url(); ?>ControllerLlenarfichapro">Asociar aprendices</a>
+          </li>
+        </ul>
+
       </li>
     </ul>
 

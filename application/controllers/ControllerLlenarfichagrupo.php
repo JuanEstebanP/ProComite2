@@ -20,11 +20,16 @@ class ControllerLlenarfichagrupo extends CI_Controller
   }
   function insertarDetallefichagrupo()
   {
+
   $idficha=$this->input->post('id');
   $idaprendiz=$this->input->post('apren');
+
   foreach ($idaprendiz as $ida) {
+
   $this->MdlLlenarfichagrupo->insertarDetallefichagrupo($idficha, $ida);
+
   }
+
   echo json_encode(array("status" => TRUE));
   }
 
