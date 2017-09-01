@@ -11,7 +11,7 @@ class MdlLlenarfichapro extends CI_Model
 
   function Fichasgruo()
   {
-    return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
+    return $this->db->query("SELECT id_fichaGrupo, numeroFicha FROM tbl_fichagrupo")->result_array();
   }
 
   function Aprendices()
@@ -23,6 +23,14 @@ class MdlLlenarfichapro extends CI_Model
   {
   return $this->db->query("CALL sp_regdetalleProyecto('$key','$idproyecto')");
   }
+
+  function obtenerProyectos()
+  {
+    return $this->db->query("SELECT * FROM tbl_fichaproyecto WHERE id_fichaGrupo = 3");
+  }
+
+
+
 }
 
  ?>
