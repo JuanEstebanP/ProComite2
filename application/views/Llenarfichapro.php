@@ -18,41 +18,48 @@ include 'Master.php';
   <div id="page-inner">
     <div class="col-lg-12">
       <div class="panel panel-default">
-        <!-- <div class="panel-heading"><center>
-        Asociar Aprendices A Ficha de Grupo
-      </div></center> -->
-
-
-      <fieldset>
-
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
           <label class="control-label" for="textinput" style="float:right; margin-top:3%;">Fichas proyectos:</label>
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
+        <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;"> -->
+        <!-- Fichas de proyecto -->
+        <div class="container-fluid">
+
+
           <div class="form-group">
-            <select class="form-control" data-live-search="true" id="txtIdFicha" required="true" style="width:30%; margin-top:2%;" >
+            <select class="form-control" data-live-search="true" id="txtIdFicha" style="width:30%; margin-top:2%;" >
               <option value="">---Buscar---</option>
-              <?php foreach ($IdFichas as $Id) { ?>
+              <?php foreach ($IdFichas as $Id): ?>
                 <option value="<?=  $Id['id_ficha']; ?>">Ficha:
-                  <?= $Id['id_ficha']; ?>
+                  <?= $Id['titulo']; ?>
                 </option>
-              <?php } ?>
+              <?php endforeach ?>
             </select>
           </div>
-        </div>
+          <!-- </div> -->
 
-
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:40px;">
           <div class="form-group">
-            <div>
-              <center><button name="buttonRegistrar" type="submit" class="btn btn-success" id="asos">Asociar</button></center>
+            <select class="form-control" data-live-search="true" id="txtIdFicha" style="width:30%; margin-top:2%;" >
+              <option value="">---Buscar---</option>
+              <?php foreach ($fichasGrupo as $f): ?>
+                <option value="<?=  $f['id_fichaGrupo']; ?>">Ficha:
+                  <?= $f['numeroFicha']; ?>
+                </option>
+              <?php endforeach ?>
+            </select>
+          </div>
+
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:40px;">
+            <div class="form-group">
+              <div>
+                <center><button type="submit" class="btn btn-success" id="asos">Asociar</button></center>
+              </div>
             </div>
           </div>
         </div>
-
       </div>
-
 
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -68,7 +75,6 @@ include 'Master.php';
                   <th>Apellido</th>
                   <th>Documento</th>
                   <th>Correo</th>
-                  <!-- <th>dghj</th> -->
                   <th>Asociar</th>
                 </tr>
               </thead>
@@ -80,7 +86,6 @@ include 'Master.php';
                     <td><?php echo $key['apellido'];?></td>
                     <td><?php echo $key['documento'];?></td>
                     <td><?php echo $key['correo']; ?></td>
-                    <!-- <td><?php echo $key['estado']; ?></td> -->
                     <td>
                       <input class="listaapren" type="checkbox" value="<?php echo $key['id_aprendiz'];?>"></input>
                     </td>
@@ -93,7 +98,6 @@ include 'Master.php';
       </div>
     </div>
   </div>
-</fieldset>
 </div>
 </div>
 

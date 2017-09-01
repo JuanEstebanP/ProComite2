@@ -1,7 +1,7 @@
 <?php
 /**
- *
- */
+*
+*/
 class ControllerLlenarfichapro extends CI_Controller
 {
 
@@ -16,6 +16,7 @@ class ControllerLlenarfichapro extends CI_Controller
 
   function index()
   {
+    $data['fichasGrupo'] = $this->MdlLlenarfichapro->Fichasgruo();
     $data['IdFichas'] = $this->MdlLlenarfichapro->IdFichasPro();
     $data['Aprendices'] = $this->MdlLlenarfichapro->Aprendices();
     $this->load->view('Llenarfichapro', $data);
@@ -24,12 +25,12 @@ class ControllerLlenarfichapro extends CI_Controller
   function insertDetallefichapro()
 
   {
-
-    $idaprendiz = $this->input->post('aprendiz');
     $idproyecto = $this->input->post('id');
+    $idaprendiz = $this->input->post('aprendiz');
+
     foreach ($idaprendiz as $key ) {
 
-    $this->MdlLlenarfichapro->insertDetallefichapro($key,$idproyecto);
+      $this->MdlLlenarfichapro->insertDetallefichapro($idproyecto,$key);
     }
     echo json_encode(array("status" => TRUE));
   }
@@ -37,4 +38,4 @@ class ControllerLlenarfichapro extends CI_Controller
 
 }
 
- ?>
+?>

@@ -36,25 +36,3 @@ function Editar(data){
       alert("error");
     });
 }
-
-function abrirM(data)
-{
-
-
-  $('#myModalC').show();
-  $.ajax({
-    url: 'ControllerFichaproyecto/abrirM',
-    trype: 'POST',
-    dataType: 'JSON',
-    data:{id_ficha:data}
-  }).done(function (data) {
-    contenido+='<td class="text-center"><a data-toggle="tooltip" data-container="body" title="Consultar detalle"><span class="fa fa-eye Picon" aria-hidden="true" onclick="abrirM('+data.id_ficha+')"></span></td>';
-    console.log(data);
-    $('#myModalC').modal('show');
-//    alert("entro",data);
-  }).fail(function(data) {
-    console.log(data);
-  //  alert("Fallo esta cosa");
-
-});
-}
