@@ -12,20 +12,12 @@ $('#hola').click(function () {
           dataType:"JSON",
         }).done(function(data){
           if(data.status){
-            swal({
-    title: "¿Esta seguro de asociar los aprendices seleccionados?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#5cb85c",
-    confirmButtonText: "Asociarlos!",
-    closeOnConfirm: false
-  },
-function(){
-  swal("Asociados", "Los aprendices fueron asociados.", "success");
-
-  setTimeout(function(){location.reload()}, 2000);
-});
-
+            swal(
+              'Exitoso!',
+              'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+              'success'
+            )
+            setTimeout(function(){location.reload()}, 1300);
 }
           else {
             alert("Error");

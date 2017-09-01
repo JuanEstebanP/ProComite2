@@ -13,9 +13,11 @@ class ControllerFicha extends CI_Controller
 
   function index()
   {
+
+    $dt = $this->input->post('prueba');
+    $data['Aprendiz'] = $this->MdlFicha->consultaAprendices($dt);
     $data['Ficha2'] = $this->MdlFicha->ConsultarFichas();
     $data['Ficha'] = $this->MdlFicha->conInstructor();
-    $data['Aprendiz'] = $this->MdlFicha->consultaAprendices();
     $this->load->view('Ficha',$data);
 
     //$this->load->view('Ficha',$data);
@@ -30,6 +32,7 @@ class ControllerFicha extends CI_Controller
       $this->MdlFicha->InsertarFicha( $txtNumero,$txtIniciolectiva,$txtFinlectiva,$txtTitular);
       redirect('ControllerFicha?ok=1');
     }
+
 
     function Editar(){
 

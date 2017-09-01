@@ -12,13 +12,9 @@ class MdlFicha extends CI_Model
   {
     return $this->db->query("SELECT id_instructor,documento,nombre from tbl_instructores")->result_array();
   }
-  function consultaAprendices()
+  function consultaAprendices($id)
   {
-    $query  = $this->db->query("CALL sp_consultarAprendices()");
-    $res = $query->result_array();
-    $query->next_result();
-    $query->free_result();
-    return $res;
+  return $this->db->query("SELECT * FROM tbl_aprendiz a join tbl_detallesaprendizgrupo d on d.id_aprendiz=a.id_aprendiz where d.id_fichaGrupo = '$id'")->result_array();
   }
   function ConsultarFichas()
   {

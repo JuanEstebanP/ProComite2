@@ -101,6 +101,7 @@ include 'Master.php';
                     <th>Inicio Lectiva</th>
                     <th>Fin Lectiva</th>
                     <th>Editar</th>
+                    <th>Aprendices en el grupo</th>
                   </tr>
                 </thead>
                 <tbody id="tblAprendiz">
@@ -118,7 +119,23 @@ include 'Master.php';
 
           <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_fichaGrupo']; ?>)">
             <i class="fa fa-pencil" aria-hidden="true"></i></button>
+
         </td>
+
+        <td>
+
+
+            <input class="btn btn-prymary" value="<?php echo $f['id_fichaGrupo'];?>"  id="modal">
+                  </input>
+
+  <button type="submit"  name="button" data-toggle="modal" data-target="#myModaluno" onclick="<?php echo $f['id_fichaGrupo'];?>">
+    <i class="glyphicon glyphicon-search" aria-hidden="true" name="prueba"></i>
+  </button>
+
+
+
+
+</td>
                 </tr>
                   <?php } ?>
                 </tbody>
@@ -159,13 +176,13 @@ MODAL PARA EDITAR
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Titular De Ficha:</label>
+                <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
                 <div class="col-md-4">
-                    <select class="selectpicker" data-style="select-with-transition" title="Ficha" data-live-search="true" id="txtTitular"name="txtTitularModificar" required="true">
-                      <option value=""></option>
+                    <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitular"name="txtTitularModificar" >
                   <?php foreach ($Ficha as $key):?>
                   <option value="<?= $key['id_instructor'] ?>">Documento:
-                  <?=$key['documento'];?>
+                  <?=$key['documento'];?> / Nombre completo:
+                  <?=$key['nombre'];?>
                   </option>
                   <?php endforeach ?>
               </select>
@@ -213,4 +230,50 @@ MODAL PARA EDITAR
 
   </div>
 </div>
+
+
+
+<!-- Modal -->
+<div id="myModaluno" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Listado
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th class="center">#</th>
+                <th>Nombre Ficha</th>
+                <th>Titular Ficha</th>
+                <th>Inicio Lectiva</th>
+                <th>Correo</th>
+
+              </tr>
+            </thead>
+            <tbody id="tblAprendiz">
+
+              <?php   foreach ($Aprendiz as $f) { ?>
+
+            <tr class="odd gradeX">
+              <td><?php echo $f['id_aprendiz']; ?></td>
+              <td><?php echo $f['nombre']; ?></td>
+              <td><?php echo $f['apellido']; ?></td>
+              <td><?php echo $f['documento']; ?></td>
+              <td><?php echo $f['correo']; ?></td>
+            </tr>
+              <?php } ?>
+            </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
 <script src="Plantilla/assets/js/Fichas.js"></script>
