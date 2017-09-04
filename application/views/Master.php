@@ -259,48 +259,57 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
+      <li>
+        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Programación</a>
+      </li>
 
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
       </li>
       <li>
-        <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-desktop"></i> Clientes</a>
-      </li>
-      <li>
-        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Programación</a>
-      </li>
-      <li>
-        <a href="<?php base_url();?>ControllerFicha"><i class="fa fa-qrcode"></i> Fichas de grupo</a>
-      </li>
 
+      </li>
+    
       <li>
         <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-table"></i> Aprendices</a>
       </li>
-      <li>
-        <a href="<?php base_url(); ?>ControllerEvaluarFichas" ><i class="fa fa-edit"></i> Evaluar Ficha </a>
-      </li>
-      <li>
-        <a href="<?php base_url(); ?>ControllerLlenarfichagrupo" ><i class="fa fa-edit"></i> Asociar Aprendices </a>
-      </li>
-      <li>
-        <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
-      </li>
+    <li>
+      <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
+    </li>
+    <!-- Fichas grupo -->
+    <li>
+      <a href="#"><i class="fa fa-qrcode"></i> Fichas de grupo <span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level">
+        <li>
+          <a href="<?php base_url();?>ControllerFicha" data-toggle="tooltip" title="Registrar, Consultar, Modificar" data-placement="right"><i class="fa fa-thumb-tack" aria-hidden="true"></i>Gestionar fichas grupo</a>
+        </li>
+        <li>
+          <a href="<?php base_url(); ?>ControllerLlenarfichagrupo"><i class="fa fa-plus-square" aria-hidden="true"></i>Asociar aprendices</a>
+        </li>
+      </ul>
+    </li>
+    <!-- Fichas Proyecto -->
+    <li>
+      <a href="#"><i class="fa fa-fw fa-file"></i>Fichas de Proyecto <span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level">
+        <li>
+          <a href="<?PHP base_url(); ?>ControllerFichaproyecto" data-toggle="tooltip" title="Registrar, Consultar, Modificar"  data-placement="right"><i class="fa fa-thumb-tack" aria-hidden="true"></i>Gestionar fichas proyecto</a>
+        </li>
+        <li>
+          <a href="<?php base_url(); ?>ControllerLlenarfichapro"><i class="fa fa-plus-square" aria-hidden="true"></i>Asociar aprendices</a>
+        </li>
+        <li>
+          <a href="<?php base_url(); ?>ControllerEvaluarFichas"><i class="fa fa-edit"></i> Evaluar Ficha</a>
+        </li>
+        <li>
+          <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-desktop"></i> Clientes</a>
+        </li>
+      </ul>
 
-      <li>
-        <a href="#"><i class="fa fa-fw fa-file"></i>Fichas de Proyecto <span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-              <a href="<?PHP base_url(); ?>ControllerFichaproyecto">Gestionar fichas</a>
-          </li>
-          <li>
-              <a href="<?php base_url(); ?>ControllerLlenarfichapro">Asociar aprendices</a>
-          </li>
-        </ul>
+    </li>
+  </ul>
 
-      </li>
-    </ul>
-
-  </div>
+</div>
 
 </nav>
 <!-- /.NAVTOP -->
@@ -336,5 +345,11 @@
 <script>
 $(document).ready(function () {
   $('#dataTables-example').dataTable();
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
