@@ -15,6 +15,12 @@
   <!-- Google Fonts-->
   <link href="Plantilla/assets/css/sweetalert.css" rel="stylesheet"/>
 
+  <link href="Plantilla/assets/css/select2.css" rel="stylesheet"/>
+
+
+  <link href="Plantilla/assets/css/select2.min.css" rel="stylesheet"/>
+
+    <link href="Plantilla/assets/css/sweetalert.css" rel="stylesheet"/>
   <!-- <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" /> -->
 
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -321,6 +327,11 @@
 <script src="Plantilla/assets/js/dataTables/dataTables.bootstrap.js"></script>
 
 <script src="Plantilla/assets/js/sweetalert.min.js"></script>
+
+<script src="Plantilla/assets/js/select2.full.js"></script>
+
+<script src="Plantilla/assets/js/select2.js"></script>
+
 
 <script>
 $(document).ready(function () {
