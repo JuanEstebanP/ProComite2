@@ -37,7 +37,8 @@ class ControllerLlenarfichapro extends CI_Controller
 
   function obtenerProyectos()
   {
-          $fichas = $this->MdlLlenarfichapro->obtenerProyectos();
+          $dt = $this->input->post('id');
+          $fichas = $this->MdlLlenarfichapro->obtenerProyectos($dt);
           echo json_encode($fichas);
   }
 

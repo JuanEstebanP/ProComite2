@@ -12,26 +12,19 @@ $('#asos').click(function () {
       dataType:"JSON",
     }).done(function(data){
       if(data.status){
-        swal({
-          title: "¿Esta seguro de asociar los aprendices seleccionados?",
-          type: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#5cb85c",
-          confirmButtonText: "Asociarlos!",
-          closeOnConfirm: false
-        },
-        function(){
-          swal("Asociados", "Los aprendices fueron asociados.", "success");
-
-          setTimeout(function(){location.reload()}, 2000);
-        });
+        swal(
+          'Exitoso!',
+          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'success'
+        )
+        setTimeout(function(){location.reload()}, 1300);
 
       }
       else {
         alert("Error");
       }
     }).fail(function(jqXHR, textStatus, errorThrown){
-      swal("Seleccione ficha de grupo");
+      swal("Seleccione ficha de proyecto");
       // alert("oh rayos!");
     });
   }
@@ -44,15 +37,21 @@ $('#asos').click(function () {
 
 $("#txtGrupo").change(function(){
   var valor = $("#txtGrupo").val();
+   console.log(valor);
+   $('#Seleccionar').html('');
   $.ajax({
     url: 'ControllerLlenarfichapro/obtenerProyectos',
     type:"POST",
     data:{id:valor},
     dataType:"JSON",
   }).done(function(data){
-      $.each(function(){
-        
-
-      });
+    var html = '';
+    html += '<select class="form-control" data-live-search="true" id="txtIdFicha"  ><option value="">Seleccione ficha del proyecto</option>'
+    html += '';
+    for(var i = 0; i < data.length; i++){
+        html += '<option value="'+ data[i].id_ficha +'">Ficha: ' + data[i].titulo + '</option>';
+      }
+        html += '</select>';
+        $('#Seleccionar').append(html);
   });
 });

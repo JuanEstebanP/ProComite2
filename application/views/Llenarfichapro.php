@@ -41,15 +41,9 @@ include 'Master.php';
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
               <label class="control-label" for="textinput" >Fichas proyectos:</label>
             </div>
-            <select class="form-control" data-live-search="true" id="txtIdFicha"  >
-            <option value="">---Buscar---</option>
-            <?php foreach ($IdFichas as $Id): ?>
-            <option value="<?=  $Id['id_ficha']; ?>">Ficha:
-            <?= $Id['titulo']; ?>
-          </option>
-        <?php endforeach ?>
-      </select>
+            <div id="Seleccionar">
 
+            </div>
     </div>
     <!-- </div> -->
 

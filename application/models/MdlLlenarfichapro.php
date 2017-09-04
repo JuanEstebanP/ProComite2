@@ -16,7 +16,7 @@ class MdlLlenarfichapro extends CI_Model
 
   function Aprendices()
   {
-    return $this->db->query("SELECT * FROM tbl_aprendiz WHERE estado =!2 OR estado = 1")->result_array();
+    return $this->db->query("SELECT * FROM tbl_aprendiz WHERE estado =1 ")->result_array();
   }
 
   function insertDetallefichapro($idproyecto,$key)
@@ -24,9 +24,9 @@ class MdlLlenarfichapro extends CI_Model
   return $this->db->query("CALL sp_regdetalleProyecto('$key','$idproyecto')");
   }
 
-  function obtenerProyectos()
+  function obtenerProyectos($id)
   {
-    return $this->db->query("SELECT * FROM tbl_fichaproyecto WHERE id_fichaGrupo = 3");
+    return $this->db->query("SELECT * FROM tbl_fichaproyecto WHERE id_fichaGrupo = '$id'")->result_array();
   }
 
 
