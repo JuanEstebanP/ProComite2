@@ -263,13 +263,11 @@
       <li>
 
       </li>
-    
+
       <li>
         <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-table"></i> Aprendices</a>
       </li>
-    <li>
-      <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
-    </li>
+
     <!-- Fichas grupo -->
     <li>
       <a href="#"><i class="fa fa-qrcode"></i> Fichas de grupo <span class="fa arrow"></span></a>
@@ -294,6 +292,9 @@
         </li>
         <li>
           <a href="<?php base_url(); ?>ControllerEvaluarFichas"><i class="fa fa-edit"></i> Evaluar Ficha</a>
+        </li>
+        <li>
+          <a href="<?php base_url(); ?>ControllerTrazabilidad"><i class="fa fa-tasks" aria-hidden="true"></i> Trazabilidad</a>
         </li>
         <li>
           <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-desktop"></i> Clientes</a>
