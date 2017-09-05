@@ -26,7 +26,7 @@ include 'Master.php';
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
               <label class="control-label" for="textinput">Fichas grupo:</label>
             </div>
-            <select class="form-control" data-live-search="true" id="txtGrupo"  >
+            <select class="form-control" data-live-search="true" id="txtGrupo"  name="txtGrupo">
               <option value="">---Buscar---</option>
               <?php foreach ($fichasGrupo as $f): ?>
                 <option value="<?=  $f['id_fichaGrupo']; ?>">Ficha:
@@ -62,7 +62,7 @@ include 'Master.php';
     Listado
   </div>
   <div class="panel-body">
-    <div class="table-responsive">
+    <div class="table-responsive" id="tab">
       <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
           <tr>
@@ -74,19 +74,8 @@ include 'Master.php';
             <th>Asociar</th>
           </tr>
         </thead>
-        <tbody id="tblAprendiz">
-          <?php foreach ($Aprendices as $key ) { ?>
-            <tr class="odd gradeX">
-              <td><?php echo $key['id_aprendiz']; ?></td>
-              <td><?php echo $key['nombre'];?></td>
-              <td><?php echo $key['apellido'];?></td>
-              <td><?php echo $key['documento'];?></td>
-              <td><?php echo $key['correo']; ?></td>
-              <td>
-                <input class="listaapren" type="checkbox" value="<?php echo $key['id_aprendiz'];?>"></input>
-              </td>
-            </tr>
-          <?php } ?>
+        <tbody id="tblasociados">
+          
         </tbody>
       </table>
     </div>

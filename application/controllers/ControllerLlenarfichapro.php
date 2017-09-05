@@ -18,8 +18,8 @@ class ControllerLlenarfichapro extends CI_Controller
   {
     $data['fichasGrupo'] = $this->MdlLlenarfichapro->Fichasgruo();
     $data['IdFichas'] = $this->MdlLlenarfichapro->IdFichasPro();
-    $data['Aprendices'] = $this->MdlLlenarfichapro->Aprendices();
     $this->load->view('Llenarfichapro', $data);
+
 
 
   }
@@ -53,7 +53,12 @@ class ControllerLlenarfichapro extends CI_Controller
           echo json_encode($fichas);
   }
 
-
+function ObtenerAprendices()
+{
+  $ap = $this->input->post('id');
+  $Aprendices = $this ->MdlLlenarfichapro->obtenerAprendices($ap);
+  echo json_encode($Aprendices);
+}
 
 
 }

@@ -33,12 +33,28 @@ $('#asos').click(function () {
   }
 });
 
-
+function LlenarAprendices(){
+  var valor = $("#txtGrupo").val();
+  $.ajax({
+    url:'ControllerLlenarfichapro/ObtenerAprendices',
+    type: "POST",
+    data: {id:valor},
+    dataType: "JSON"
+  }).done(function(data){
+    $("#tblasociados").html("");
+    $.each(data, function(i, v) {
+      $("#tblasociados").append("<tr><td>"+v.id_aprendiz+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td><td>"+"<input class='listaapren' type='checkbox' value='"+v.id_aprendiz+"'></input>"+"</td></tr>");
+    });
+  }).fail(function(data){
+    alert("fail");
+  });
+}
 
 $("#txtGrupo").change(function(){
   var valor = $("#txtGrupo").val();
    console.log(valor);
    $('#Seleccionar').html('');
+
   $.ajax({
     url: 'ControllerLlenarfichapro/obtenerProyectos',
     type:"POST",
@@ -53,5 +69,6 @@ $("#txtGrupo").change(function(){
       }
         html += '</select>';
         $('#Seleccionar').append(html);
+        LlenarAprendices();
   });
 });
