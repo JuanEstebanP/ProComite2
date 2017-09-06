@@ -17,7 +17,6 @@ class ControllerFichaproyecto extends CI_Controller
 
     $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
     $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();
-    $data['Aprendiz'] = $this->MdlFichaproyecto->consultaAprendices();
     $data['ficha'] = $this->MdlFichaproyecto->ConsultarFichasGrupos();
     $this->load->view('FichasProyecto',$data);
 
@@ -34,7 +33,6 @@ class ControllerFichaproyecto extends CI_Controller
     $txtCliente = $this->input->post('txtCliente');
     $txtFichagrupo = $this->input->post('txtFichagrupo');
     $txtEstado = $this->input->post('txtEstado');
-
     $carpeta = "./uploads/";
     opendir($carpeta);
     $destino =  $carpeta.$_FILES['file_pr']['name'];
@@ -62,15 +60,16 @@ class ControllerFichaproyecto extends CI_Controller
     $txtCliente = $this->input->post('txtClienteModificar');
       $txtFichagrupoM = $this->input->post('txtFichagrupoM');
     $txtEstado = $this->input->post('txtEstadoModificar');
-
-
-
     $this->MdlFichaproyecto->EditarFichaproyecto($txtId, $txtNombre,$txtObjetivo,$txtVersion,$destino,$txtCliente, $txtFichagrupoM ,$txtEstado);
     redirect('ControllerFichaproyecto?ok=1');
-
   }
 
-
+  function consultarAprendiz()
+  {
+    $dt = $this->input->post('id');
+    $apren = $this->MdlFichaproyecto->consultaAprendices($dt);
+    echo json_encode($apren);
+  }
 
 }
 

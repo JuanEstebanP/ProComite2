@@ -42,7 +42,9 @@ include 'Master.php';
   </div>
 </div>
 
-
+<script>
+    $(document).ready(function() { $("#txtTitular").select2(); });
+</script>
 
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Numero De Ficha: </label>
@@ -52,6 +54,7 @@ include 'Master.php';
             </div>
           </div>
 
+          <input type="hidden" id="edit" value="3">
 
 
           <div class="form-group">
@@ -84,6 +87,7 @@ include 'Master.php';
           </div>
           <?php echo form_close(); ?>
         </div>
+
 
 
         <div class="panel panel-default">
@@ -123,17 +127,9 @@ include 'Master.php';
         </td>
 
         <td>
-
-
-            <input class="btn btn-prymary" value="<?php echo $f['id_fichaGrupo'];?>"  id="modal">
-                  </input>
-
-  <button type="submit"  name="button" data-toggle="modal" data-target="#myModaluno" onclick="<?php echo $f['id_fichaGrupo'];?>">
-    <i class="glyphicon glyphicon-search" aria-hidden="true" name="prueba"></i>
+  <button   class="btn btn-primary" name="button" onclick="consultaAprendices(<?php echo $f['id_fichaGrupo'];?>)" data-toggle="modal" data-target="#myModaluno">
+    <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
   </button>
-
-
-
 
 </td>
                 </tr>
@@ -145,9 +141,42 @@ include 'Master.php';
         </div>
       </div>
     </div>
+
+    <div id="myModaluno" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Listado
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th class="center">#</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Documento</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody id="tblaprendices">
+
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+
   </fieldset>
 </div>
 </div>
+
 
 
 ---------------------------------------------------
@@ -230,49 +259,6 @@ MODAL PARA EDITAR
 
   </div>
 </div>
-
-
-
-<!-- Modal -->
-<div id="myModaluno" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Listado
-      </div>
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-            <thead>
-              <tr>
-                <th class="center">#</th>
-                <th>Nombre Ficha</th>
-                <th>Titular Ficha</th>
-                <th>Inicio Lectiva</th>
-                <th>Correo</th>
-
-              </tr>
-            </thead>
-            <tbody id="tblAprendiz">
-
-              <?php   foreach ($Aprendiz as $f) { ?>
-
-            <tr class="odd gradeX">
-              <td><?php echo $f['id_aprendiz']; ?></td>
-              <td><?php echo $f['nombre']; ?></td>
-              <td><?php echo $f['apellido']; ?></td>
-              <td><?php echo $f['documento']; ?></td>
-              <td><?php echo $f['correo']; ?></td>
-            </tr>
-              <?php } ?>
-            </tbody>
-            </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
 

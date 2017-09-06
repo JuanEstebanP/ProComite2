@@ -21,13 +21,11 @@ class MdlFichaproyecto extends CI_Model
     {
       return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
     }
-    function consultaAprendices()
+    function consultaAprendices($id)
     {
-      $query  = $this->db->query("CALL sp_consultarAprendices()");
-      $res = $query->result_array();
-      $query->next_result();
-      $query->free_result();
-      return $res;
+    return $this->db->query(" SELECT a.id_aprendiz, a.nombre, a.apellido, a.documento, a.correo FROM tbl_aprendiz a
+      JOIN tbl_detallesaprendizproyecto dp on dp.id_aprendiz=a.id_aprendiz
+      JOIN tbl_fichaproyecto fp on fp.id_ficha=dp.id_ficha where fp.id_ficha='$id'")->result_array();
     }
 
     function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado,$txtFichagrupo)

@@ -121,6 +121,7 @@ include 'Master.php';
                   <th>Ficha De Grupo A La Que Pertenece</th>
                   <th>Estado</th>
                   <th>Editar</th>
+                  <th>Consultar Aprendices</th>
                   <!-- <th>detalle</th> -->
                 </tr>
               </thead>
@@ -140,8 +141,15 @@ include 'Master.php';
                     <td>
 
 
-                      <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_ficha']; ?>)">
+                      <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_ficha'];?>)">
                         <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                      </td>
+
+                      <td>
+
+                        <button data-toggle="modal" data-target="#myModaluno" name="button" class="btn btn-primary" onclick="consultarAprendiz(<?php echo $f['id_ficha'];?>)">
+                        <i class="fa fa-search" arial-hidden="true"></i>
+                        </button>
                       </td>
 
                     </tr>
@@ -151,8 +159,38 @@ include 'Master.php';
             </div>
           </div>
         </div>
+
+        <div id="myModaluno" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Listado
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                  <tr>
+                    <th class="center">#</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+
+                  </tr>
+                </thead>
+                <tbody id="tblaprendices">
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- </div> -->
+      </div>
+
     </fieldset>
 
     <div class="col-lg-12">

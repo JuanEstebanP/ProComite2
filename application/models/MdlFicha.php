@@ -33,5 +33,6 @@ class MdlFicha extends CI_Model
     '$txtIniciolectivaModificar','$txtFinlectivaModificar')");
 
   }
+
 }
 ?>

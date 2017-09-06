@@ -36,3 +36,22 @@ function Editar(data){
       alert("error");
     });
 }
+
+function consultarAprendiz(data) {
+var valor= data;
+  $.ajax({
+    url: 'ControllerFichaproyecto/consultarAprendiz',
+    type: "POST",
+    data:{id:valor},
+    dataType: "JSON"
+  }).done(function(data){
+    $("#tblaprendices").html("");
+    $.each(data, function(i, v) {
+      $("#tblaprendices").append("<tr><td>"+v.id_aprendiz+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td></tr>");
+console.log(data);
+    });
+
+  }).fail(function(data){
+    alert("fail");
+  });
+}
