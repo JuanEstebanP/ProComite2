@@ -190,69 +190,7 @@ include 'Master.php';
         </div>
       </div>
       </div>
-
     </fieldset>
-
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        </div>
-        <div class="panel-body">
-          <div class="row">
-
-            <div class="col-lg-12">
-
-              <div class="form-group">
-                <form class="form-horizontal" action="<?php base_url();?>ControllerFichaproyecto" method="post">
-                  <div class="col-md-4">
-                    <input type="text" name="txtidfichaG" value="" class="form-control">
-                  </div>
-                  <div class="col-md-4">
-                    <button type="submit" name="button" class="btn btn-primary">Consultar</button>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-        Fichas por grupo:
-        </div>
-        <div class="-panel-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover" id="dataTables-example" >
-                  <thead>
-                    <tr>
-                      <th>Titulo </th>
-                      <th>Objetivo general</th>
-                      <th>Version</th>
-                    </tr>
-                  </thead>
-                  <?php foreach ($fichasG as $g) { ?>
-                    <tbody>
-                      <tr class="odd gradeX">
-                        <td><?php echo $g['titulo']; ?></td>
-                        <td><?php echo $g['obj_general']; ?></td>
-                        <td><?php echo $g['version'] ?></td>
-                      </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 </div>
 
