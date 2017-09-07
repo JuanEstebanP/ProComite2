@@ -27,6 +27,11 @@ class MdlEvaluarFicha extends CI_Model
     return $this->db->query("call sp_EvaluarFicha('$idficha', '$observ','$estado')");
   }
 
+  function fichasBf($id)
+  {
+    return  $this->db->query("SELECT Url FROM tbl_dtllproyecto WHERE id_ficha = '$id' ")->result_array();
+  }
+
 }
 
 ?>

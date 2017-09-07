@@ -14,3 +14,24 @@ function DatosF(data){
     $('#ModalEvaluar').modal('show');
   });
 }
+
+
+function trazabi (data) {
+  var valor = data;
+  $.ajax({
+    url:'ControllerEvaluarFichas/fichasBf',
+    type: "POST",
+    data: {id:valor},
+    dataType: "JSON"
+  }).done(function(data){
+
+    $("#tblTrazabilidad").html("");
+    $.each(data, function(i, v) {
+      $("#tblTrazabilidad").append("<tr><td><a href="+v.Url+">"+v.Url.substring(10)+"</a></td></tr>");
+      console.log(data);
+    });
+
+  }).fail(function(data){
+    alert("fail");
+  });
+}

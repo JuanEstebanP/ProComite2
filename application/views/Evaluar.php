@@ -37,7 +37,8 @@ include 'Master.php';
                           <th>Objetivo general</th>
                           <th>Observación</th>
                           <th>Estado</th>
-                          <th>Acciones</th>
+                          <th>Calificar</th>
+                          <th>Consultar fichas</th>
 
                         </tr>
                       </thead>
@@ -55,6 +56,11 @@ include 'Master.php';
                             <td>
                               <button class="btn btn-primary" type="button" name="btnEvaluar" id="btnEvaluar" onclick="DatosF(<?PHP echo $f['id_ficha']; ?>);"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                             </td>
+                            <td>
+                              <button data-toggle="modal" data-target="#myModaluno" type="button" name="button" class="btn btn-primary"  onclick="trazabi(<?PHP echo $f['id_ficha']; ?>)"><i class="fa fa-search"></i></button>
+                            </td>
+
+                          
                           </tr>
 
                         <?php  }  ?>
@@ -129,4 +135,34 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
     </div>
   </div>
 </div>
+
+<div id="myModaluno" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Listado
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+          <tr>
+            <th class="center">Fichas</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody id="tblTrazabilidad">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
 <script src="Plantilla/assets/js/EvaluarFicha.js"></script>

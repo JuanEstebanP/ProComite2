@@ -36,6 +36,15 @@ class ControllerEvaluarFichas extends CI_Controller
 
   }
 
+  function fichasBf()
+  {
+    $dt = $this->input->post('id');
+    $traza = $this->MdlEvaluarFicha->fichasBf($dt);
+    echo json_encode($traza);
+  }
+
+
+
 
 }
 ?>
