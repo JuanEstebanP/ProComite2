@@ -60,7 +60,7 @@ include 'Master.php';
                               <button data-toggle="modal" data-target="#myModaluno" type="button" name="button" class="btn btn-primary"  onclick="trazabi(<?PHP echo $f['id_ficha']; ?>)"><i class="fa fa-search"></i></button>
                             </td>
 
-                          
+
                           </tr>
 
                         <?php  }  ?>

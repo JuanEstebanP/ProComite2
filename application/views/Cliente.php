@@ -87,7 +87,7 @@ include 'Master.php';
                   <th class="center">#</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
-                  <th>Documento</th>
+                  <th>Telefono</th>
                   <th>Correo</th>
                   <th>Editar</th>
                 </tr>

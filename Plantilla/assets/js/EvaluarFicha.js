@@ -16,7 +16,7 @@ function DatosF(data){
 }
 
 
-function trazabi (data) {
+function trazabi(data) {
   var valor = data;
   $.ajax({
     url:'ControllerEvaluarFichas/fichasBf',
