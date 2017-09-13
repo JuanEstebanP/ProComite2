@@ -67,7 +67,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-8">
-              <button id="RegistrarCliente" type="submit"  name="RegistrarCliente" class="btn btn-success">Registrar</button>
+              <button type="submit"  name="RegistrarCliente" class="btn btn-success">Registrar</button>
             </div>
           </div>
 
@@ -181,5 +181,5 @@ include 'Master.php';
     <?php echo form_close(); ?>
   </div>
 </div>
-<!-- <script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script> -->
+<script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script>
 <script src="Plantilla/assets/js/Clientes.js"></script>

@@ -24,7 +24,7 @@ include 'Master.php';
 
         <!-- <?php echo form_open('ControllerFichaproyecto/InsertarFichaproyecto', array("class"=>"form-horizontal", "id"=>"formFichaproyecto", 'method'=>'get',"enctype"=>"multipart/form-data")); ?> -->
         <!-- Text input-->
-        <form class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/InsertarFichaproyecto" method="post" enctype="multipart/form-data">
+        <form  id="formFichaproyecto" class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/InsertarFichaproyecto" method="post" enctype="multipart/form-data">
 
 
 
@@ -43,6 +43,8 @@ include 'Master.php';
                 </select>
               </div>
             </div>
+
+
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Nombre Del Poyecto: </label>
@@ -68,7 +70,7 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
               <div class="col-md-4">
-                <input id="txtVersion" name="txtVersion" type="number" placeholder="1,1..."  class="form-control input-md" required="true">
+                <input id="txtVersion" name="txtVersion" type="text" placeholder="1,1..."  class="form-control input-md" required="true">
               </div>
             </div>
 
@@ -148,7 +150,7 @@ include 'Master.php';
                       <td>
 
                         <button data-toggle="modal" data-target="#myModaluno" name="button" class="btn btn-primary" onclick="consultarAprendiz(<?php echo $f['id_ficha'];?>)">
-                        <i class="fa fa-search" arial-hidden="true"></i>
+                          <i class="fa fa-search" arial-hidden="true"></i>
                         </button>
                       </td>
 
@@ -163,32 +165,32 @@ include 'Master.php';
         <div id="myModaluno" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Listado
-          </div>
-          <div class="panel-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                <thead>
-                  <tr>
-                    <th class="center">#</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Documento</th>
-                    <th>Correo</th>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Listado
+              </div>
+              <div class="panel-body">
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                    <thead>
+                      <tr>
+                        <th class="center">#</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Documento</th>
+                        <th>Correo</th>
 
-                  </tr>
-                </thead>
-                <tbody id="tblaprendices">
+                      </tr>
+                    </thead>
+                    <tbody id="tblaprendices">
 
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </fieldset>
   </div>
@@ -211,7 +213,7 @@ MODAL PARA EDITAR -->
       <div class="modal-body">
         <!-- <form class="form-horizontal"> -->
         <!-- <?php echo form_open('ControllerFichaproyecto/EditarFichaproyecto', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?> -->
-        <form class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/EditarFichaproyecto" method="post" enctype="multipart/form-data">
+        <form  id="Actualizarproyecto" class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/EditarFichaproyecto" method="post" enctype="multipart/form-data">
           <fieldset>
 
             <div class="form-group">
@@ -253,7 +255,7 @@ MODAL PARA EDITAR -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
               <div class="col-md-4">
-                <input  name="fileC" type="file" class="form-control input-md" >
+                <input  name="fileC" type="file" class="form-control input-md"  accept="application/pdf" required="true">
               </div>
             </div>
 
@@ -323,5 +325,5 @@ MODAL PARA EDITAR -->
 
 </div>
 </div>
-
+<script src="Plantilla/assets/js/Validaciones/ProyectoValid.js"></script>
 <script src="Plantilla/assets/js/FichasProyectos.js"></script>

@@ -179,5 +179,5 @@ include 'Master.php';
       <?php echo form_close(); ?>
     </div>
   </div>
-  <!-- <script src="Plantilla/assets/js/Validaciones/InstructoresValid.js"></script> -->
+  <script src="Plantilla/assets/js/Validaciones/InstructoresValid.js"></script>
   <script src="Plantilla/assets/js/Instructores.js"></script>

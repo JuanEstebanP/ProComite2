@@ -8,7 +8,7 @@ class MdlLlenarfichagrupo extends CI_Model
   }
   function consultaAprendices()
   {
-    return $this->db->query("SELECT * from tbl_aprendiz where estado =!1 OR estado = !2")->result_array();
+    return $this->db->query("SELECT * FROM tbl_aprendiz WHERE estado =!1 OR estado = !2")->result_array();
 
   }
 

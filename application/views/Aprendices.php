@@ -216,5 +216,5 @@ MODAL PARA EDITAR
 
   </div>
 </div>
-<!-- <script src="Plantilla/assets/js/Validaciones/AprendicesValid.js"></script> -->
+<script src="Plantilla/assets/js/Validaciones/AprendicesValid.js"></script>
 <script src="Plantilla/assets/js/Aprendices.js"></script>
