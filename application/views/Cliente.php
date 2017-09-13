@@ -25,7 +25,10 @@ include 'Master.php';
         </div>
 
         <!-- <form class="form-horizontal"> -->
-        <?php echo form_open('ControllerCliente/RegistrarCliente', array("class"=>"form-horizontal", "id"=>"formCliente", "role"=>"form", "method"=>"post")); ?>
+        <form class="form-horizontal" action="<?PHP echo base_url(); ?>ControllerCliente/RegistrarCliente" method="post" id="formCliente">
+
+
+        <!-- <?php echo form_open('ControllerCliente/RegistrarCliente', array("class"=>"form-horizontal", "id"=>"formCliente", "role"=>"form", "method"=>"post")); ?> -->
         <fieldset>
 
           <!-- Form Name -->
@@ -73,7 +76,8 @@ include 'Master.php';
 
         </fieldset>
         <!-- </form> -->
-        <?php echo form_close(); ?>
+        <!-- <?php echo form_close(); ?> -->
+      </form>
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">

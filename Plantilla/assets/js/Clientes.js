@@ -18,20 +18,20 @@ function actDatos() {
 /*
 FUNCION DE REGISTRAR CLIENTES
 */
-function regisCliente() {
-
-  var formulario = $("#formCliente").serialize();
-
-  $.ajax({
-    url: 'ControllerCliente/RegistrarCliente',
-    type: 'POST',
-    data: formulario,
-  }).done(function(data){
-    console.log(data);
-  }).fail(function(data){
-    console.log(data);
-  });
-}
+// function regisCliente() {
+//
+//   var formulario = $("#formCliente").serialize();
+//
+//   $.ajax({
+//     url: 'ControllerCliente/RegistrarCliente',
+//     type: 'POST',
+//     data: formulario,
+//   }).done(function(data){
+//     console.log(data);
+//   }).fail(function(data){
+//     console.log(data);
+//   });
+// }
 /*
 
 MODAL PARA RETORNA CLIENTES
