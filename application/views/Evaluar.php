@@ -37,7 +37,7 @@ include 'Master.php';
                           <th>Objetivo general</th>
                           <th>Observación</th>
                           <th>Estado</th>
-                          <th>Calificar</th>
+                          <th>Evaluar</th>
                           <th>Consultar fichas</th>
 
                         </tr>

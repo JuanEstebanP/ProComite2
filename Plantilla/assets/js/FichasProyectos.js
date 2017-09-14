@@ -1,15 +1,28 @@
-$("#buttonRegistrar").on("click",function() {
-  var formulario =$("#formFichaproyecto").serialize();
 
-  $.ajax({
-    url: 'ControllerFichaproyecto/InsertarFichaproyecto',
-    type: 'POST',
-    data: formulario,
-  }).done(function(data){
-    console.log(data);
-  }).fail(function(data){
-    console.log(data);
-  });
+
+
+
+
+
+
+$("#buttonRegistrar").on("click",function() {
+  nom =  $("#txtNombre").val();
+  if (nom == "hola"  ) {
+    alert("llene el campo ");
+  }
+  else {
+    var formulario =$("#formFichaproyecto").serialize();
+
+    $.ajax({
+      url: 'ControllerFichaproyecto/InsertarFichaproyecto',
+      type: 'POST',
+      data: formulario,
+    }).done(function(data){
+      console.log(data);
+    }).fail(function(data){
+      console.log(data);
+    });
+  }
 });
 
 

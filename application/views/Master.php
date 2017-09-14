@@ -129,6 +129,9 @@
       <li>
         <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Programación</a>
       </li>
+      <li>
+        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-bar-chart-o"></i> Asistencia</a>
+      </li>
 
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>

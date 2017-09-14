@@ -14,20 +14,15 @@ include 'Master.php';
     </ol>
   </div>
 
-  <div class="container-fluid">
-    <button type="submit" class="btn btn-success" onclick="abrirModal()">Agregar</button><br>
-  </div>&nbsp
 
-  <!-- Modal para registrar la programacion del comite-->
-  <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Registrar</h4>
-        </div>
+  <div id="page-inner">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+
+
+          <center><h4 class="modal-title">Registrar</h4></center>
+
         <div class="modal-body">
           <?php echo form_open('ControllerProgramacion/registrarProgramacion', array("class"=>"form-horizontal", "id"=>"formularioProgramacion", "role"=>"form", 'method'=>'post')); ?>
           <!-- <form class="form-horizontal" role="form" id="formularioProgramacion" method="post" action="" > -->
@@ -70,19 +65,11 @@ include 'Master.php';
           </fieldset>
           <?php echo form_close(); ?>
           <!-- </form> -->
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" id="cerrar" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        </div>
       </div>
-
-    </div>
-  </div>
+</div>
 
 
   <!-- listado de programacion de comite  -->
-  <div class="col-lg-12">
     <div class="panel panel-default">
       <div class="panel-heading">
         Tabla Programación
@@ -111,7 +98,9 @@ include 'Master.php';
                   <th class="text-center">
                     Opciones
                   </th>
-
+                  <th>
+                    Asistencia
+                  </th>
                 </tr>
               </thead>
               <tbody id="TablaConsultarProgramacion">
@@ -121,8 +110,15 @@ include 'Master.php';
                     <td><?php echo $i['fecha']; ?></td>
                     <td><?php echo $i['hora']; ?></td>
                     <td><?php echo $i['lugar']; ?></td>
-                    <td><button class="btn btn-default" name="button" onClick="mostrarProgramacion(<?php echo $i['id_programacion']; ?>)"><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                    <td><button class="btn btn-default" id="txtPrograma" name="button" onClick="mostrarProgramacion(<?php echo $i['id_programacion']; ?>)"><i class="fa fa-pencil" aria-hidden="true"></i></td>
+                    <td>
+                      <button class="btn btn-default" onClick="consultarInstructores(<?php echo $i['id_programacion'];?>)" data-toggle="modal" data-target="#myModaluno">
+                      <i class="fa fa-search"></i>
+                      </button>
+                    </td>
                     </tr>
+
+
                     <?php } ?>
 
                   </tbody>
@@ -131,6 +127,9 @@ include 'Master.php';
             </div>
           </div>
         </div>
+
+    </div>
+
       </div>
 
 
@@ -177,7 +176,7 @@ include 'Master.php';
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="singlebutton"></label>
                     <div class="col-md-4">
-                      <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >REGISTRAR</button>
+                      <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >Modificar</button>
 
                     </div>
                   </div>
@@ -196,5 +195,41 @@ include 'Master.php';
 
     </div>
 
+
+    <div id="myModaluno" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Listado
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+              <tr>
+                <th class="center">#</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Documento</th>
+                <th>Correo</th>
+              </tr>
+            </thead>
+            <tbody id="listainst">
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+
+
+  </fieldset>
+</div>
+</div>
 
     <script src="Plantilla/assets/js/scriptProgramacion.js"></script>

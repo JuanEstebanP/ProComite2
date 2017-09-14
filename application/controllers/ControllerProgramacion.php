@@ -44,6 +44,12 @@ public function editarProgramacion(){
 
 }
 
+function consultarInstructores()
+{
+  $txtidprogramacion = $this->input->post('id');
+  $data = $this->MdlProgamacion->consultarInstructores($txtidprogramacion);
+   echo json_encode($data);
+}
 
 }
 

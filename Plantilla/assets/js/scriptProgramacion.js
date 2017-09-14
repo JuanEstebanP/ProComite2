@@ -1,35 +1,4 @@
 
-$("#btnProgramacionModificar").click(function() {
-
-    var formularioModificar = $("#formularioModicarProgramacion").serialize();
-  $.ajax({
-    url: 'ControllerProgramacion/editarProgramacion',
-    type: 'POST',
-    data: formularioModificar,
-  }).done(function(data){
-    console.log(data);
-
-  }).fail(function(data){
-    console.log(data);
-  });
-});
-
-$("#btnProgramacion").on("click",function() {
-  $("#myModal").modal();
-  var formulario =$("#formularioProgramacion").serialize();
-
-  $.ajax({
-    url: 'ControllerProgramacion/registrarProgramacion',
-    type: 'POST',
-    data: formulario,
-  }).done(function(data){
-  //  $("#myModal").show();
-    console.log(data);
-  }).fail(function(data){
-    console.log(data);
-  });
-});
-
 
 function mostrarProgramacion(id_programacion){
 
@@ -55,6 +24,19 @@ function mostrarProgramacion(id_programacion){
   });
 }
 
-function abrirModal(){
-  $("#myModal").modal();
+
+function consultarInstructores(data) {
+var valor = data;
+$.ajax({
+ url: 'ControllerProgramacion/consultarInstructores',
+type: "POST",
+data: {id:valor},
+dataType: "JSON"
+}).done(function (data){
+  $("#listainst").html("");
+  $.each(data, function(i, v) {
+    $("#listainst").append("<tr><td>"+v.id_instructor+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td></tr>");
+console.log(data);
+});
+});
 }

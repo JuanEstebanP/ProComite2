@@ -24,6 +24,10 @@ class MdlProgamacion extends CI_Model
     return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
   }
 
+function consultarInstructores($id)
+{
+  return $this->db->query("SELECT * FROM tbl_instructores i join tbl_comite c on c.fk_instructor=i.id_instructor where c.fk_programacion = '$id'")->result_array();
+}
 
 
 }
