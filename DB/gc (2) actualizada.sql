@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-09-2017 a las 22:55:38
+-- Tiempo de generación: 19-09-2017 a las 14:21:19
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 5.6.31
 
@@ -44,6 +44,27 @@ WHERE id_instructor = sp_idInstructor;
 
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_aprendicesXestado` ()  NO SQL
+BEGIN
+SELECT * FROM tbl_aprendiz WHERE estado =!1 OR estado = !2;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_asistencia` (IN `id` INT, IN `instrc` INT)  NO SQL
+BEGIN
+INSERT INTO tbl_comite VALUES (NULL, id , instrc);
+UPDATE tbl_programacioncomite p set p.estado = 1 where p.id_programacion=id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_conFicha` ()  NO SQL
+BEGIN
+SELECT * from tbl_fichagrupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultaAprendices` (IN `id` INT)  NO SQL
+BEGIN
+SELECT a.id_aprendiz, a.nombre, a.apellido, a.documento, a.correo FROM tbl_aprendiz a JOIN tbl_detallesaprendizproyecto dp on dp.id_aprendiz=a.id_aprendiz JOIN tbl_fichaproyecto fp on fp.id_ficha=dp.id_ficha where fp.id_ficha = id;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarAprendices` ()  NO SQL
 BEGIN
 
@@ -51,11 +72,21 @@ SELECT * FROM tbl_aprendiz;
 
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultaraprendicesXid` (IN `id` INT)  NO SQL
+BEGIN
+SELECT * FROM tbl_aprendiz a JOIN tbl_detallesaprendizgrupo d ON d.id_aprendiz=a.id_aprendiz WHERE d.id_fichaGrupo = id;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarClientes` ()  NO SQL
 BEGIN
 
 SELECT * FROM tbl_cliente;
 
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Consultarfichagrupo` ()  NO SQL
+BEGIN
+SELECT * FROM tbl_fichagrupo;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarFichasArh` ()  NO SQL
@@ -67,6 +98,11 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarFichasproyectos` ()  NO SQL
 SELECT * from tbl_fichaproyecto$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Consultarinstructor` ()  NO SQL
+BEGIN
+SELECT id_instructor,documento,nombre from tbl_instructores;
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_consultarInstructores` ()  NO SQL
 BEGIN
@@ -92,13 +128,13 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarFicha` (IN `id` INT, IN `num` INT, IN `titular` INT, IN `ilectiva` DATE, IN `flectiva` DATE)  NO SQL
 BEGIN 
-UPDATE tbl_fichagrupo SET numeroFicha = num, tirularFicha = titular, iniciolectiva = ilectiva, finlectiva = flectiva WHERE id_fichaGrupo = id;
+UPDATE tbl_fichagrupo SET numeroFicha = num, titularFicha = titular, iniciolectiva = ilectiva, finlectiva = flectiva WHERE id_fichaGrupo = id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarFichaproyecto` (IN `id` INT, IN `nom` VARCHAR(50), IN `obje` VARCHAR(100), IN `version` VARCHAR(5), IN `urls` VARCHAR(50), IN `fkficha` INT, IN `cliente` INT, IN `esta` INT)  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_editarFichaproyecto` (IN `id` INT, IN `nom` VARCHAR(50), IN `obje` VARCHAR(100), IN `version` VARCHAR(5), IN `urls` VARCHAR(50), IN `cliente` INT, IN `fkficha` INT, IN `esta` INT)  NO SQL
 BEGIN
 
-UPDATE tbl_fichaproyecto SET id_ficha = id, titulo = nom, obj_general = obje, version = version, Url=urls,id_fichaGrupo=fkficha,id_cliente = cliente, estado=esta WHERE id_ficha = id;
+UPDATE tbl_fichaproyecto SET id_ficha = id, titulo = nom, obj_general = obje, version = version, Url=urls,id_cliente = cliente,id_fichaGrupo=fkficha,estado=esta WHERE id_ficha = id;
 insert into tbl_dtllproyecto (id_dtllProyecto, Url, id_ficha) VALUES (null,urls,id);
 END$$
 
@@ -113,6 +149,26 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EvaluarFicha` (IN `idf` INT, IN 
 BEGIN
 UPDATE tbl_fichaproyecto SET estado = ide WHERE id_ficha = idf;
 UPDATE tbl_fichaproyecto SET observacion = obs WHERE id_ficha = idf;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_fichasBG` (IN `id` INT)  NO SQL
+BEGIN
+SELECT fp.titulo, fp.obj_general, fp.version FROM tbl_fichaproyecto fp JOIN tbl_fichagrupo fg ON (fp.id_fichaGrupo=fg.id_fichaGrupo) WHERE numeroFicha = id;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Fichasgru` ()  NO SQL
+BEGIN
+SELECT id_fichaGrupo, numeroFicha FROM tbl_fichagrupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Fichasgrupos` ()  NO SQL
+BEGIN
+SELECT * FROM tbl_fichagrupo;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Fichasproyectos` ()  NO SQL
+BEGIN
+SELECT f.id_ficha,f.titulo,f.obj_general,f.version,c.nombre  id_cliente,fi.numeroFicha id_fichaGrupo,e.nombreEstado estado FROM tbl_fichaproyecto f JOIN tbl_estados e ON e.id_estado=f.estado JOIN tbl_cliente c ON c.id_cliente=f.id_cliente JOIN tbl_fichagrupo fi ON fi.id_fichaGrupo=f.id_fichaGrupo;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_idAprendiz` (IN `sp_idAprendiz` INT)  NO SQL
@@ -139,6 +195,11 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_idFichaProyecto` (IN `id` INT)  NO SQL
 select * from tbl_fichaproyecto where  id_ficha=id$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_IdFichasPro` ()  NO SQL
+BEGIN
+SELECT id_ficha, titulo FROM tbl_fichaproyecto;
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_idInstructores` (IN `sp_idInstructor` INT)  NO SQL
 BEGIN
@@ -183,6 +244,11 @@ SELECT *FROM tbl_programacioncomite
 WHERE tbl_programacioncomite.id_programacion=id_programacion;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_obtenerAprendices` (IN `id` INT)  NO SQL
+BEGIN
+SELECT a.id_aprendiz, a.nombre, a.apellido, a.documento, a.correo FROM tbl_aprendiz a join tbl_detallesaprendizgrupo dfg on dfg.id_aprendiz=a.id_aprendiz join tbl_fichagrupo fg on fg.id_fichaGrupo=dfg.id_fichaGrupo join tbl_fichaproyecto fp on fp.id_fichaGrupo=fg.id_fichaGrupo where fg.id_fichaGrupo= id  and a.estado= 1;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_regdetalleGrupo` (IN `idapre` INT, IN `idgrupo` INT)  NO SQL
 BEGIN
 INSERT INTO `tbl_detallesaprendizgrupo` (`id_detalle`, `id_aprendiz`, `id_fichaGrupo`) VALUES (null, idapre,idgrupo);
@@ -224,13 +290,8 @@ CREATE TABLE `tbl_aprendiz` (
 --
 
 INSERT INTO `tbl_aprendiz` (`id_aprendiz`, `nombre`, `apellido`, `documento`, `correo`, `estado`) VALUES
-(8, 'Juan Pablo', 'Muñoz Romero', '9605181624', 'romerohm1996@gmail.c', 2),
-(9, 'Adrian', 'Perez', '70812698', 'pepe@misena.edu.co', 2),
-(10, 'Alfredo', 'Pulgarin', '1125489698', 'pull@pull.com', 2),
-(11, 'María Camila', 'Uran', '1152478963', 'uracami@gmail.com', 2),
-(12, 'Estefania', 'Ciro', '1152478963', 'eciro89@misena.edu.c', 2),
-(13, 'Rafael', 'Garizabal', '9708091398', 'OTB@riot.com', 2),
-(14, 'Leon Angel', 'Chancí', '1152896385', 'lachanci@misena.edu.', 1);
+(1, 'Juan Esteban', 'Pulgarin', '1023569789', 'jepulgarin@misena.ed', 2),
+(2, 'Pepe', 'Frijol', '1452369854', 'fri@misena.edu.co', 1);
 
 -- --------------------------------------------------------
 
@@ -251,9 +312,11 @@ CREATE TABLE `tbl_cliente` (
 --
 
 INSERT INTO `tbl_cliente` (`id_cliente`, `nombre`, `apellido`, `telefono`, `correo`) VALUES
-(3, 'Juan Esteban', 'Pulgarin', '3136982536', 'jpmunoz26@misena.edu.co'),
-(4, '', '', '', ''),
-(5, 'Alejandro', 'Espriella', '0000-000', 'correo@hot.com');
+(1, 'SENNOVA', 'Antioquia', '4228979', 'sennova@misena.edu.co'),
+(2, 'Juan Carlos', 'Coronel Caballero', '3208426987', 'corollero@misena.edu.co'),
+(3, 'Jairo Israel', 'Londoño', '4444444', 'aafhadf@gmail.com'),
+(4, 'Juan Esteban', 'Pulgarin', '5555555', 'pulga@sena.edu.co'),
+(5, 'Alejandro', 'Velez', '9999999', 'avelez@misena.edu.co');
 
 -- --------------------------------------------------------
 
@@ -285,9 +348,8 @@ CREATE TABLE `tbl_detallesaprendizgrupo` (
 --
 
 INSERT INTO `tbl_detallesaprendizgrupo` (`id_detalle`, `id_aprendiz`, `id_fichaGrupo`) VALUES
-(1, 12, 4),
-(2, 13, 5),
-(3, 14, 5);
+(1, 1, 1),
+(2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -306,12 +368,7 @@ CREATE TABLE `tbl_detallesaprendizproyecto` (
 --
 
 INSERT INTO `tbl_detallesaprendizproyecto` (`id_detalle`, `id_aprendiz`, `id_ficha`) VALUES
-(2, 8, 25),
-(5, 9, 26),
-(6, 10, 26),
-(7, 11, 28),
-(8, 12, 26),
-(10, 13, 29);
+(3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -330,15 +387,8 @@ CREATE TABLE `tbl_dtllproyecto` (
 --
 
 INSERT INTO `tbl_dtllproyecto` (`id_dtllProyecto`, `Url`, `id_ficha`) VALUES
-(8, './uploads/Aprendiz.txt', 25),
-(9, './uploads/EK201710473116.pdf', 25),
-(10, './uploads/cgcgffgu', 25),
-(11, './uploads/Bitacora 3.xls', 25),
-(12, './uploads/Bitacora 3.xls', 26),
-(13, './uploads/Tema5FISPC0809.pdf', 28),
-(14, './uploads/Tema5FISPC0809.pdf', 29),
-(15, './uploads/', 28),
-(16, './uploads/Tema5FISPC0809.pdf', 28);
+(1, './uploads/Tema5FISPC0809.pdf', 1),
+(2, './uploads/Tema5FISPC0809.pdf', 2);
 
 -- --------------------------------------------------------
 
@@ -380,9 +430,8 @@ CREATE TABLE `tbl_fichagrupo` (
 --
 
 INSERT INTO `tbl_fichagrupo` (`id_fichaGrupo`, `numeroFicha`, `titularFicha`, `iniciolectiva`, `finlectiva`) VALUES
-(3, '1023473', 15, '2015-09-28', '2017-09-28'),
-(4, '874986', 16, '2017-08-28', '2019-08-28'),
-(5, '1126491', 15, '2016-09-08', '2017-09-08');
+(1, '1023473', 1, '2015-09-28', '2017-03-28'),
+(2, '708956', 3, '2017-09-18', '2017-09-30');
 
 -- --------------------------------------------------------
 
@@ -407,11 +456,8 @@ CREATE TABLE `tbl_fichaproyecto` (
 --
 
 INSERT INTO `tbl_fichaproyecto` (`id_ficha`, `titulo`, `obj_general`, `Url`, `version`, `observacion`, `id_cliente`, `id_fichaGrupo`, `estado`) VALUES
-(25, 'Agiles', 'ZZZZ', './uploads/Bitacora 3.xls', '2', 'Prueba', 3, 3, 1),
-(26, 'ZZZ', 'gdghdhdg', './uploads/EK201710473116.pdf', '1', 'Prueba', 3, 3, 1),
-(27, 'Plus+', 'Brindar apoyo al área de ingeniería', './uploads/Tema5FISPC0809.pdf', '1.0', 'Prueba', 5, 3, 1),
-(28, 'GIDPI', 'sidor', './uploads/Tema5FISPC0809.pdf', '1.0', 'Prueba', 3, 3, 1),
-(29, 'SIPI', 'Agilidad y confianza', './uploads/Tema5FISPC0809.pdf', '1.0', 'Prueba', 5, 4, 1);
+(1, 'wehsdfhsdf', 'sfgsgzsg', './uploads/Tema5FISPC0809.pdf', '1.0', 'Prueba', 1, 1, 1),
+(2, 'aegydefde', 'wdfswvgsw', './uploads/Tema5FISPC0809.pdf', '1', 'Prueba', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -432,9 +478,9 @@ CREATE TABLE `tbl_instructores` (
 --
 
 INSERT INTO `tbl_instructores` (`id_instructor`, `nombre`, `apellido`, `documento`, `correo`) VALUES
-(15, 'Carlos Andres', 'Zuluaga', '1152478369', 'zuluaga@misena.edu.co'),
-(16, 'Jairo', 'Israel', '70896874', 'jairol@misena.edu.co'),
-(17, 'Juan David', 'Vahos', '708125639', 'jdvahos@misena.edu.co');
+(1, 'Juan David', 'Vahos', '70812896', 'jdvahos@misena.edu.co'),
+(2, 'Juan David', 'Ramirez', '72856963', 'trara@misena.edu.co'),
+(3, 'Albert', 'Arango', '70812963', 'aarango@misena.edu.co');
 
 -- --------------------------------------------------------
 
@@ -446,15 +492,9 @@ CREATE TABLE `tbl_programacioncomite` (
   `id_programacion` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
-  `lugar` varchar(40) NOT NULL
+  `lugar` varchar(40) NOT NULL,
+  `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbl_programacioncomite`
---
-
-INSERT INTO `tbl_programacioncomite` (`id_programacion`, `fecha`, `hora`, `lugar`) VALUES
-(1, '2017-09-01', '12:59:00', 'adasdas');
 
 --
 -- Índices para tablas volcadas
@@ -546,7 +586,7 @@ ALTER TABLE `tbl_programacioncomite`
 -- AUTO_INCREMENT de la tabla `tbl_aprendiz`
 --
 ALTER TABLE `tbl_aprendiz`
-  MODIFY `id_aprendiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_aprendiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_cliente`
 --
@@ -561,17 +601,17 @@ ALTER TABLE `tbl_comite`
 -- AUTO_INCREMENT de la tabla `tbl_detallesaprendizgrupo`
 --
 ALTER TABLE `tbl_detallesaprendizgrupo`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_detallesaprendizproyecto`
 --
 ALTER TABLE `tbl_detallesaprendizproyecto`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbl_dtllproyecto`
 --
 ALTER TABLE `tbl_dtllproyecto`
-  MODIFY `id_dtllProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_dtllProyecto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_estados`
 --
@@ -581,22 +621,22 @@ ALTER TABLE `tbl_estados`
 -- AUTO_INCREMENT de la tabla `tbl_fichagrupo`
 --
 ALTER TABLE `tbl_fichagrupo`
-  MODIFY `id_fichaGrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_fichaGrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_fichaproyecto`
 --
 ALTER TABLE `tbl_fichaproyecto`
-  MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_ficha` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tbl_instructores`
 --
 ALTER TABLE `tbl_instructores`
-  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_instructor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tbl_programacioncomite`
 --
 ALTER TABLE `tbl_programacioncomite`
-  MODIFY `id_programacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_programacion` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --

@@ -52,7 +52,7 @@ function LlenarAprendices(){
 
 $("#txtGrupo").change(function(){
   var valor = $("#txtGrupo").val();
-   console.log(valor);
+  
    $('#Seleccionar').html('');
 
   $.ajax({

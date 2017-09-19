@@ -4,11 +4,19 @@ class MdlLlenarfichagrupo extends CI_Model
 {
   public function conFicha()
   {
-    return $this->db->query("SELECT * from tbl_fichagrupo")->result_array();
+    $query = $this->db->query("CALL sp_conFicha()");
+    $res = $query->result_array();
+    $query->next_result();
+    $query->free_result();
+    return $res;
   }
   function consultaAprendices()
   {
-    return $this->db->query("SELECT * FROM tbl_aprendiz WHERE estado =!1 OR estado = !2")->result_array();
+    $query =  $this->db->query("CALL sp_aprendicesXestado()");
+    $res = $query->result_array();
+    $query->next_result();
+    $query->free_result();
+    return $res;
 
   }
 

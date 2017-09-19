@@ -10,15 +10,23 @@ class MdlFicha extends CI_Model
   }
   public function conInstructor()
   {
-    return $this->db->query("SELECT id_instructor,documento,nombre from tbl_instructores")->result_array();
+    $query = $this->db->query("CALL sp_Consultarinstructor");
+    $res = $query->result_array();
+    $query->next_result();
+    $query->free_result();
+    return $res;
   }
   function consultaAprendices($id)
   {
-  return $this->db->query("SELECT * FROM tbl_aprendiz a join tbl_detallesaprendizgrupo d on d.id_aprendiz=a.id_aprendiz where d.id_fichaGrupo = '$id'")->result_array();
+  return $this->db->query("CALL sp_ConsultaraprendicesXid('$id')")->result_array();
   }
   function ConsultarFichas()
   {
-    return $this->db->query("SELECT * FROM tbl_fichagrupo")->result_array();
+    $query =  $this->db->query("CALL sp_Consultarfichagrupo");
+    $res = $query->result_array();
+    $query->next_result();
+    $query->free_result();
+    return $res;
   }
   function EditCodigo($id_fichaGrupo)
   {

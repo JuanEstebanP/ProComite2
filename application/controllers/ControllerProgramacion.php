@@ -25,6 +25,35 @@ function registrarProgramacion(){
 
   $this->MdlProgamacion->registrarProgramacion($txtfecha, $txthora, $txtlugar);
   redirect('ControllerProgramacion?ok=1');
+
+
+
+//configuracion para gmail
+$config = array(
+     'protocol' => 'smtp',
+     'smtp_host' => 'smtp.googlemail.com',
+     'smtp_user' => '', //Su Correo de Gmail Aqui
+     'smtp_pass' => '', // Su Password de Gmail aqui
+     'smtp_port' => 465,
+     'smtp_crypto' => 'ssl',
+     'mailtype' => 'html',
+     'wordwrap' => TRUE,
+     'charset' => 'utf-8'
+     );
+     $this->email->initialize($config);
+     $this->load->library('email', $config);
+     $this->email->set_newline("\r\n");
+     $this->email->from('');
+     $this->email->subject('Asunto del correo');
+     $this->email->message('Hola desde correo');
+     $this->email->to('');
+     if($this->email->send()){
+         echo "enviado<br/>";
+         echo $this->email->print_debugger();
+     }else {
+         echo "fallo <br/>";
+         echo "error: ".$this->email->print_debugger();
+     }
 }
 
 public function mostrarProgramacion(){
