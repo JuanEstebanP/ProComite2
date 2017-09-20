@@ -27,11 +27,20 @@ include 'Master.php';
           <?php echo form_open('ControllerProgramacion/registrarProgramacion', array("class"=>"form-horizontal", "id"=>"formularioProgramacion", "role"=>"form", 'method'=>'post')); ?>
           <!-- <form class="form-horizontal" role="form" id="formularioProgramacion" method="post" action="" > -->
           <fieldset>
+
+
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
+              <div class="col-md-4">
+                <input id="titulo" name="titulo" type="text" placeholder="Prueba" class="form-control input-md" required>
+
+              </div>
+            </div>
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Fecha</label>
               <div class="col-md-4">
-                <input id="fecha" name="fecha" type="date" placeholder="dia-mes-año" class="form-control input-md">
+                <input id="fecha" name="fecha" type="date" placeholder="dia-mes-año" class="form-control input-md" required>
 
               </div>
             </div>
@@ -40,7 +49,7 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Hora</label>
               <div class="col-md-4">
-                <input id="hora" name="hora" type="time" placeholder="00:00" class="form-control input-md">
+                <input id="hora" name="hora" type="time" placeholder="00:00" class="form-control input-md" required>
 
               </div>
             </div>
@@ -49,7 +58,7 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Lugar</label>
               <div class="col-md-4">
-                <input id="lugar" name="lugar" type="text" placeholder="torre norte" class="form-control input-md">
+                <input id="lugar" name="lugar" type="text" placeholder="torre norte" class="form-control input-md" required>
 
               </div>
             </div>
@@ -84,6 +93,9 @@ include 'Master.php';
                     N°
                   </th>
                   <th class="text-center">
+                    Titulo
+                  </th>
+                  <th class="text-center">
                     Fecha
                   </th>
 
@@ -107,6 +119,7 @@ include 'Master.php';
                 <?php   foreach ($Programacion as $i) { ?>
                   <tr class="odd gradeX">
                     <td><?php echo $i['id_programacion']; ?></td>
+                    <td><?php echo $i['titulo']; ?></td>
                     <td><?php echo $i['fecha']; ?></td>
                     <td><?php echo $i['hora']; ?></td>
                     <td><?php echo $i['lugar']; ?></td>
@@ -149,6 +162,14 @@ include 'Master.php';
                 <fieldset>
 
                   <input type="hidden" id="oculto" name="oculto">
+                  
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
+                    <div class="col-md-4">
+                      <input id="tituloModificar" name="tituloModificar" type="text" class="form-control input-md">
+
+                    </div>
+                  </div>
                   <!-- Text input-->
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Fecha</label>

@@ -13,6 +13,7 @@ function mostrarProgramacion(id_programacion){
   }).done(function (data) {
 
     $("#oculto").val(data[0].id_programacion);
+    $("#tituloModificar").val(data[0].titulo);
     $("#fechaModificar").val(data[0].fecha);
     $("#horaModificar").val(data[0].hora);
     $("#lugarModificar").val(data[0].lugar);

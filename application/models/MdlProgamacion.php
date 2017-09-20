@@ -4,9 +4,9 @@ class MdlProgamacion extends CI_Model
 {
 
 
-  function registrarProgramacion($txtfecha, $txthora, $txtlugar)
+  function registrarProgramacion($titulo,$txtfecha, $txthora, $txtlugar)
   {
-    $this->db->query("call sp_RegistrarProgramacion('$txtfecha', '$txthora', '$txtlugar')");
+    $this->db->query("call sp_RegistrarProgramacion('$titulo','$txtfecha', '$txthora', '$txtlugar')");
   }
 
   function consultarProgramacion()
@@ -19,9 +19,9 @@ class MdlProgamacion extends CI_Model
     return $this->db->query("call sp_MostrarProgramacion('$txtidprogramacion')")->result_array();
   }
 
-  function editarProgramacion($txtidprogramacionModificar, $txtfechaModificar, $txthoraModificar, $txtlugarModificar)
+  function editarProgramacion($txtidprogramacionModificar,$txttituloModificar,$txtfechaModificar, $txthoraModificar, $txtlugarModificar)
   {
-    return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
+    return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar','$txttituloModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
   }
 
 function consultarInstructores($id)

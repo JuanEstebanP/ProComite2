@@ -26,8 +26,8 @@ include 'Master.php';
             <select class="form-control" data-live-search="true" id="txtpro"  name="txtpro">
               <option value=""></option>
               <?php foreach ($programacion as $f): ?>
-                <option value="<?=  $f['id_programacion']; ?>">id:
-                  <?= $f['id_programacion']; ?>        Fecha:
+                <option value="<?=  $f['id_programacion']; ?>">Titulo:
+                  <?= $f['titulo']; ?>        Fecha:
                   <?= $f['fecha']; ?>
                 </option>
               <?php endforeach ?>

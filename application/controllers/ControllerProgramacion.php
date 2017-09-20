@@ -19,11 +19,12 @@ public function index()
   }
 
 function registrarProgramacion(){
+  $txttitulo = $this->input->post('titulo');
   $txtfecha = $this->input->post('fecha');
   $txthora = $this->input->post('hora');
   $txtlugar = $this->input->post('lugar');
 
-  $this->MdlProgamacion->registrarProgramacion($txtfecha, $txthora, $txtlugar);
+  $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
   redirect('ControllerProgramacion?ok=1');
 
 
@@ -64,11 +65,12 @@ public function mostrarProgramacion(){
 
 public function editarProgramacion(){
   $txtidprogramacionModificar = $this->input->post('oculto');
+  $txttituloModificar = $this->input->post('tituloModificar');
   $txtfechaModificar = $this->input->post('fechaModificar');
   $txthoraModificar = $this->input->post('horaModificar');
   $txtlugarModificar = $this->input->post('lugarModificar');
 
-  $this->MdlProgamacion->editarProgramacion($txtidprogramacionModificar, $txtfechaModificar, $txthoraModificar, $txtlugarModificar);
+  $this->MdlProgamacion->editarProgramacion($txtidprogramacionModificar, $txttituloModificar,$txtfechaModificar, $txthoraModificar, $txtlugarModificar);
   redirect('ControllerProgramacion?ok=1');
 
 }

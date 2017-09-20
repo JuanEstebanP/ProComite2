@@ -130,7 +130,7 @@
         <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Programación</a>
       </li>
       <li>
-        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-bar-chart-o"></i> Asistencia</a>
+        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
       </li>
 
       <li>

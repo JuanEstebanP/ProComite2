@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2017 a las 14:21:19
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Tiempo de generación: 20-09-2017 a las 17:21:38
+-- Versión del servidor: 10.1.26-MariaDB
+-- Versión de PHP: 7.1.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -113,7 +113,7 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ConsultarProgramacion` ()  NO SQL
 BEGIN
-SELECT *FROM tbl_programacioncomite;
+SELECT * FROM tbl_programacioncomite;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_Consultarproyectos` (IN `fg` INT)  NO SQL
@@ -138,9 +138,9 @@ UPDATE tbl_fichaproyecto SET id_ficha = id, titulo = nom, obj_general = obje, ve
 insert into tbl_dtllproyecto (id_dtllProyecto, Url, id_ficha) VALUES (null,urls,id);
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EditarProgramacion` (IN `sp_idprogramacion` INT, IN `sp_fecha` DATE, IN `sp_hora` TIME, IN `sp_lugar` VARCHAR(40))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EditarProgramacion` (IN `sp_idprogramacion` INT, IN `titulo` VARCHAR(20), IN `sp_fecha` DATE, IN `sp_hora` TIME, IN `sp_lugar` VARCHAR(40))  NO SQL
 BEGIN
-UPDATE tbl_programacioncomite SET tbl_programacioncomite.fecha=sp_fecha, tbl_programacioncomite.hora=sp_hora,
+UPDATE tbl_programacioncomite SET tbl_programacioncomite.titulo= titulo,  tbl_programacioncomite.fecha=sp_fecha, tbl_programacioncomite.hora=sp_hora,
 tbl_programacioncomite.lugar=sp_lugar
 WHERE tbl_programacioncomite.id_programacion=sp_idprogramacion;
 END$$
@@ -262,10 +262,10 @@ INSERT INTO tbl_detallesaprendizproyecto (id_detalle, id_aprendiz, id_ficha) VAL
 UPDATE tbl_aprendiz a set a.estado = 2 where a.id_aprendiz=idapren;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarProgramacion` (IN `sp_fecha` DATE, IN `sp_hora` TIME, IN `sp_lugar` VARCHAR(40))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_RegistrarProgramacion` (IN `sp_titulo` VARCHAR(20), IN `sp_fecha` DATE, IN `sp_hora` TIME, IN `sp_lugar` VARCHAR(40))  NO SQL
 BEGIN
-INSERT INTO tbl_programacioncomite(fecha,hora,lugar)
-VALUES(sp_fecha, sp_hora, sp_lugar);
+INSERT INTO tbl_programacioncomite(titulo,fecha,hora,lugar)
+VALUES(sp_titulo,sp_fecha, sp_hora, sp_lugar);
 END$$
 
 DELIMITER ;
@@ -327,9 +327,23 @@ INSERT INTO `tbl_cliente` (`id_cliente`, `nombre`, `apellido`, `telefono`, `corr
 CREATE TABLE `tbl_comite` (
   `id_comite` int(11) NOT NULL,
   `fk_programacion` int(11) NOT NULL,
-  `fk_ficha` int(11) NOT NULL,
   `fk_instructor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Volcado de datos para la tabla `tbl_comite`
+--
+
+INSERT INTO `tbl_comite` (`id_comite`, `fk_programacion`, `fk_instructor`) VALUES
+(1, 1, 1),
+(2, 5, 1),
+(3, 5, 2),
+(5, 17, 1),
+(6, 17, 2),
+(7, 17, 3),
+(8, 18, 1),
+(9, 18, 2),
+(10, 18, 3);
 
 -- --------------------------------------------------------
 
@@ -490,11 +504,20 @@ INSERT INTO `tbl_instructores` (`id_instructor`, `nombre`, `apellido`, `document
 
 CREATE TABLE `tbl_programacioncomite` (
   `id_programacion` int(11) NOT NULL,
+  `titulo` varchar(30) NOT NULL,
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `lugar` varchar(40) NOT NULL,
   `estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tbl_programacioncomite`
+--
+
+INSERT INTO `tbl_programacioncomite` (`id_programacion`, `titulo`, `fecha`, `hora`, `lugar`, `estado`) VALUES
+(17, 'A siasdas', '2017-01-16', '07:00:00', 'hola', 1),
+(18, 'Prueba', '2016-01-01', '01:00:00', 'Torre norte, primer piso', 1);
 
 --
 -- Índices para tablas volcadas
@@ -518,7 +541,6 @@ ALTER TABLE `tbl_cliente`
 ALTER TABLE `tbl_comite`
   ADD PRIMARY KEY (`id_comite`),
   ADD KEY `fk_programacion` (`fk_programacion`),
-  ADD KEY `fk_ficha` (`fk_ficha`),
   ADD KEY `fk_instructor` (`fk_instructor`);
 
 --
@@ -596,7 +618,7 @@ ALTER TABLE `tbl_cliente`
 -- AUTO_INCREMENT de la tabla `tbl_comite`
 --
 ALTER TABLE `tbl_comite`
-  MODIFY `id_comite` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `tbl_detallesaprendizgrupo`
 --
@@ -636,7 +658,7 @@ ALTER TABLE `tbl_instructores`
 -- AUTO_INCREMENT de la tabla `tbl_programacioncomite`
 --
 ALTER TABLE `tbl_programacioncomite`
-  MODIFY `id_programacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_programacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Restricciones para tablas volcadas
 --
