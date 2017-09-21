@@ -28,7 +28,10 @@ function consultarInstructores($id)
 {
   return $this->db->query("SELECT * FROM tbl_instructores i join tbl_comite c on c.fk_instructor=i.id_instructor where c.fk_programacion = '$id'")->result_array();
 }
-
+function consultarcorreintruc()
+{
+  return $this->db->query("SELECT correo FROM tbl_instructores")->result_array();
+}
 
 }
 

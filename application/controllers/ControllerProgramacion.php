@@ -25,19 +25,11 @@ class ControllerProgramacion extends CI_Controller
     $txthora = $this->input->post('hora');
     $txtlugar = $this->input->post('lugar');
 
-    $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
 
-    //   $config =array(
-    //  'protocol'=> 'smtp',
-    //  'smtp_host'=> "smtp.gmail.com",
-    //  'smtp_port'=> 465,
-    //  'smtp_user'=> "procomiteevaluacion@gmail.com",
-    //  'smtp_pass'=> "evaluacion2017",
-    //  'smtp_crypto'=> 'ssl',
-    //  'mailtype'=> 'html'
-    //  );
+    $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
+    $consulta = $this->MdlProgamacion->consultarcorreintruc();
     $config['protocol']    = 'smtp';
-    $config['smtp_host']    = 'ssl://smtp.gmail.com';
+    $config['smtp_host']    = 'ssl://smtp.googlemail.com';
     $config['smtp_port']    = '465';
     $config['smtp_timeout'] = '7';
     $config['smtp_user']    = 'procomiteevaluacion@gmail.com';
@@ -45,30 +37,21 @@ class ControllerProgramacion extends CI_Controller
     $congig['smtp_crypto'] = 'ssl';
     $config['charset']    = 'utf-8';
     $config['newline']    = "\r\n";
-    $config['mailtype'] = 'text'; // or html
-    $config['validation'] = TRUE; // bool whether to validate email or not
-
-    //  $this->email->initialize($config);
+    $config['mailtype'] = 'text';
+    $config['validation'] = TRUE;
     $this->load->library('email',$config);
     $this->email->initialize($config);
+  foreach ($consulta as $key) {
 
-    $this->email->from('procomiteevaluacion@gmail.com', 'Comité');
-    $this->email->to('romerohm1996@gmail.com');
+      $this->email->clear();
+      $this->email->to($key);
+      $this->email->from('procomiteevaluacion@gmail.com', 'Comité');
+      $this->email->subject('Email de prueba');
+      $this->email->message('Hola desde PROCOMITE');
+      $this->email->send();
 
-    $this->email->subject('Email de prueba');
-    $this->email->message('Hola desde ProComite');
-
-    if (  $this->email->send()) {
+  }
       redirect('ControllerProgramacion?ok=1');
-    }else {
-      echo $this->email->print_debugger();
-    }
-
-
-
-
-
-
   }
 
   public function mostrarProgramacion(){
