@@ -35,3 +35,5 @@ function trazabi(data) {
     alert("fail");
   });
 }
+
+$(document).ready(function() { $("#txtEstado").select2(); });

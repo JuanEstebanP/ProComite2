@@ -27,7 +27,7 @@ include 'Master.php';
               <label class="control-label" for="textinput">Fichas grupo:</label>
             </div>
             <select class="form-control" data-live-search="true" id="txtGrupo"  name="txtGrupo">
-              <option value="">---Buscar---</option>
+              <option value=""></option>
               <?php foreach ($fichasGrupo as $f): ?>
                 <option value="<?=  $f['id_fichaGrupo']; ?>">Ficha:
                   <?= $f['numeroFicha']; ?>
@@ -75,7 +75,7 @@ include 'Master.php';
           </tr>
         </thead>
         <tbody id="tblasociados">
-          
+
         </tbody>
       </table>
     </div>

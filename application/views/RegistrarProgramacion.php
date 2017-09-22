@@ -162,7 +162,7 @@ include 'Master.php';
                 <fieldset>
 
                   <input type="hidden" id="oculto" name="oculto">
-                  
+
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
                     <div class="col-md-4">

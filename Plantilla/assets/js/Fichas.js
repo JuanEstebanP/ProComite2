@@ -56,3 +56,6 @@ console.log(data);
     alert("fail");
   });
 }
+
+$(document).ready(function() { $("#txtTitular").select2(); });
+$(document).ready(function() { $("#txtTitularModificar").select2(); });

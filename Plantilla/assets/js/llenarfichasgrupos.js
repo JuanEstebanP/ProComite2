@@ -1,5 +1,10 @@
+
+$(document).ready(function() { $("#txtFicha1").select2(); });
+
+
+
 $('#hola').click(function () {
-  var grup =$('#txtFicha').val();
+  var grup =$('#txtFicha1').val();
   var lista = [];
   $(".listaapren:checked").each(function() {
     lista.push(this.value);

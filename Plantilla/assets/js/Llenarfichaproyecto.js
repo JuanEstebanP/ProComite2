@@ -52,7 +52,7 @@ function LlenarAprendices(){
 
 $("#txtGrupo").change(function(){
   var valor = $("#txtGrupo").val();
-  
+
    $('#Seleccionar').html('');
 
   $.ajax({
@@ -62,7 +62,8 @@ $("#txtGrupo").change(function(){
     dataType:"JSON",
   }).done(function(data){
     var html = '';
-    html += '<select class="form-control" data-live-search="true" id="txtIdFicha"  ><option value="">Seleccione ficha del proyecto</option>'
+    html += '<select class="form-control" data-live-search="true" id="txtIdFicha"  ><option value=""></option>'
+$(document).ready(function() { $("#txtIdFicha").select2(); });
     html += '';
     for(var i = 0; i < data.length; i++){
         html += '<option value="'+ data[i].id_ficha +'">Ficha: ' + data[i].titulo + '</option>';
@@ -72,3 +73,6 @@ $("#txtGrupo").change(function(){
         LlenarAprendices();
   });
 });
+
+
+$(document).ready(function() { $("#txtGrupo").select2(); });

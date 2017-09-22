@@ -47,7 +47,7 @@ class ControllerProgramacion extends CI_Controller
       $this->email->to($key);
       $this->email->from('procomiteevaluacion@gmail.com', 'Comité');
       $this->email->subject('Email de prueba');
-      $this->email->message('Hola desde PROCOMITE');
+      $this->email->message("El titulo de la programación es: ");
       $this->email->send();
 
   }

@@ -27,3 +27,5 @@ else {
   swal("seleccione instructor");
 }
 });
+
+$(document).ready(function() { $("#txtpro").select2(); });

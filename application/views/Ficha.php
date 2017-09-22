@@ -42,9 +42,7 @@ include 'Master.php';
   </div>
 </div>
 
-<script>
-    $(document).ready(function() { $("#txtTitular").select2(); });
-</script>
+
 
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Numero De Ficha: </label>
@@ -207,7 +205,7 @@ MODAL PARA EDITAR
             <div class="form-group">
                 <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
                 <div class="col-md-4">
-                    <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitular"name="txtTitularModificar" >
+                    <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitularModificar"name="txtTitularModificar" style="" >
                   <?php foreach ($Ficha as $key):?>
                   <option value="<?= $key['id_instructor'] ?>">Documento:
                   <?=$key['documento'];?> / Nombre completo:
@@ -217,6 +215,8 @@ MODAL PARA EDITAR
               </select>
             </div>
           </div>
+
+
 
 
             <div class="form-group">

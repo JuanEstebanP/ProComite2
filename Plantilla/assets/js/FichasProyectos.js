@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 $("#buttonRegistrar").on("click",function() {
   nom =  $("#txtNombre").val();
   if (nom == "hola"  ) {
@@ -68,3 +61,8 @@ console.log(data);
     alert("fail");
   });
 }
+
+
+$(document).ready(function() { $("#txtCliente").select2(); });
+$(document).ready(function() { $("#txtFichagrupo").select2(); });
+$(document).ready(function() { $("#txtClienteModificar").select2(); });

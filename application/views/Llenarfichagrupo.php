@@ -31,7 +31,7 @@ include 'Master.php';
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
 <div class="form-group">
-  <select class="form-control" data-live-search="true" id="txtFicha" name="txtFicha" required="true" style="width:30%; margin-top:2%;" >
+  <select class="form-control" data-live-search="true" id="txtFicha1" name="txtFicha" style="width:30%; margin-top:2%;" >
     <option value=""></option>
     <?php foreach ($Ficha as $key):?>
       <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
@@ -101,84 +101,4 @@ include 'Master.php';
         </div>
 
 
----------------------------------------------------
-MODAL PARA EDITAR
----------------------------------------------------
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Editar Ficha</h4>
-      </div>
-      <div class="modal-body">
-        <!-- <form class="form-horizontal"> -->
-      <?php echo form_open('ControllerFicha/EditarFicha', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?>
-          <fieldset>
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
-              </div>
-            </div>
-
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Titular De Ficha:</label>
-                <div class="col-md-4">
-                    <select class="selectpicker" data-style="select-with-transition" title="Ficha" data-live-search="true" id="txtTitular"name="txtTitularModificar" required="true">
-                      <option value=""></option>
-                  <?php foreach ($Ficha as $key):?>
-                  <option value="<?= $key['id_instructor'] ?>">Documento:
-                  <?=$key['documento'];?>
-                  </option>
-                  <?php endforeach ?>
-              </select>
-            </div>
-          </div>
-
-
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Numero De Ficha: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtNumeroModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
-            </div>
-
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Incio Etapa Lectiva: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtIniciolectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
-            </div>
-
-
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Fin Etapa Lectiva: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtFinlectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
-            </div>
-
-            <!-- Text input-->
-
-
-
-          </fieldset>
-        <!-- </form> -->
-      </div>
-      <div class="modal-footer">
-        <button type="submit" name="BotonEditar" class="btn btn-primary">Enviar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 <script src="Plantilla/assets/js/llenarfichasgrupos.js"></script>

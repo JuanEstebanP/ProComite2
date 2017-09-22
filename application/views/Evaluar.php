@@ -104,7 +104,7 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
           <div class="form-group">
             <label class="col-md-4 control-label" for="selectbasic">Estado: </label>
             <div class="col-md-4">
-              <select  name="EstadosF" class="form-control">
+              <select  name="EstadosF" class="form-control" id="txtEstado">
                 <option value=""></option>
                 <?php foreach($EstadosF as $fi): ?>
                   <option value="<?= $fi['id_estado']; ?>">
@@ -114,6 +114,8 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
               </select>
             </div>
           </div>
+
+
 
           <!-- Textarea -->
 
