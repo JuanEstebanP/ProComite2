@@ -24,6 +24,13 @@ class ControllerProgramacion extends CI_Controller
     $txtfecha = $this->input->post('fecha');
     $txthora = $this->input->post('hora');
     $txtlugar = $this->input->post('lugar');
+    $txtmensaje .= "El día ";
+    $txtmensaje .= $txtfecha;
+    $txtmensaje .= " se tiene programado un comité en ";
+    $txtmensaje .= $txtlugar;
+    $txtmensaje .= " a las ";
+    $txtmensaje .= $txthora;
+
 
 
     $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
@@ -46,8 +53,8 @@ class ControllerProgramacion extends CI_Controller
       $this->email->clear();
       $this->email->to($key);
       $this->email->from('procomiteevaluacion@gmail.com', 'Comité');
-      $this->email->subject('Email de prueba');
-      $this->email->message("El titulo de la programación es: ");
+      $this->email->subject('Programación de comité');
+      $this->email->message($txtmensaje);
       $this->email->send();
 
   }
