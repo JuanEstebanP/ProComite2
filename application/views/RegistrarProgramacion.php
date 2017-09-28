@@ -113,6 +113,9 @@ include 'Master.php';
                   <th>
                     Asistencia
                   </th>
+                  <th>
+                    Reporte
+                  </th>
                 </tr>
               </thead>
               <tbody id="TablaConsultarProgramacion">
@@ -127,6 +130,11 @@ include 'Master.php';
                     <td>
                       <button class="btn btn-default" onClick="consultarInstructores(<?php echo $i['id_programacion'];?>)" data-toggle="modal" data-target="#myModaluno">
                       <i class="fa fa-search"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <button class="btn btn-default"  data-target="#myModaluno">
+                      <i class="glyphicon glyphicon-print"></i>
                       </button>
                     </td>
                     </tr>
@@ -196,21 +204,18 @@ include 'Master.php';
                   <!-- Button -->
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="singlebutton"></label>
-                    <div class="col-md-4">
-                      <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >Modificar</button>
-
-                    </div>
                   </div>
                 </fieldset>
-                <?php echo form_close(); ?>
+
               <!-- </form> -->
             </div>
 
             <div class="modal-footer">
-              <button type="button" id="cerrar" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >Modificar</button>
+            <button type="button" id="cerrar" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
           </div>
-
+                <?php echo form_close(); ?>
         </div>
       </div>
 

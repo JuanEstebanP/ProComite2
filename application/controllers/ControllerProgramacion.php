@@ -24,7 +24,7 @@ class ControllerProgramacion extends CI_Controller
     $txtfecha = $this->input->post('fecha');
     $txthora = $this->input->post('hora');
     $txtlugar = $this->input->post('lugar');
-    $txtmensaje .= "El día ";
+    $txtmensaje = "El día ";
     $txtmensaje .= $txtfecha;
     $txtmensaje .= " se tiene programado un comité en ";
     $txtmensaje .= $txtlugar;
@@ -36,7 +36,7 @@ class ControllerProgramacion extends CI_Controller
     $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
     $consulta = $this->MdlProgamacion->consultarcorreintruc();
     $config['protocol']    = 'smtp';
-    $config['smtp_host']    = 'ssl://smtp.googlemail.com';
+    $config['smtp_host']    = 'ssl://stmp.googlemail.com';
     $config['smtp_port']    = '465';
     $config['smtp_timeout'] = '7';
     $config['smtp_user']    = 'procomiteevaluacion@gmail.com';
@@ -48,6 +48,7 @@ class ControllerProgramacion extends CI_Controller
     $config['validation'] = TRUE;
     $this->load->library('email',$config);
     $this->email->initialize($config);
+
   foreach ($consulta as $key) {
 
       $this->email->clear();
