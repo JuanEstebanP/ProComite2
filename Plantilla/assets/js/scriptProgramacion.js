@@ -1,4 +1,28 @@
 
+function Regis(){
+
+  var titulo =$ ('#titulo').val();
+  var fecha =$ ('#fecha').val();
+  var hora =$ ('#hora').val();
+  var lugar =$ ('#lugar').val();
+  var lista = [];
+  $(".listaapren:checked").each(function() {
+    lista.push(this.value);
+  });
+
+    $.ajax({
+      url: 'ControllerProgramacion/registrarProgramacion',
+      type: 'POST',
+      data: {titulo:titulo,fecha:fecha,hora:hora,lugar:lugar,id:lista},
+      dataType: 'JSON'
+    }).done(function (data){
+
+    }).fail(function(jqXHR, textStatus, errorThrown){
+
+    });
+  
+
+}
 
 function mostrarProgramacion(id_programacion){
 
@@ -27,17 +51,17 @@ function mostrarProgramacion(id_programacion){
 
 
 function consultarInstructores(data) {
-var valor = data;
-$.ajax({
- url: 'ControllerProgramacion/consultarInstructores',
-type: "POST",
-data: {id:valor},
-dataType: "JSON"
-}).done(function (data){
-  $("#listainst").html("");
-  $.each(data, function(i, v) {
-    $("#listainst").append("<tr><td>"+v.id_instructor+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td></tr>");
-console.log(data);
-});
-});
+  var valor = data;
+  $.ajax({
+    url: 'ControllerProgramacion/consultarInstructores',
+    type: "POST",
+    data: {id:valor},
+    dataType: "JSON"
+  }).done(function (data){
+    $("#listainst").html("");
+    $.each(data, function(i, v) {
+      $("#listainst").append("<tr><td>"+v.id_instructor+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td></tr>");
+      console.log(data);
+    });
+  });
 }

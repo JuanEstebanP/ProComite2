@@ -255,7 +255,7 @@ MODAL PARA EDITAR -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
               <div class="col-md-4">
-                <input  name="fileC" type="file" class="form-control input-md"  accept="application/pdf" required="true">
+                <input  name="fileC" type="file" class="form-control input-md"  accept="application/pdf" >
               </div>
             </div>
 

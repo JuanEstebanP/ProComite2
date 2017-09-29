@@ -13,54 +13,32 @@ class ControllerProgramacion extends CI_Controller
 
   public function index()
   {
-    // $this->load->view('/Master.php');
-    $data['Programacion'] = $this->MdlProgamacion->consultarProgramacion();
+
+      $data['fichasXestado'] = $this->MdlProgamacion->fichasXestado();
+  //  $data['Programacion'] = $this->MdlProgamacion->consultarProgramacion();
     $this->load->view('RegistrarProgramacion',$data);
 
   }
 
+
+
   function registrarProgramacion(){
+
     $txttitulo = $this->input->post('titulo');
     $txtfecha = $this->input->post('fecha');
     $txthora = $this->input->post('hora');
     $txtlugar = $this->input->post('lugar');
-    $txtmensaje = "El día ";
-    $txtmensaje .= $txtfecha;
-    $txtmensaje .= " se tiene programado un comité en ";
-    $txtmensaje .= $txtlugar;
-    $txtmensaje .= " a las ";
-    $txtmensaje .= $txthora;
-
-
-
     $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
-    $consulta = $this->MdlProgamacion->consultarcorreintruc();
-    $config['protocol']    = 'smtp';
-    $config['smtp_host']    = 'ssl://stmp.googlemail.com';
-    $config['smtp_port']    = '465';
-    $config['smtp_timeout'] = '7';
-    $config['smtp_user']    = 'procomiteevaluacion@gmail.com';
-    $config['smtp_pass']    = 'evaluacion2017';
-    $congig['smtp_crypto'] = 'ssl';
-    $config['charset']    = 'utf-8';
-    $config['newline']    = "\r\n";
-    $config['mailtype'] = 'text';
-    $config['validation'] = TRUE;
-    $this->load->library('email',$config);
-    $this->email->initialize($config);
+    $id = $this->input->post('id');
+    foreach ($id as $i) {
 
-  foreach ($consulta as $key) {
-
-      $this->email->clear();
-      $this->email->to($key);
-      $this->email->from('procomiteevaluacion@gmail.com', 'Comité');
-      $this->email->subject('Programación de comité');
-      $this->email->message($txtmensaje);
-      $this->email->send();
+      $this->MdlProgamacion->dtllcomitefichas($i);
+    }
+    echo json_encode(array("status" => TRUE));
 
   }
-      redirect('ControllerProgramacion?ok=1');
-  }
+
+
 
   public function mostrarProgramacion(){
     $txtidprogramacion = $this->input->post('id_programacion');

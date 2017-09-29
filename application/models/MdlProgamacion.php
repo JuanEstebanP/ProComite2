@@ -11,7 +11,11 @@ class MdlProgamacion extends CI_Model
 
   function consultarProgramacion()
   {
-    return $this->db->query("call sp_ConsultarProgramacion()")->result_array();
+   $query = $this->db->query("call sp_ConsultarProgramacion()");
+   $res = $query->result_array();
+   $query->next_result();
+   $query->free_result();
+   return $res;
   }
 
   function mostrarProgramacion($txtidprogramacion)
@@ -31,6 +35,15 @@ function consultarInstructores($id)
 function consultarcorreintruc()
 {
   return $this->db->query("SELECT correo FROM tbl_instructores")->result_array();
+}
+
+function fichasXestado()
+{
+  return $this->db->query("CALL sp_fichasXestado")->result_array();
+}
+function dtllcomitefichas($id)
+{
+  $this->db->query("CALL sp_dtllProyectoprogra('$id')");
 }
 
 }
