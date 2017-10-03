@@ -15,24 +15,126 @@ include 'Master.php';
   </div>
 
 
+<div class="col-lg-12">
+        <div class="panel panel-default">
+          <div class="panel-headig">
+            Listado
+          </div>
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                <thead>
+                  <th>#</th>
+                  <th>Titulo</th>
+                  <th>Objetivo general</th>
+                  <th>Ficha carac.</th>
+                  <th>Estado</th>
+                  <th>Elegir</th>
+                </thead>
+                <tbody>
+                  <?php foreach ($fichasXestado as $key) { ?>
+                    <tr>
+                      <td><?php echo $key['id_ficha'];  ?></td>
+                      <td><?php echo $key['titulo']; ?></td>
+                      <td><?php echo $key['obj_general']; ?></td>
+                      <td><?php echo $key['numeroFicha']; ?></td>
+                      <td><?php echo $key['nombreEstado'];?></td>
+                      <td><input class="listaapren" type="checkbox" name="" value="<?php echo $key['id_ficha'];?>"></td>
+                    </tr>
+                  <?php    } ?>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
-  <div id="page-inner">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
 
 
-        <center><h4 class="modal-title">Registrar</h4></center>
 
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <form class="form-horizontal" role="form" id="formularioProgramacion" method="post"  >
+              <fieldset>
+
+
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
+                  <div class="col-md-4">
+                    <input id="titulo" name="titulo" type="text" placeholder="Prueba" class="form-control input-md" required="TRUE">
+
+                  </div>
+                </div>
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Fecha</label>
+                  <div class="col-md-4">
+                    <input id="fecha" name="fecha" type="date" placeholder="dia-mes-año" class="form-control input-md" required="TRUE">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Hora</label>
+                  <div class="col-md-4">
+                    <input id="hora" name="hora" type="time" placeholder="00:00" class="form-control input-md" required="TRUE">
+
+                  </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textinput">Lugar</label>
+                  <div class="col-md-4">
+                    <input id="lugar" name="lugar" type="text" placeholder="torre norte" class="form-control input-md" required="TRUE">
+
+                  </div>
+                </div>
+
+                <!-- Button -->
+
+              </fieldset>
+              <!-- <?php echo form_close(); ?> -->
+            </form>
+
+            <center><button type"button" class="btn btn-success" onclick="Regis()">REGISTRAR</button></center>
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="singlebutton"></label>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+</div>
+
+    </div>
+
+  </div>
+
+
+  <!--MODAL MODIFICAR PROGRAMACION-->
+  <div id="ModificarProgramacion" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modificar Programacion</h4>
+        </div>
         <div class="modal-body">
-          <!-- <?php echo form_open('ControllerProgramacion/registrarProgramacion', array("class"=>"form-horizontal", "id"=>"formularioProgramacion", "role"=>"form", 'method'=>'post')); ?> -->
-          <form class="form-horizontal" role="form" id="formularioProgramacion" method="post"  >
+          <!-- <form class="form-horizontal" role="form" id="formularioModicarProgramacion" method="post"> -->
           <fieldset>
 
+            <input type="hidden" id="oculto" name="oculto">
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
               <div class="col-md-4">
-                <input id="titulo" name="titulo" type="text" placeholder="Prueba" class="form-control input-md" required>
+                <input id="tituloModificar" name="tituloModificar" type="text" class="form-control input-md">
 
               </div>
             </div>
@@ -40,25 +142,21 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Fecha</label>
               <div class="col-md-4">
-                <input id="fecha" name="fecha" type="date" placeholder="dia-mes-año" class="form-control input-md" required>
-
+                <input id="fechaModificar" name="fechaModificar" type="date" placeholder="dia-mes-año" class="form-control input-md">
               </div>
             </div>
 
-            <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Hora</label>
               <div class="col-md-4">
-                <input id="hora" name="hora" type="time" placeholder="00:00" class="form-control input-md" required>
-
+                <input id="horaModificar" name="horaModificar" type="time" placeholder="00:00" class="form-control input-md">
               </div>
             </div>
-
             <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Lugar</label>
               <div class="col-md-4">
-                <input id="lugar" name="lugar" type="text" placeholder="torre norte" class="form-control input-md" required>
+                <input id="lugarModificar" name="lugarModificar" type="text" placeholder="torre norte" class="form-control input-md">
 
               </div>
             </div>
@@ -66,168 +164,19 @@ include 'Master.php';
             <!-- Button -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="singlebutton"></label>
-              <div class="col-md-4">
-                <button type"button" name="btnProgramacion" class="btn btn-success" onclick="Regis()">REGISTRAR</button>
-
-              </div>
             </div>
           </fieldset>
-          <!-- <?php echo form_close(); ?> -->
-          </form>
+
+          <!-- </form> -->
+        </div>
+
+        <div class="modal-footer">
+          <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >Modificar</button>
+          <button type="button" id="cerrar" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
-
-
-      <!-- listado de programacion de comite  -->
-      <!-- <div class="panel panel-default">
-      <div class="panel-heading">
-      Tabla Programación
-    </div>
-    <div class="panel-body">
-    <div class="table-responsive">
-    <div id="">
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-    <thead>
-    <tr>
-    <th class="text-center">N°</th>
-    <th class="text-center">  Titulo</th>
-    <th class="text-center">Fecha  </th>
-    <th class="text-center">Hora</th>
-    <th class="text-center">Lugar  </th>
-    <th class="text-center">  Opciones</th>
-    <th>Asistencia</th>
-    <th>Reporte</th>
-  </tr>
-</thead>
-<tbody id="TablaConsultarProgramacion">
-<?php   foreach ($Programacion as $i) { ?>
-<tr class="odd gradeX">
-<td><?php echo $i['id_programacion']; ?></td>
-<td><?php echo $i['titulo']; ?></td>
-<td><?php echo $i['fecha']; ?></td>
-<td><?php echo $i['hora']; ?></td>
-<td><?php echo $i['lugar']; ?></td>
-<td><button class="btn btn-default" id="txtPrograma" name="button" onClick="mostrarProgramacion(<?php echo $i['id_programacion']; ?>)"><i class="fa fa-pencil" aria-hidden="true"></i></td>
-<td>
-<button class="btn btn-default" onClick="consultarInstructores(<?php echo $i['id_programacion'];?>)" data-toggle="modal" data-target="#myModaluno">
-<i class="fa fa-search"></i>
-</button>
-</td>
-<td>
-<button class="btn btn-default"  data-target="#myModaluno">
-<i class="glyphicon glyphicon-print"></i>
-</button>
-</td>
-</tr>
-
-
-<?php } ?>
-
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div> -->
-<div class="panel panel-default">
-  <div class="panel-headig">
-    Listado
-  </div>
-  <div class="panel-body">
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-        <thead>
-          <th>#</th>
-          <th>Titulo</th>
-          <th>Objetivo general</th>
-          <th>Estado</th>
-          <th>Elegir</th>
-        </thead>
-        <tbody>
-          <?php foreach ($fichasXestado as $key) { ?>
-            <tr>
-              <td><?php echo $key['id_ficha'];  ?></td>
-              <td><?php echo $key['titulo']; ?></td>
-              <td><?php echo $key['obj_general']; ?></td>
-              <td><?php echo $key['estado'];?></td>
-              <td><input class="listaapren" type="checkbox" name="" value="<?php echo $key['id_ficha'];?>"></td>
-            </tr>
-          <?php    } ?>
-        </tbody>
-      </table>
     </div>
   </div>
-</div>
-
-</div>
-
-</div>
-
-
-<!--MODAL MODIFICAR PROGRAMACION-->
-<div id="ModificarProgramacion" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modificar Programacion</h4>
-      </div>
-      <div class="modal-body">
-        <?php echo form_open('ControllerProgramacion/editarProgramacion', array("class"=>"form-horizontal", "id"=>"formularioModicarProgramacion", "role"=>"form", 'method'=>'post')); ?>
-        <!-- <form class="form-horizontal" role="form" id="formularioModicarProgramacion" method="post"> -->
-        <fieldset>
-
-          <input type="hidden" id="oculto" name="oculto">
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Titulo Programación</label>
-            <div class="col-md-4">
-              <input id="tituloModificar" name="tituloModificar" type="text" class="form-control input-md">
-
-            </div>
-          </div>
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Fecha</label>
-            <div class="col-md-4">
-              <input id="fechaModificar" name="fechaModificar" type="date" placeholder="dia-mes-año" class="form-control input-md">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Hora</label>
-            <div class="col-md-4">
-              <input id="horaModificar" name="horaModificar" type="time" placeholder="00:00" class="form-control input-md">
-            </div>
-          </div>
-          <!-- Text input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">Lugar</label>
-            <div class="col-md-4">
-              <input id="lugarModificar" name="lugarModificar" type="text" placeholder="torre norte" class="form-control input-md">
-
-            </div>
-          </div>
-
-          <!-- Button -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="singlebutton"></label>
-          </div>
-        </fieldset>
-
-        <!-- </form> -->
-      </div>
-
-      <div class="modal-footer">
-        <button id="btnProgramacionModificar" type"submit" name="btnProgramacionModificar" class="btn btn-success" >Modificar</button>
-        <button type="button" id="cerrar" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-    <?php echo form_close(); ?>
-  </div>
-</div>
 
 </div>
 
@@ -267,6 +216,5 @@ include 'Master.php';
 </fieldset>
 </div>
 </div>
-ProgramacionValid
-<script src="Plantilla/assets/js/Validaciones/ProgramacionValid.js"></script>
+
 <script src="Plantilla/assets/js/scriptProgramacion.js"></script>

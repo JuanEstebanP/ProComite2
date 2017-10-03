@@ -17,13 +17,14 @@
 
   <link href="Plantilla/assets/css/select2.css" rel="stylesheet"/>
 
+  <link rel="stylesheet" href="Plantilla/assets/css/alertify.css">
 
   <link href="Plantilla/assets/css/select2.min.css" rel="stylesheet"/>
 
     <link href="Plantilla/assets/css/sweetalert.css" rel="stylesheet"/>
   <!-- <link rel="stylesheet" href="/vendor/bootstrap-multiselect/css/bootstrap-multiselect.css" /> -->
 
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+  <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' /> -->
   <!-- Datatables bootstrap -->
   <link href="Plantilla/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
@@ -120,19 +121,22 @@
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
       <li>
-        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Programación</a>
+      <a href="#"><i class="fa fa-qrcode"></i> Comité <span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level">
+        <li>
+          <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Registrar Programación</a>
+        </li>
+        <li>
+          <a href="<?php base_url(); ?>Controllerlistprograma"><i class="fa fa-list" aria-hidden="true"></i>Listar programación</a>
+        </li>
+        <li>
+          <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
+        </li>
+      </ul>
       </li>
-      <li>
-        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
-      </li>
-
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
       </li>
-      <li>
-
-      </li>
-
       <li>
         <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-table"></i> Aprendices</a>
       </li>
@@ -201,6 +205,8 @@
 <script src="Plantilla/assets/js/select2.full.js"></script>
 
 <script src="Plantilla/assets/js/select2.js"></script>
+
+<script src="Plantilla/assets/js/alertify.js"></script>
 
 
 <script>

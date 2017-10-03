@@ -6,7 +6,7 @@ include 'Master.php';
 <div class="header">
                  <h1 class="page-header">
                       Bienvenido al aplicativo Procomité<br>
-                       <small>Juan P-Diego-Juan.</small>
+                       <small>Juan P-Juan.</small>
                  </h1>
 
 

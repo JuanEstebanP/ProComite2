@@ -6,21 +6,42 @@ function Regis(){
   var hora =$ ('#hora').val();
   var lugar =$ ('#lugar').val();
   var lista = [];
+  
   $(".listaapren:checked").each(function() {
     lista.push(this.value);
   });
+  if (titulo == "") {
+    alertify.error("Campo titulo obligatorio");
+    return false;
+  }else   if (fecha == "") {
+        alertify.error("Campo fecha obligatorio");
+        return false;
+  }else   if (hora == "" ) {
+        alertify.error("Campo hora obligatorio");
+        return false;
+  }else   if (lugar == "") {
+        alertify.error("Campo lugar obligatorio");
+        return false;
+  }else   if (lista.length <= 0) {
+    alertify.error("Seleccione una ficha");
+    return false;
+  } else {
+        $.ajax({
+        url: 'ControllerProgramacion/registrarProgramacion',
+        type: 'POST',
+        data: {titulo:titulo,fecha:fecha,hora:hora,lugar:lugar,id:lista},
+        dataType: 'JSON'
+      }).done(function (data){
+        swal(
+          'Exitoso!',
+          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'success'
+        )
+        setTimeout(function(){location.reload()}, 1300);
 
-    $.ajax({
-      url: 'ControllerProgramacion/registrarProgramacion',
-      type: 'POST',
-      data: {titulo:titulo,fecha:fecha,hora:hora,lugar:lugar,id:lista},
-      dataType: 'JSON'
-    }).done(function (data){
+      });
+  }
 
-    }).fail(function(jqXHR, textStatus, errorThrown){
-
-    });
-  
 
 }
 
