@@ -29,7 +29,11 @@
                 <th>Lugar</th>
                 <th>Modificar</th>
                 <th>Ver</th>
+
+                <th>Reporte</th>
+
                 <th>qwerty</th>
+
               </thead>
               <tbody>
                 <?php foreach ($programaciones as $k): ?>
@@ -41,7 +45,14 @@
                     <td><?php echo $k['lugar']; ?></td>
                     <td><button class="btn btn-primary" type="button" name="button" onclick="mostrarProgramacion(<?php echo $k['id_programacion']; ?>)"><i class="fa fa-search" aria-hidden="true"></i></button></td>
                     <td><button class="btn btn-primary" type="button" name="button" onclick="consultarInstructores(<?php echo $k['id_programacion']; ?>)" data-toggle="modal" data-target="#myModaluno"><i class="fa fa-search" aria-hidden="true"></i></button></td>
+
+                    <td>
+                                <a  class="btn btn-primary" href="Controllerlistprograma/generarPDFtodo/"><i class="fa fa-print"></i></a>
+
+                    </td>
+
                     <td><button class="btn btn-primary" type="button" name="button" onclick="fichasXprogramacion(<?php echo  $k['id_programacion']; ?>)"><i class="fa fa-paperclip" aria-hidden="true"></i></button></td>
+
                   </tr>
                 <?php endforeach; ?>
               </tbody>
@@ -62,7 +73,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modificar Programacion</h4>
+          <h4 class="modal-title">Modificar Programación</h4>
         </div>
         <div class="modal-body">
           <form class="form-horizontal" role="form" id="formularioModicarProgramacion" method="post">

@@ -25,16 +25,9 @@ include 'Master.php';
         </div>
 
         <!-- <form class="form-horizontal"> -->
-        <form class="form-horizontal" action="<?PHP echo base_url(); ?>ControllerCliente/RegistrarCliente" method="post" id="formCliente">
+        <form class="form-horizontal"  method="post" id="formCliente">
 
 
-        <!-- <?php echo form_open('ControllerCliente/RegistrarCliente', array("class"=>"form-horizontal", "id"=>"formCliente", "role"=>"form", "method"=>"post")); ?> -->
-        <fieldset>
-
-          <!-- Form Name -->
-
-
-          <!-- Text input-->
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Nombre: </label>
             <div class="col-md-4">
@@ -66,18 +59,19 @@ include 'Master.php';
             </div>
           </div>
 
-          <!-- Button -->
+
           <div class="form-group">
             <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-8">
-              <button type="submit"  name="RegistrarCliente" class="btn btn-success">Registrar</button>
+              <button type="button"  name="RegistrarCliente" class="btn btn-success" onclick="regisCliente()">Registrar</button>
             </div>
           </div>
+        </form>
+          <!-- Button -->
 
-        </fieldset>
-        <!-- </form> -->
-        <!-- <?php echo form_close(); ?> -->
-      </form>
+
+
+
       </div>
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -138,7 +132,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">ID: </label>
             <div class="col-md-4">
-              <input id="txtIdCliente" name="txtIdCliente" type="text" class="form-control input-md" readonly="">
+              <input id="txtIdClienteM" name="txtIdCliente" type="text" class="form-control input-md" readonly="">
             </div>
           </div>
 
@@ -146,7 +140,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Nombre: </label>
             <div class="col-md-4">
-              <input id="txtNombreCliente" name="txtNombreCliente" type="text" placeholder="placeholder" class="form-control input-md">
+              <input id="txtNombreClienteM" name="txtNombreCliente" type="text" placeholder="placeholder" class="form-control input-md">
             </div>
           </div>
 
@@ -155,7 +149,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Apellido: </label>
             <div class="col-md-4">
-              <input id="txtApellidoCliente" name="txtApellidoCliente" type="text" placeholder="placeholder" class="form-control input-md">
+              <input id="txtApellidoClienteM" name="txtApellidoCliente" type="text" placeholder="placeholder" class="form-control input-md">
             </div>
           </div>
 
@@ -171,7 +165,7 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Correo: </label>
             <div class="col-md-4">
-              <input id="txtCorreoCliente" name="txtCorreoCliente" type="text" placeholder="placeholder" class="form-control input-md">
+              <input id="txtCorreoClienteM" name="txtCorreoCliente" type="text" placeholder="placeholder" class="form-control input-md">
             </div>
           </div>
         </fieldset>
@@ -185,5 +179,5 @@ include 'Master.php';
     <?php echo form_close(); ?>
   </div>
 </div>
-<script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script>
+<!-- <script src="Plantilla/assets/js/Validaciones/ClientesValid.js"></script> -->
 <script src="Plantilla/assets/js/Clientes.js"></script>

@@ -25,11 +25,20 @@ function editarProgramacion($txtidprogramacionModificar,$txttituloModificar,$txt
 {
   return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar','$txttituloModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
 }
-
-function fichas($data)
+function consultarProgramación()
 {
- return  $this->db->query("CALL sp_fichasXprogramacion('$data')")->result_array();
+  return $this->db->query("SELECT * FROM tbl_programacioncomite")->result_array();
 }
+
+function instructores()
+{
+  return $this->db->query("SELECT * FROM tbl_instructores")->result_array();
+}
+function fichas()
+{
+  return $this->db->query("SELECT * FROM tbl_fichaproyecto")->result_array();
+}
+
 
 }
 

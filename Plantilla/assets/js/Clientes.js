@@ -15,28 +15,11 @@ function actDatos() {
   });
 }
 
-/*
-FUNCION DE REGISTRAR CLIENTES
-*/
-// function regisCliente() {
-//
-//   var formulario = $("#formCliente").serialize();
-//
-//   $.ajax({
-//     url: 'ControllerCliente/RegistrarCliente',
-//     type: 'POST',
-//     data: formulario,
-//   }).done(function(data){
-//     console.log(data);
-//   }).fail(function(data){
-//     console.log(data);
-//   });
-// }
-/*
 
-MODAL PARA RETORNA CLIENTES
 
-*/
+// MODAL PARA RETORNA CLIENTES
+
+
 function Editar(data){
   $('#modalCliente').modal();
   console.log(data);
@@ -61,8 +44,54 @@ function Editar(data){
     alert("error");
   });
 }
-
 function ok()
 {
   alertify.success("Registro Exitoso!");
+}
+
+function regisCliente()
+{
+  var textNombreCliente =$('#textNombreCliente').val();
+  var textApellidoCliente=$('#textApellidoCliente').val();
+  var textTelefonoCliente=$('#textTelefonoCliente').val();
+  var textCorreoCliente=$('#textCorreoCliente').val();
+
+  var letras = /^[0-9a-zA-ZáéíóúàèìòùÀÈÌÒÙÁÉÍÓÚñÑüÜ_\s]+$/;
+  var numeros = /^[0-9]+$/;
+  var email = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
+  if (letras.test($('#textNombreCliente').val())== false) {
+    alertify.error("Campo nombre incorrecto o vacío");
+    return false;
+  } else if (letras.test($('#textApellidoCliente').val())== false) {
+    alertify.error("Campo apellido incorrecto o vacío");
+    return false;
+  }else if (numeros.test($('#textTelefonoCliente').val()) == false) {
+    alertify.error("Campo teléfono incorrecto o vacío");
+    return false;
+  }else if (email.test($('#textCorreoCliente').val() ) == false) {
+    alertify.error("Campo correo incorrecto o vacío");
+    return false;
+  }
+  else {
+    $.ajax({
+      url: 'ControllerCliente/RegistrarCliente',
+      type: 'POST',
+      data: {textNombreCliente:textNombreCliente, textApellidoCliente:textApellidoCliente, textTelefonoCliente:textTelefonoCliente, textCorreoCliente:textCorreoCliente},
+      datatype: 'JSON'
+    }).done(function (data){
+
+      swal(
+        'Exitoso!',
+        'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+        'success'
+      );
+      setTimeout(function(){location.reload()}, 1300);
+      $('#textNombreCliente').value = "";
+      $('#textApellidoCliente').value = "";
+      $('#textTelefonoCliente').value = "";
+      $('#textCorreoCliente').value = "";
+
+    });
+  }
 }
