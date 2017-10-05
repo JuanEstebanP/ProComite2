@@ -6,7 +6,7 @@ function Regis(){
   var hora =$ ('#hora').val();
   var lugar =$ ('#lugar').val();
   var lista = [];
-  
+
   $(".listaapren:checked").each(function() {
     lista.push(this.value);
   });
@@ -66,13 +66,15 @@ function mostrarProgramacion(id_programacion){
 
   }).fail(function (data) {
     alert("error");
-    console.log(data);
+
   });
 }
 
 
 function consultarInstructores(data) {
+
   var valor = data;
+
   $.ajax({
     url: 'ControllerProgramacion/consultarInstructores',
     type: "POST",
@@ -82,7 +84,25 @@ function consultarInstructores(data) {
     $("#listainst").html("");
     $.each(data, function(i, v) {
       $("#listainst").append("<tr><td>"+v.id_instructor+"</td><td>"+v.nombre+"</td><td>"+v.apellido+"</td><td>"+v.documento+"</td><td>"+v.correo+"</td></tr>");
-      console.log(data);
+
     });
+  });
+}
+
+function fichasXprogramacion(data) {
+ $("#myModaldos").modal();
+  var valor = data;
+  $.ajax({
+    url: 'Controllerlistprograma/Fichas',
+    type: "POST",
+    data: {id:valor},
+    dataType: "JSON"
+  }).done(function (data){
+      $("#proyectosXcomite").html("");
+      $.each(data, function(i, v){
+        $("#proyectosXcomite").append("<tr><td>"+v.id_ficha+"</td><td>"+v.titulo+"</td><td>"+v.obj_general+"</td></tr>");
+      });
+  }).fail(function(data){
+    alert("error");
   });
 }

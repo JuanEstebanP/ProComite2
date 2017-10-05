@@ -208,6 +208,32 @@ include 'Master.php';
       </div>
     </div>
   </div>
+  <!-- Modal de fichas -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <thead>
+              <th></th>
+              <th></th>
+              <th></th>
+            </thead>
+            <tbody >
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- fin modal fichas -->
 
 </div>
 </div>

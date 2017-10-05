@@ -26,6 +26,11 @@ function editarProgramacion($txtidprogramacionModificar,$txttituloModificar,$txt
   return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar','$txttituloModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
 }
 
+function fichas($data)
+{
+ return  $this->db->query("CALL sp_fichasXprogramacion('$data')")->result_array();
+}
+
 }
 
 

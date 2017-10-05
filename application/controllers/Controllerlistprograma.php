@@ -31,6 +31,13 @@ class Controllerlistprograma extends CI_Controller {
 
   }
 
+  function Fichas()
+  {
+    $f = $this->input->post('id');
+    $data = $this->Mdllistprograma->fichas($f);
+    echo json_encode($data);
+  }
+
 }
 
 
