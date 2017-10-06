@@ -39,6 +39,11 @@ function fichas()
   return $this->db->query("SELECT * FROM tbl_fichaproyecto")->result_array();
 }
 
+function fichasXprogramacion($data)
+{
+  return $this->db->query("CALL sp_fichasXprogramacion('$data')")->result_array();
+}
+
 
 }
 

@@ -30,6 +30,15 @@ class Controllerlistprograma extends CI_Controller {
     redirect('ControllerProgramacion?ok=1');
 
   }
+
+  function fichas()
+  {
+    $f = $this->input->post('id');
+    $data = $this->Mdllistprograma->fichasXprogramacion($f);
+     echo json_encode($data);
+  }
+
+
   public function generarPDFtodo(){
 
 
