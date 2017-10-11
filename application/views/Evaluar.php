@@ -90,13 +90,19 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
       </div>
       <div class="modal-body">
         <!-- <form class="form-horizontal"> -->
-        <?php echo form_open('ControllerEvaluarFichas/InsertardtllComite', array("class"=>"form-horizontal", "role"=>"form", "method"=>"post")); ?>
+        <!-- <?php echo form_open('ControllerEvaluarFichas/InsertardtllComite', array("class"=>"form-horizontal", "role"=>"form", "method"=>"post")); ?> -->
+
+
+
+<form class="">
+
         <fieldset>
+
 
           <div class="form-group">
             <label class="col-md-4 control-label" for="textarea">ID: </label>
             <div class="col-md-4">
-              <input type="text" name="idF"  class="form-control input-md" readonly>
+              <input type="text" name="idF" id="idF" class="form-control input-md" readonly>
             </div>
           </div>
 
@@ -122,16 +128,17 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
           <div class="form-group">
             <label class="col-md-4 control-label" for="textarea">Observaciones: </label>
             <div class="col-md-4">
-              <textarea class="form-control"  name="textarea" ></textarea>
+              <textarea class="form-control"  name="textarea" id="txtobserva" ></textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit"   class="btn btn-success ">Enviar</button>
+            <button type="submit"   class="btn btn-success " id="deta">Enviar</button>
 
           </div>
         </fieldset>
-        <!-- </form> -->
-        <?php echo form_close(); ?>
+        </form>
+        <!-- <?php echo form_close(); ?> -->
+
       </div>
 
     </div>

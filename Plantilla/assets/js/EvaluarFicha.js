@@ -36,4 +36,26 @@ function trazabi(data) {
   });
 }
 
+$("#deta").on("click",function() {
+var id = $("#idF").val();
+var ide = $("#txtEstado").val();
+var obs = $("#txtobserva").val();
+
+$.ajax({
+  url: 'ControllerEvaluarFichas/InsertardtllComite',
+  type: 'POST',
+  dataType: 'JSON',
+  data:{idF:id,
+    txtEstado:ide,
+    txtobserva:obs}
+}).done(function(data){
+alert("Correcto");
+}).fail(function(data){
+
+alert("error");
+
+});
+
+});
+
 $(document).ready(function() { $("#txtEstado").select2(); });

@@ -30,14 +30,11 @@ function regisFichas() {
       }).done(function(data){
         swal(
           'Exitoso!',
-          'Ficha agragada satisfactoriamente!',
+          'Ficha de grupo agragada satisfactoriamente!',
           'success'
         );
         setTimeout(function(){location.reload()}, 1300);
-        $('#txtTitular').value = "";
-        $('#txtNumero').value = "";
-        $('#txtIniciolectiva').value = "";
-        $('#txtFinlectiva').value = "";
+
       }).fail(function(data){
         console.log(data);
       });

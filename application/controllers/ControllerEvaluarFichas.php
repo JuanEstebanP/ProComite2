@@ -25,14 +25,14 @@ class ControllerEvaluarFichas extends CI_Controller
     echo json_encode($data);
   }
 
-  function InsertardtllComite($idficha, $observ, $estado)
+  function InsertardtllComite()
   {
-    $estado = $this->input->post('EstadosF');
+    $estado = $this->input->post('txtEstado');
     $idficha = $this->input->post('idF');
-    $observ = $this->input->post('textarea');
+    $observ = $this->input->post('txtobserva');
 
-    $this->MdlEvaluarFicha->InsertarEstadoObser($idficha,$observ,$estado);
-    redirect('ControllerEvaluarFichas?ok=1');
+    $regis = $this->MdlEvaluarFicha->InsertarEstadoObser($idficha,$observ,$estado);
+    echo json_encode($regis);
 
   }
 
