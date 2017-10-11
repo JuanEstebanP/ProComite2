@@ -22,25 +22,24 @@ include 'Master.php';
           Registrar Ficha De Grupo
         </div></center>
 
-        <?php echo form_open('ControllerFicha/InsertarFicha', array("class"=>"form-horizontal", "id"=>"formFicha", "role"=>"form", 'method'=>'post')); ?>
-        <!-- Text input-->
-
-  <fieldset>
+        <form class="form-horizontal">
+        <fieldset>
 
 
-  <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
-      <div class="col-md-4">
-          <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitular"name="txtTitular" >
-        <?php foreach ($Ficha as $key):?>
-        <option value="<?= $key['id_instructor'] ?>">Documento:
-        <?=$key['documento'];?> / Nombre completo:
-        <?=$key['nombre'];?>
-        </option>
-        <?php endforeach ?>
-    </select>
-  </div>
-</div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
+            <div class="col-md-4">
+              <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitular" name="txtTitular" >
+                <?php foreach ($Ficha as $key):?>
+                  <option value=""></option>
+                  <option value="<?= $key['id_instructor'] ?>">Documento:
+                    <?=$key['documento'];?> / Nombre completo:
+                    <?=$key['nombre'];?>
+                  </option>
+                <?php endforeach ?>
+              </select>
+            </div>
+          </div>
 
 
 
@@ -71,19 +70,14 @@ include 'Master.php';
 
             </div>
           </div>
-          <!--multiple select  -->
 
-
-
-
-          <!-- Button (Double) -->
           <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-              <button name="buttonRegistrar" type="submit" class="btn btn-success">Registrar</button>
+              <button name="buttonRegistrar" type="button" class="btn btn-success" onclick="regisFichas()">Registrar</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
+        </form>
         </div>
 
 
@@ -110,76 +104,66 @@ include 'Master.php';
 
                   <?php   foreach ($Ficha2 as $f) { ?>
 
-                <tr class="odd gradeX">
-                  <td><?php echo $f['id_fichaGrupo']; ?></td>
-                  <td><?php echo $f['numeroFicha']; ?></td>
-                  <td><?php echo $f['titularFicha']; ?></td>
-                  <td><?php echo $f['iniciolectiva']; ?></td>
-                  <td><?php echo $f['finlectiva']; ?></td>
-                  <td>
+                    <tr class="odd gradeX">
+                      <td><?php echo $f['id_fichaGrupo']; ?></td>
+                      <td><?php echo $f['numeroFicha']; ?></td>
+                      <td><?php echo $f['titularFicha']; ?></td>
+                      <td><?php echo $f['iniciolectiva']; ?></td>
+                      <td><?php echo $f['finlectiva']; ?></td>
+                      <td>
 
 
-          <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_fichaGrupo']; ?>)">
-            <i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        <button class="btn btn-primary" id="hoa" name="hoa" onclick="Editar(<?php echo $f['id_fichaGrupo']; ?>)">
+                          <i class="fa fa-pencil" aria-hidden="true"></i></button>
 
-        </td>
+                        </td>
 
-        <td>
-  <button   class="btn btn-primary" name="button" onclick="consultaAprendices(<?php echo $f['id_fichaGrupo'];?>)" data-toggle="modal" data-target="#myModaluno">
-    <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
-  </button>
+                        <td>
+                          <button   class="btn btn-primary" name="button" onclick="consultaAprendices(<?php echo $f['id_fichaGrupo'];?>)" data-toggle="modal" data-target="#myModaluno">
+                            <i class="glyphicon glyphicon-search" aria-hidden="true"></i>
+                          </button>
 
-</td>
-                </tr>
-                  <?php } ?>
-                </tbody>
-              </table>
+                        </td>
+                      </tr>
+                    <?php } ?>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div id="myModaluno" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        Listado
-      </div>
-      <div class="panel-body">
-        <div class="table-responsive">
-          <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-            <thead>
-              <tr>
-                <th class="center">#</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Documento</th>
-                <th>Correo</th>
-              </tr>
-            </thead>
-            <tbody id="tblaprendices">
+      <div id="myModaluno" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              Listado
+            </div>
+            <div class="panel-body">
+              <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <thead>
+                    <tr>
+                      <th class="center">#</th>
+                      <th>Nombres</th>
+                      <th>Apellidos</th>
+                      <th>Documento</th>
+                      <th>Correo</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tblaprendices">
 
-          </table>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-    </div>
-  </div>
-
-
-  </fieldset>
-</div>
-</div>
 
 
 
----------------------------------------------------
-MODAL PARA EDITAR
----------------------------------------------------
+
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -191,27 +175,27 @@ MODAL PARA EDITAR
       </div>
       <div class="modal-body">
         <!-- <form class="form-horizontal"> -->
-      <?php echo form_open('ControllerFicha/EditarFicha', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?>
-          <fieldset>
+        <?php echo form_open('ControllerFicha/EditarFicha', array("class"=>"form-horizontal", "id"=>"formActualizar", "role"=>"form", 'method'=>'post')); ?>
+        <fieldset>
 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
-              </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
+            <div class="col-md-4">
+              <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
             </div>
+          </div>
 
 
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
-                <div class="col-md-4">
-                    <select class="form-control"  title="Ficha" data-live-search="true" id="txtTitularModificar"name="txtTitularModificar" style="" >
-                  <?php foreach ($Ficha as $key):?>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Titular De la Ficha:</label>
+            <div class="col-md-4">
+              <select  title="Ficha" data-live-search="true" id="txtTitularModificar"name="txtTitularModificar" style="width: 100%;" >
+                <?php foreach ($Ficha as $key):?>
                   <option value="<?= $key['id_instructor'] ?>">Documento:
-                  <?=$key['documento'];?> / Nombre completo:
-                  <?=$key['nombre'];?>
+                    <?=$key['documento'];?> / Nombre completo:
+                    <?=$key['nombre'];?>
                   </option>
-                  <?php endforeach ?>
+                <?php endforeach ?>
               </select>
             </div>
           </div>
@@ -219,36 +203,36 @@ MODAL PARA EDITAR
 
 
 
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Numero De Ficha: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtNumeroModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinputmodificar">Numero De Ficha: </label>
+            <div class="col-md-4">
+              <input id="textinputmodificar" name="txtNumeroModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
             </div>
+          </div>
 
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Incio Etapa Lectiva: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtIniciolectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinputmodificar">Incio Etapa Lectiva: </label>
+            <div class="col-md-4">
+              <input id="textinputmodificar" name="txtIniciolectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
             </div>
+          </div>
 
 
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinputmodificar">Fin Etapa Lectiva: </label>
-              <div class="col-md-4">
-                <input id="textinputmodificar" name="txtFinlectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
-              </div>
+          <!-- Text input-->
+          <div class="form-group">
+            <label class="col-md-4 control-label" for="textinputmodificar">Fin Etapa Lectiva: </label>
+            <div class="col-md-4">
+              <input id="textinputmodificar" name="txtFinlectivaModificar" type="text" placeholder="placeholder" class="form-control input-md" required="true">
             </div>
+          </div>
 
-            <!-- Text input-->
+          <!-- Text input-->
 
 
 
-          </fieldset>
+        </fieldset>
         <!-- </form> -->
       </div>
       <div class="modal-footer">

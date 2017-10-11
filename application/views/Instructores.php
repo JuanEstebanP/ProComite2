@@ -21,8 +21,9 @@ include 'Master.php';
           Registro individual
         </div>
 
-        <?php echo form_open('ControllerInstructor/InsertarInstructor', array("class"=>"form-horizontal", "id"=>"formInstructor", "role"=>"form", 'method'=>'post')); ?>
+        <!-- <?php echo form_open('ControllerInstructor/InsertarInstructor', array("class"=>"form-horizontal", "id"=>"formInstructor", "role"=>"form", 'method'=>'post')); ?> -->
         <!-- Text input-->
+        <form class="form-horizontal" >
         <fieldset>
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Nombre: </label>
@@ -63,10 +64,11 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-              <button  name="buttonRegistrar" type="submit" class="btn btn-success">Registrar</button>
+              <button  name="buttonRegistrar" type="button" class="btn btn-success" onclick="regisInstructor()">Registrar</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
+            </form>
+          <!-- <?php echo form_close(); ?> -->
         </div>
         <div class="panel panel-default">
           <div class="panel-heading">

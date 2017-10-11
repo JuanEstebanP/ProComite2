@@ -22,8 +22,9 @@ include 'Master.php';
           Registrar Aprendiz
         </div></center>
 
-        <?php echo form_open('ControllerAprendiz/InsertarAprendiz', array("class"=>"form-horizontal", "id"=>"formAprendiz", "role"=>"form", 'method'=>'post')); ?>
+        <!-- <?php echo form_open('ControllerAprendiz/InsertarAprendiz', array("class"=>"form-horizontal", "id"=>"formAprendiz", "role"=>"form", 'method'=>'post')); ?> -->
         <!-- Text input-->
+        <form class="form-horizontal" >
         <fieldset>
           <div class="form-group">
             <label class="col-md-4 control-label" for="textinput">Documento: </label>
@@ -68,10 +69,11 @@ include 'Master.php';
           <div class="form-group">
             <label class="col-md-4 control-label" for="button1id"></label>
             <div class="col-md-8">
-              <button name="buttonRegistrar" type="submit" class="btn btn-success">Registrar</button>
+              <button name="buttonRegistrar" type="button" class="btn btn-success" onclick="regisAprendi()">Registrar</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
+            </form>
+          <!-- <?php echo form_close(); ?> -->
         </div>
 
         <div class="panel panel-default">
@@ -216,5 +218,5 @@ MODAL PARA EDITAR
 
   </div>
 </div>
-<script src="Plantilla/assets/js/Validaciones/AprendicesValid.js"></script>
+<!-- <script src="Plantilla/assets/js/Validaciones/AprendicesValid.js"></script> -->
 <script src="Plantilla/assets/js/Aprendices.js"></script>

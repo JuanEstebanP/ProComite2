@@ -7,11 +7,13 @@ function Regis(){
   var lugar =$ ('#lugar').val();
   var lista = [];
 
+  var letras = /^[a-zA-Z]+$/;
+
   $(".listaapren:checked").each(function() {
     lista.push(this.value);
   });
-  if (titulo == "") {
-    alertify.error("Campo titulo obligatorio");
+  if (letras.test($('#titulo').val()) == false) {
+    alertify.error("Campo titulo incorrecto o vacío");
     return false;
   }else   if (fecha == "") {
         alertify.error("Campo fecha obligatorio");
@@ -19,8 +21,8 @@ function Regis(){
   }else   if (hora == "" ) {
         alertify.error("Campo hora obligatorio");
         return false;
-  }else   if (lugar == "") {
-        alertify.error("Campo lugar obligatorio");
+  }else   if (letras.test($('#lugar').val()) == false) {
+        alertify.error("Campo lugar incorrecto o vacío");
         return false;
   }else   if (lista.length <= 0) {
     alertify.error("Seleccione una ficha");
@@ -105,4 +107,11 @@ function fichasXprogramacion(data) {
   }).fail(function(data){
     alert("error");
   });
+}
+
+function pdf(id){
+var valor = id;
+console.log(valor);
+location.href = 'http://localhost/ProComite2/index.php/Controllerlistprograma/generarPDFtodo/' + valor;
+
 }

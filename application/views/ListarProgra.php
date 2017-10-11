@@ -47,7 +47,7 @@
                     <td><button class="btn btn-primary" type="button" name="button" onclick="consultarInstructores(<?php echo $k['id_programacion']; ?>)" data-toggle="modal" data-target="#myModaluno"><i class="fa fa-search" aria-hidden="true"></i></button></td>
 
                     <td>
-                                <a  class="btn btn-primary" href="Controllerlistprograma/generarPDFtodo/"><i class="fa fa-print"></i></a>
+                                  <td><button type="button" class="btn btn-primary" onclick="pdf(<?php echo  $k['id_programacion'];?>)" value="<?php echo  $k['id_programacion'];?>"><i class="fa fa-print"></i></button></td>
 
                     </td>
 

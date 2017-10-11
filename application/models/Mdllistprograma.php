@@ -25,18 +25,24 @@ function editarProgramacion($txtidprogramacionModificar,$txttituloModificar,$txt
 {
   return $this->db->query("call sp_EditarProgramacion('$txtidprogramacionModificar','$txttituloModificar', '$txtfechaModificar', '$txthoraModificar', '$txtlugarModificar')");
 }
-function consultarProgramación()
+function consultarProgramacion($valor)
 {
-  return $this->db->query("SELECT * FROM tbl_programacioncomite")->result_array();
+ return $this->db->query("SELECT * FROM tbl_programacioncomite where id_programacion='$valor'")->result_array();
 }
 
-function instructores()
+function instructores($valor)
 {
-  return $this->db->query("SELECT * FROM tbl_instructores")->result_array();
+ return $this->db->query("SELECT * FROM tbl_comite c
+join tbl_instructores i on i.id_instructor=c.fk_instructor
+join tbl_programacioncomite pc on pc.id_programacion=c.fk_programacion
+WHERE fk_programacion = '$valor'")->result_array();
 }
-function fichas()
+function fichas($valor)
 {
-  return $this->db->query("SELECT * FROM tbl_fichaproyecto")->result_array();
+ return $this->db->query("SELECT * FROM tbl_dtllproyectoprogra dp
+join tbl_programacioncomite p on p.id_programacion=dp.id_programacion
+join tbl_fichaproyecto fp on fp.id_ficha= dp.id_ficha
+join tbl_estados e on e.id_estado=fp.estado where dp.id_programacion = '$valor'")->result_array();
 }
 
 function fichasXprogramacion($data)

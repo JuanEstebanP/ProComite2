@@ -26,7 +26,6 @@ class ControllerFichaproyecto extends CI_Controller
 
   function InsertarFichaproyecto()
   {
-
     $txtNombre = $this->input->post('txtNombre');
     $txtObjetivo = $this->input->post('txtObjetivo');
     $txtVersion = $this->input->post('txtVersion');
@@ -38,9 +37,13 @@ class ControllerFichaproyecto extends CI_Controller
     $destino =  $carpeta.$_FILES['file_pr']['name'];
     copy($_FILES['file_pr']['tmp_name'],$destino);
 
-    $this->MdlFichaproyecto->InsertarFichaproyecto( $txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtFichagrupo,$txtEstado);
+
+     $fun = $this->MdlFichaproyecto->InsertarFichaproyecto( $txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtFichagrupo,$txtEstado);
+     echo json_encode($fun);
     redirect('ControllerFichaproyecto?ok=1');
+
   }
+
   function Editar(){
 
     $dt = $this->input->post('id_ficha');

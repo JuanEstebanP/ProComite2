@@ -37,26 +37,7 @@ class ControllerProgramacion extends CI_Controller
     echo json_encode(array("status" => TRUE));
     $this->load->library('My_PHPMailer');
 
-    $mail = new PHPMailer();
-    $mail->IsSMTP();
-    $mail->SMTPAuth   = true;
-    $mail->SMTPSecure = 'ssl';
-    $mail->Host       = 'ssl://smtp.gmail.com';
-    $mail->Port       = 465;
 
-    $mail->Username   = 'procomiteevaluacion@gmail.com';
-    $mail->Password   = 'evaluacion2017';
-    $mail->setFrom('procomiteevaluacion@gmail.com','ProComité');
-    $mail->addAddress('romerohm1996@gmail.com');
-    $mail->Subject = "Email subject";
-    $mail->Body = 'Hello, <b>my friend</b>! This message uses HTML!';
-
-    if(!$mail->send()) {
-      echo 'Message was not sent.';
-      echo 'Mailer error: ' . $mail->ErrorInfo;
-    } else {
-      echo 'Message has been sent.';
-    }
   }
 
 

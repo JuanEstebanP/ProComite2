@@ -1,8 +1,6 @@
 
 $(document).ready(function() { $("#txtFicha1").select2(); });
 
-
-
 $('#hola').click(function () {
   var grup =$('#txtFicha1').val();
   var lista = [];

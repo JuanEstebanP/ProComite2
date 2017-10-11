@@ -26,21 +26,22 @@ include 'Master.php';
   <fieldset>
 
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
-  <label class="control-label" for="textinput" style="float:right; margin-top:3%;">Fichas Grupos:</label>
+  <label class="control-label" for="textinput" style="float:right; margin-top:5%;">Fichas Grupos:</label>
 </div>
 
-<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px;">
-<div class="form-group">
-  <select class="form-control" data-live-search="true" id="txtFicha1" name="txtFicha" style="width:30%; margin-top:2%;" >
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:60px; margin-top:2%;">
+<div class="form-group" >
+  <select  id="txtFicha1" name="txtFicha" style="width:30%;">
     <option value=""></option>
     <?php foreach ($Ficha as $key):?>
-      <option value="<?= $key['id_fichaGrupo'] ?>">Nombre:
+      <option value="<?= $key['id_fichaGrupo'] ?>">Numero:
         <?=$key['numeroFicha'];?>
       </option>
     <?php endforeach ?>
   </select>
 </div>
 </div>
+
 
 
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height:40px;">

@@ -39,40 +39,30 @@ class Controllerlistprograma extends CI_Controller {
   }
 
 
-  public function generarPDFtodo(){
+  public function generarPDFtodo($valor){
 
 
-    $list = $this->Mdllistprograma->consultarProgramación();
-    $cuerpo = "";
-    foreach ($list as $tabla) {
-      $cuerpo .= "<tr><td style=text-align:center;'>".$tabla['id_programacion']."</td>
-      <td style='text-align:center;'>".$tabla['titulo']."</td>
-      <td style='text-align:center;'>".$tabla['fecha']."</td>
-      <td style='text-align:center;'>".$tabla['hora']."</td>
-      <td style='text-align:center;'>".$tabla['lugar']."</td></tr>";
-    }
-
-    $list2 = $this->Mdllistprograma->instructores();
+    $list2 = $this->Mdllistprograma->instructores($valor);
     $cuerpo1 = "";
     foreach ($list2 as $tabla) {
-      $cuerpo1 .= "<tr><td style=text-align:center;'>".$tabla['id_instructor']."</td>
+      $cuerpo1 .= "<tr><td style='text-align:center;'>".$tabla['id_instructor']."</td>
       <td style='text-align:center;'>".$tabla['nombre']."</td>
       <td style='text-align:center;'>".$tabla['apellido']."</td>
       <td style='text-align:center;'>".$tabla['documento']."</td>
       <td style='text-align:center;'>".$tabla['correo']."</td></tr>";
     }
 
-    $list3 = $this->Mdllistprograma->fichas();
+    $list3 = $this->Mdllistprograma->fichas($valor);
     $cuerpo2 = "";
     foreach ($list3 as $tabla) {
-      $cuerpo2 .= "<tr><td style=text-align:center;'>".$tabla['id_ficha']."</td>
+      $cuerpo2 .= "<tr><td style='text-align:center;'>".$tabla['id_ficha']."</td>
       <td style='text-align:center;'>".$tabla['titulo']."</td>
       <td style='text-align:center;'>".$tabla['obj_general']."</td>
       <td style='text-align:center;'>".$tabla['version']."</td>
-      <td style='text-align:center;'>".$tabla['observacion']."</td></tr>";
+      <td style='text-align:center;'>".$tabla['observacion']."</td>
+      <td style='text-align:center;'>".$tabla['nombreEstado']."</td></tr>";
+
     }
-
-
 
     require_once('TCPDF/tcpdf.php');
 
@@ -86,7 +76,7 @@ class Controllerlistprograma extends CI_Controller {
     // $pdf->SetSubject('TCPDF Tutorial');
     // $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
     // set default header data
-    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "Reporte", "Comite de evaluación", array(0,64,255), array(0,64,128));
+    $pdf->SetHeaderData("", PDF_HEADER_LOGO_WIDTH, "Reporte", "Comite de evaluación", array(0,64,255), array(0,64,128));
     $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
     // set header and footer fonts
@@ -122,57 +112,131 @@ class Controllerlistprograma extends CI_Controller {
     // set text shadow effect
     $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
-    // Set some content to print
-    $html = " <table>
+    $list = $this->Mdllistprograma->consultarProgramacion($valor);
+
+    $cuerpo = "";
+    foreach ($list as $tabla) {
+      $cuerpo .= "
+      <tr><td style='text-align:center;'>".$tabla['id_programacion']."</td>
+      <td style='text-align:center; color:red;'>".$tabla['titulo']."</td>
+      <td style='text-align:center;'>".$tabla['fecha']."</td>
+      <td style='text-align:center;'>".$tabla['hora']."</td>
+      <td style='text-align:center;'>".$tabla['lugar']."</td></tr>";
+    }
+
+
+    $html = <<<EOF
+<style>
+        .informations {
+            padding: 10px;
+            margin: 10px;
+            border: 1px dotted black;}
+        .informations table {
+            margin-top: 10px;}
+        h2 {
+            font-variant: small-caps;
+            text-align: center;
+            font-size: 19px;
+            font-weight: bold;
+            padding: 0px 0px 2px 5px;
+            margin: 15px 0px 20px 0px;
+            color: #000000;
+            border-top: 1px dotted black;
+            border-bottom: 1px dotted black;}
+
+        h3 {
+            width: 250px;
+            font-variant: small-caps;
+            font-size: 15px;
+            font-weight: bold;
+            padding: 0px 0px 0px 10px;
+            color: #225D6D;
+            border-bottom: 1px solid black;}
+
+          th{
+            border-bottom: 1px solid black;
+            font-size:16px;
+            text-align:center;
+            color: #225D6D;
+            }
+
+          td{
+            text-align:center;
+            font-size:14px;
+          }
+</style>
+
+            <div id='infos' class='informations'>
+                <h3>Programación comité</h3>
+                <br/>
+                <table id='tablaUno'>
                 <thead>
-  <tr>
-  <th>#</th>
-  <th>Titulo</th>
-  <th>fecha</th>
-  <th>Hora</th>
-  <th>Lugar</th>
-    </tr>
-  </thead>
-  <tbody>
-  ".$cuerpo."
-  </tbody>
-</table>
-<div>
-<table>
-            <thead>
-<tr>
-<th>#</th>
-<th>Nombre</th>
-<th>Apellido</th>
-<th>Documento</th>
-<th>Correo</th>
-</tr>
-</thead>
-<tbody>
-".$cuerpo1."
-</tbody>
-</table>
-</div>
-<div>
-<table>
-            <thead>
-<tr>
-<th>#</th>
-<th>Titulo</th>
-<th>Objetivo</th>
-<th>Versión</th>
-<th>observacion</th>
-</tr>
-</thead>
-<tbody>
-".$cuerpo2."
-</tbody>
-</table>
-</div>";
+                    <tr>
+                      <th>#</th>
+                      <th>Título</th>
+                      <th>fecha</th>
+                      <th>Hora</th>
+                      <th>Lugar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  ".$cuerpo
+                </tbody>
+                </table>
+            </div>
+
+
+            <div id='infos' class='informations'>
+                <h3>Asistencia</h3>
+                <br/>
+                <table id='tablaUno'>
+                 <thead>
+                     <tr>
+                       <th>#</th>
+                       <th>Nombre</th>
+                       <th>Apellidos</th>
+                       <th>Documento</th>
+                       <th>Correo</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                   ".$cuerpo1
+                 </tbody>
+                 </table>
+
+            </div>
+
+            <div id='infos' class='informations'>
+                <h3>Fichas en comité</h3>
+                <br/>
+                <table id='tablaUno'>
+                <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Aprellidos</th>
+                      <th>Documento</th>
+                      <th>Correo</th>
+                      <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  ".$cuerpo2
+                </tbody>
+                </table>
+            </div>
+
+EOF;
+
 
 
     // Print text using writeHTMLCell()
-    $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+    $pdf->writeHTMLCell($w = 0, $h= 0, $x= '',$y='', $html);
+
+    // echo $html;
+    //
+    // exit;
+
 
     $pdf->Output('InformeComite.pdf', 'I');
 
