@@ -1,3 +1,4 @@
+$(document).ready(function() { $("#txtEstado").select2(); });
 function DatosF(data){
   $('#ModalEvaluar').modal();
 
@@ -36,26 +37,33 @@ function trazabi(data) {
   });
 }
 
-$("#deta").on("click",function() {
+function casi() {
 var id = $("#idF").val();
 var ide = $("#txtEstado").val();
 var obs = $("#txtobserva").val();
 
+
+if (obs == "") {
+alertify.error("Campo observación incorrecto");
+}
+else {
 $.ajax({
   url: 'ControllerEvaluarFichas/InsertardtllComite',
   type: 'POST',
-  dataType: 'JSON',
   data:{idF:id,
     txtEstado:ide,
-    txtobserva:obs}
+    txtobserva:obs},
+    dataType: 'JSON'
 }).done(function(data){
-alert("Correcto");
+  swal(
+    'Exitoso!',
+    'Ficha evaluada correctamente!',
+    'success'
+  );
+  setTimeout(function(){location.reload()}, 1300);
 }).fail(function(data){
-
-alert("error");
-
-});
+  alert("Error Fatal");
 
 });
-
-$(document).ready(function() { $("#txtEstado").select2(); });
+  }
+}

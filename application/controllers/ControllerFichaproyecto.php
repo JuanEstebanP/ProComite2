@@ -40,7 +40,7 @@ class ControllerFichaproyecto extends CI_Controller
 
      $fun = $this->MdlFichaproyecto->InsertarFichaproyecto( $txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtFichagrupo,$txtEstado);
      echo json_encode($fun);
-    redirect('ControllerFichaproyecto?ok=1');
+    redirect('ControllerFichaproyecto');
 
   }
 
@@ -64,7 +64,7 @@ class ControllerFichaproyecto extends CI_Controller
       $txtFichagrupoM = $this->input->post('txtFichagrupoM');
     $txtEstado = $this->input->post('txtEstadoModificar');
     $this->MdlFichaproyecto->EditarFichaproyecto($txtId, $txtNombre,$txtObjetivo,$txtVersion,$destino,$txtCliente, $txtFichagrupoM ,$txtEstado);
-    redirect('ControllerFichaproyecto?ok=1');
+    redirect('ControllerFichaproyecto');
   }
 
   function consultarAprendiz()

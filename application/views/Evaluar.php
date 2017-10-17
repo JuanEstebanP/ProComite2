@@ -89,58 +89,52 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
         <h4 class="modal-title">Evaluar</h4>
       </div>
       <div class="modal-body">
-        <!-- <form class="form-horizontal"> -->
-        <!-- <?php echo form_open('ControllerEvaluarFichas/InsertardtllComite', array("class"=>"form-horizontal", "role"=>"form", "method"=>"post")); ?> -->
 
+        <form class="">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
+              <label class="control-label" for="textarea">ID: </label>
+            </div>
 
+            <br>
 
-<form class="">
-
-        <fieldset>
-
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textarea">ID: </label>
-            <div class="col-md-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
               <input type="text" name="idF" id="idF" class="form-control input-md" readonly>
             </div>
-          </div>
 
-          <!-- Select Basic -->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="selectbasic ">Estado: </label>
-            <div class="col-md-4">
+            <br>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
+               <label class="control-label" for="selectbasic ">Estado: </label>
+            </div>
+<br><br>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
               <select  name="EstadosF" class="form-control" id="txtEstado" style="width: 100%;">
-                <option value=""></option>
-                <?php foreach($EstadosF as $fi): ?>
-                  <option value="<?= $fi['id_estado']; ?>">
-                    <?=$fi['nombreEstado'];?>
-                  </option>
-                <?php endforeach ?>
+                    <option value=""></option>
+                      <?php foreach($EstadosF as $fi): ?>
+                          <option value="<?= $fi['id_estado']; ?>">
+                              <?=$fi['nombreEstado'];?>
+                    </option>
+                    <?php endforeach ?>
               </select>
             </div>
-          </div>
 
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
+                <label class="control-label" for="textarea">Observaciones: </label>
+            </div>
 
-
-          <!-- Textarea -->
-
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="textarea">Observaciones: </label>
-            <div class="col-md-4">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:1%;">
               <textarea class="form-control"  name="textarea" id="txtobserva" ></textarea>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit"   class="btn btn-success " id="deta">Enviar</button>
-
-          </div>
-        </fieldset>
+            <br><br><br><br>
         </form>
-        <!-- <?php echo form_close(); ?> -->
 
       </div>
 
+<br><br><br><br>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" onclick="casi();" >Enviar</button>
+        </div>
     </div>
   </div>
 </div>

@@ -8,6 +8,10 @@ http://creativecommons.org/licenses/by/3.0/
 /*----------------------------------------------
     COMMON  STYLES
 ------------------------------------------------*/
+textarea{
+  resize: none;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background: #323232;
