@@ -39,6 +39,7 @@ include 'Master.php';
                           <th>Estado</th>
                           <th>Evaluar</th>
                           <th>Consultar fichas</th>
+                          <th>Observaciones</th>
 
                         </tr>
                       </thead>
@@ -58,6 +59,10 @@ include 'Master.php';
                             </td>
                             <td>
                               <button data-toggle="modal" data-target="#myModaluno" type="button" name="button" class="btn btn-primary"  onclick="trazabi(<?PHP echo $f['id_ficha']; ?>)"><i class="fa fa-search"></i></button>
+                            </td>
+
+                            <td>
+                              <button data-toggle="modal" data-target="#obsanterior" type="button" name="button" class="btn btn-primary"  onclick="obs(<?PHP echo $f['id_ficha']; ?>)"><i class="fa fa-eye-slash"></i></button>
                             </td>
 
 
@@ -132,9 +137,12 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
       </div>
 
 <br><br><br><br>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success" onclick="casi();" >Enviar</button>
-        </div>
+<div class="modal-footer">
+
+ <button type="button"   class="btn btn-success " id="deta" onclick="detalle()">Enviar</button>
+
+
+    </div>
     </div>
   </div>
 </div>
@@ -158,6 +166,32 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
           </tr>
         </thead>
         <tbody id="tblTrazabilidad">
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="obsanterior" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Listado
+  </div>
+  <div class="panel-body">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+          <tr>
+            <th class="center">Fecha Observación</th>
+            <th class="center">Observación</th>
+          </tr>
+        </thead>
+        <tbody id="obsant">
 
           </tbody>
         </table>

@@ -121,20 +121,6 @@
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
       <li>
-      <a href="#"><i class="fa fa-qrcode"></i> Comité <span class="fa arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li>
-          <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Registrar Programación</a>
-        </li>
-        <li>
-          <a href="<?php base_url(); ?>Controllerlistprograma"><i class="fa fa-list" aria-hidden="true"></i>Listar programación</a>
-        </li>
-        <li>
-          <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
-        </li>
-      </ul>
-      </li>
-      <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
       </li>
       <li>
@@ -164,13 +150,28 @@
           <a href="<?php base_url(); ?>ControllerLlenarfichapro"><i class="fa fa-plus-square" aria-hidden="true"></i>Asociar aprendices</a>
         </li>
         <li>
-          <a href="<?php base_url(); ?>ControllerEvaluarFichas"><i class="fa fa-edit"></i> Evaluar Ficha</a>
-        </li>
-        <li>
           <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-desktop"></i> Clientes</a>
         </li>
       </ul>
 
+    </li>
+
+    <li>
+    <a href="#"><i class="fa fa-qrcode"></i> Comité <span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+      <li>
+        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Registrar Programación</a>
+      </li>
+      <li>
+        <a href="<?php base_url(); ?>Controllerlistprograma"><i class="fa fa-list" aria-hidden="true"></i>Listar programación</a>
+      </li>
+      <li>
+        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
+      </li>
+      <li>
+        <a href="<?php base_url(); ?>ControllerEvaluarFichas"><i class="fa fa-edit"></i> Evaluar Ficha</a>
+      </li>
+    </ul>
     </li>
   </ul>
 

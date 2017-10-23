@@ -7,7 +7,7 @@ function Regis(){
   var lugar =$ ('#lugar').val();
   var lista = [];
 
-  var letras = /^[a-zA-Z]+$/;
+  var letras =  /^([.a-zA-ZñÑáéíóúÁÉÍÓÚ/\s/a-zA-ZñÑáéíóúÁÉÍÓÚ,:;()0-9.])+$/;
 
   $(".listaapren:checked").each(function() {
     lista.push(this.value);
@@ -41,7 +41,19 @@ function Regis(){
         )
         setTimeout(function(){location.reload()}, 1300);
 
-      });
+      }).fail(function(data){
+        swal(
+          'Exitoso!',
+          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'success'
+        )
+        setTimeout(function(){location.reload()}, 1300);
+
+
+
+      })
+
+
   }
 
 
@@ -112,6 +124,6 @@ function fichasXprogramacion(data) {
 function pdf(id){
 var valor = id;
 console.log(valor);
-location.href = 'http://localhost/ProComite2/index.php/Controllerlistprograma/generarPDFtodo/' + valor;
+location.href = 'http://localhost:81/ProComite2/index.php/Controllerlistprograma/generarPDFtodo/' + valor;
 
 }

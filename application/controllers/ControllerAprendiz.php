@@ -78,9 +78,10 @@ class ControllerAprendiz extends CI_Controller
         $apellido = trim($datos[1]);
         $documento = trim($datos[2]);
         $correo = trim($datos[3]);
+        $estado = trim($datos[4]);
 
         //guardamos en base de datos la línea leida
-        $this->MdlAprendiz->Importar($nombre,$apellido,$documento,$correo);
+        $this->MdlAprendiz->Importar($nombre,$apellido,$documento,$correo,$estado);
 
         //cerramos condición
       }
@@ -90,7 +91,6 @@ class ControllerAprendiz extends CI_Controller
       $i++;
       //cerramos bucle
     }
-    redirect('ControllerAprendiz?ok=1');
   }
 }
 ?>

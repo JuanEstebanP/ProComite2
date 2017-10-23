@@ -43,6 +43,14 @@ class ControllerEvaluarFichas extends CI_Controller
     echo json_encode($traza);
   }
 
+  function obsanterior()
+{
+$dt = $this->input->post('id');
+$obs = $this->MdlEvaluarFicha->obsanterior($dt);
+echo json_encode($obs);
+
+}
+
 
 
 

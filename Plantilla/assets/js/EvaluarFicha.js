@@ -37,7 +37,7 @@ function trazabi(data) {
   });
 }
 
-function casi() {
+function detalle() {
 var id = $("#idF").val();
 var ide = $("#txtEstado").val();
 var obs = $("#txtobserva").val();
@@ -66,4 +66,23 @@ $.ajax({
 
 });
   }
+}
+
+function obs(data){
+var valor = data;
+console.log(valor);
+$.ajax({
+url: 'ControllerEvaluarFichas/obsanterior',
+type: "POST",
+data: {id:valor},
+dataType: "JSON"
+}).done(function(data){
+$("#obsant").html("");
+$.each(data, function(i, v){
+$("#obsant").append("<tr><td>"+v.fecha+"</td><td>"+v.observacion+"</td></tr>")
+
+});
+
+});
+
 }
