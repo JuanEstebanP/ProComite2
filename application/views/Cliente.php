@@ -5,7 +5,7 @@ include 'Master.php';
 <div id="page-wrapper" >
   <div class="header">
     <h1 class="page-header">
-      Cliente <small>Best form elements.</small>
+      Cliente 
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>

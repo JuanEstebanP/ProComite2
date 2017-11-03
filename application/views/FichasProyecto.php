@@ -17,18 +17,12 @@ include 'Master.php';
 
   <div id="page-inner">
     <div class="col-lg-12">
-      <div class="panel panel-default">
+      <div class="panel panel-default" style="height:400px;">
         <div class="panel-heading"><center>
           Registrar Ficha De Proyecto
         </div></center>
 
-        <!-- <?php echo form_open('ControllerFichaproyecto/InsertarFichaproyecto', array("class"=>"form-horizontal", "id"=>"formFichaproyecto", 'method'=>'get',"enctype"=>"multipart/form-data")); ?> -->
-        <!-- Text input-->
-        <form  id="formFichaproyecto" class="form-horizontal" action="<?php base_url(); ?>ControllerFichaproyecto/InsertarFichaproyecto" method="post" enctype="multipart/form-data">
-
-
-
-          <fieldset>
+        <form  id="formFichaproyecto" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Cliente Del Proyecto:</label>
@@ -49,37 +43,37 @@ include 'Master.php';
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Nombre Del Poyecto: </label>
               <div class="col-md-4">
-                <input id="txtNombre" name="txtNombre" type="text" placeholder="11524" class="form-control input-md" required="true">
+                <input id="txtNombre" name="txtNombre" type="text" placeholder="SAM" class="form-control input-md" >
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Objetivo General:</label>
               <div class="col-md-4">
-                <input id="txtObjetivo" name="txtObjetivo" type="text" placeholder="Falta alcance."  class="form-control input-md" required="true">
+                <input id="txtObjetivo" name="txtObjetivo" type="text" placeholder="Falta alcance."  class="form-control input-md" >
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Ficha:</label>
               <div class="col-md-4">
-                <input type="file" name="file_pr" value="Agregar ficha">
+                <input type="file" name="file_pr" id="file_pr">
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
               <div class="col-md-4">
-                <input id="txtVersion" name="txtVersion" type="text" placeholder="1,1..."  class="form-control input-md" required="true">
+                <input id="txtVersion" name="txtVersion" type="text" placeholder="1,1..."  class="form-control input-md" >
               </div>
             </div>
 
-            <input id="txtEstado" name="txtEstado" type="hidden"  value="1"  class="form-control input-md" required="true">
+
 
             <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput">Ficha De Grupo</label>
+              <label class="col-md-4 control-label" for="textinput">Ficha De Grupo:</label>
               <div class="col-md-4">
-                <select class="form-control"  id="txtFichagrupo" name="txtFichagrupo" required="true" >
+                <select class="form-control"  id="txtFichagrupo" name="txtFichagrupo"  >
                   <option value=""></option>
                   <?php foreach ($ficha as $key):?>
                     <option value="<?= $key['id_fichaGrupo'] ?>">Numero:
@@ -94,13 +88,14 @@ include 'Master.php';
             <!-- Button (Double) -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="button1id"></label>
-              <div class="col-md-8">
-                <button name="buttonRegistrar" name="file_pr" type="submit" class="btn btn-success">Registrar</button>
-              </div>
+
             </div>
-          </fieldset>
-          <?php echo form_close(); ?>
+
+            <div class="col-lg-12" >
+              <center><button  type="button" onclick="regisProyecto()" class="btn btn-success" >Registrar</button></center>
+            </div>
         </form>
+
       </div>
 
 
@@ -219,7 +214,7 @@ MODAL PARA EDITAR -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinputmodificar">ID: </label>
               <div class="col-md-4">
-                <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" required="true">
+                <input id="textinputmodificar" name="txtIdModificar" type="text" class="form-control input-md" readonly="" >
               </div>
             </div>
 
@@ -325,5 +320,5 @@ MODAL PARA EDITAR -->
 
 </div>
 </div>
-<script src="Plantilla/assets/js/Validaciones/ProyectoValid.js"></script>
+<!-- <script src="Plantilla/assets/js/Validaciones/ProyectoValid.js"></script> -->
 <script src="Plantilla/assets/js/FichasProyectos.js"></script>

@@ -1,60 +1,73 @@
-// function regisProyecto() {
-//
-//   var txtCliente =$('#txtCliente').val();
-//   var txtNombre =$('#txtNombre').val();
-//   var txtObjetivo =$('#txtObjetivo').val();
-//   var file_pr =$('#file_pr').val();
-//   var txtVersion =$('#txtVersion').val();
-//   var txtFichagrupo =$('#txtFichagrupo').val();
-//   var letras = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/;
-//   var numeros = /^[0-9]+$/;
-//   var ext = (file_pr.substring(file_pr.lastIndexOf("."))).toLowerCase();
-//
-// //   if (ext == '.pdf') {
-// // alertify.error("Extensión no permitida");
-// //   }else if (txtCliente == "") {
-// //     alertify.error("weqeq");
-// //     return;
-// //   }
-//
-//
-//   $.ajax({
-//     url: 'ControllerFichaproyecto/InsertarFichaproyecto',
-//     type: 'POST',
-//     dataType: 'JSON',
-//     data: {txtCliente:txtCliente,
-//        txtNombre:txtNombre,
-//        txtObjetivo:txtObjetivo,
-//        file_pr:file_pr,
-//        txtVersion:txtVersion,
-//        txtFichagrupo:txtFichagrupo}
-//     }).done(function(data){
-//       console.log(data);
-//     }).fail(function(data){
-//
-//     });
-//
-//
-// }
-$("#buttonRegistrar").on("click",function() {
- nom =  $("#txtNombre").val();
- if (nom == "hola"  ) {
-   alert("llene el campo ");
- }
- else {
-   var formulario =$("#formFichaproyecto").serialize();
+function regisProyecto() {
+	var  cliente =$('#txtCliente').val();
+	var  nombre =$('#txtNombre').val();
+	var  objetivo=$('#txtObjetivo').val();
+	var  version=$('#txtVersion').val();
+	var  ficha=$('#txtFichagrupo').val();
+	var  archivo=$('#file_pr').val();
 
-   $.ajax({
-     url: 'ControllerFichaproyecto/InsertarFichaproyecto',
-     type: 'POST',
-     data: formulario,
-   }).done(function(data){
-     console.log(data);
-   }).fail(function(data){
-     console.log(data);
-   });
- }
-});
+	if ( cliente == "" ) {
+    alertify.error("Campo cliente incorrecto o vacío");
+    return false;
+  }else if (nombre == "") {
+    alertify.error("Campo nombre proyecto incorrecto o vacío");
+    return false;
+  }else if (objetivo == "") {
+    alertify.error("Campo objetivo incorrecto o vacío");
+    return false;
+}else if (archivo == "") {
+	alertify.error("Campo archivo incorrecto o vacío");
+	return false;
+}else if (version == "") {
+    alertify.error("Campo version incorrecto o vacío");
+    return false;
+  }else if (ficha == ""){
+		alertify.error("Campo ficha grupo incorrecto o vacío");
+		return false;
+	}
+	else {
+
+
+		var formData = new FormData($("#formFichaproyecto")[0]);
+
+    // var file_data = $('#file_pr').prop('files')[0];
+
+    // formData.append('file', file_data);
+    // alert(formData);
+		$.ajax({
+			url:'ControllerFichaproyecto/InsertarFichaproyecto',
+          type: 'post',
+          data: formData,
+          dataType: 'text',  // what to expect back from the PHP script, if anything
+                cache: false,
+                contentType: false,
+                processData: false,
+			success:function(){
+				swal(
+					'Exitoso!',
+					'Ficha de proyecto registrada exitosamente!',
+					'success'
+				)
+				setTimeout(function(){location.reload()}, 1300);
+
+
+				/*if (resp==="Exito") {
+					alert(resp);
+					$("#msg-error").hide();
+					$("#form-create-usuario")[0].reset();
+				}else if(resp==="Error"){
+					alert(resp);
+				}
+				else{
+					$(".list-errors").html(resp);
+					$("#msg-error").show();
+				}*/
+			}
+
+		});
+
+}
+}
 
 
   function Editar(data){
@@ -100,6 +113,69 @@ $("#buttonRegistrar").on("click",function() {
       alert("fail");
     });
   }
+  function inicio(){
+	$("#msg-error").hide();
+	mostrarDatos("");
+	$("#buscar").keyup(function(){
+		buscar = $("#buscar").val();
+		mostrarDatos(buscar);
+	});
+	$("#btnbuscar").click(function(){
+		mostrarDatos("");
+		$("#buscar").val("");
+	});
+	$("#btnactualizar").click(actualizar);
+	$("#form-create-empleado").submit(function (event){
+
+		event.preventDefault();
+		var formData = new FormData($("#form-create-empleado")[0]);
+		$.ajax({
+			url:$("form").attr("action"),
+			type:$("form").attr("method"),
+			data:formData,
+			cache:false,
+			contentType:false,
+			processData:false,
+
+			success:function(respuesta){
+				if (respuesta==="exito") {
+					alert("Los datos han sido guardados correctamente");
+					$("#msg-error").hide();
+					$("#form-create-empleado")[0].reset();
+				}
+				else if(respuesta==="error"){
+					alert("Los datos no se pudo guardar");
+				}
+				else{
+					$("#msg-error").show();
+					$(".list-errors").html(respuesta);
+				}
+			}
+		});
+	});
+
+	$("body").on("click","#listaEmpleados a",function(event){
+		event.preventDefault();
+		idsele = $(this).attr("href");
+		nombressele = $(this).parent().parent().children("td:eq(1)").text();
+		apellidossele = $(this).parent().parent().children("td:eq(2)").text();
+		dnisele = $(this).parent().parent().children("td:eq(3)").text();
+		telefonosele = $(this).parent().parent().children("td:eq(4)").text();
+		emailsele = $(this).parent().parent().children("td:eq(5)").text();
+
+		$("#idsele").val(idsele);
+		$("#nombressele").val(nombressele);
+		$("#apellidossele").val(apellidossele);
+		$("#dnisele").val(dnisele);
+		$("#telefonosele").val(telefonosele);
+		$("#emailsele").val(emailsele);
+	});
+	$("body").on("click","#listaEmpleados button",function(event){
+		idsele = $(this).attr("value");
+		eliminar(idsele);
+	});
+}
+
 
 
   $(document).ready(function() { $("#txtCliente").select2(); });

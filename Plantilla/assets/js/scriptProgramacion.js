@@ -36,7 +36,7 @@ function Regis(){
       }).done(function (data){
         swal(
           'Exitoso!',
-          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'La fichas de grupo fueron asociadas correctamente a la programación '+ titulo + '!',
           'success'
         )
         setTimeout(function(){location.reload()}, 1300);
@@ -44,7 +44,7 @@ function Regis(){
       }).fail(function(data){
         swal(
           'Exitoso!',
-          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'La fichas de grupo fueron asociadas correctamente a la programación '+ titulo + '!',
           'success'
         )
         setTimeout(function(){location.reload()}, 1300);

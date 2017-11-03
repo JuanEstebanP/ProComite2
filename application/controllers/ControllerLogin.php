@@ -3,6 +3,7 @@
 <?php
 class ControllerLogin extends CI_Controller
 {
+
   function __construct()
   {
     parent::__construct();
@@ -13,14 +14,8 @@ class ControllerLogin extends CI_Controller
 
   function index()
   {
-
-
-
+    $this->load->view('Login');
   }
-
-
-
-
 
 
 }

@@ -35,7 +35,7 @@ function regisAprendi() {
       }).done(function(data){
         swal(
           'Exitoso!',
-          'Los aprendices seleccionados se asociaron a la ficha seleccionada!',
+          'Aprendiz seleccionado exitosamente!',
           'success'
         )
         setTimeout(function(){location.reload()}, 1300);

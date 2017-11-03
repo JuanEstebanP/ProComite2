@@ -30,7 +30,7 @@ function regisFichas() {
       }).done(function(data){
         swal(
           'Exitoso!',
-          'Ficha de grupo agragada satisfactoriamente!',
+          'Ficha de grupo registrada satisfactoriamente!',
           'success'
         );
         setTimeout(function(){location.reload()}, 1300);

@@ -2,7 +2,7 @@
 include 'Master.php';
 ?>
 
-<div id="page-wrapper" >
+<div id="page-wrapper">
   <div class="header">
     <h1 class="page-header">
       Fichas <small></small>

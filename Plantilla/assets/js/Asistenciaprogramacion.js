@@ -14,7 +14,7 @@ if (lista.length > 0) {
     if (data.funciono) {
       swal(
         'Exitoso!',
-        'Los instructores seleccionados asistieron a la programacion! '+ "  " + pro,
+        'Los instructores seleccionados asistieron a la programación! '+ "  " + pro,
         'success'
       )
       setTimeout(function(){location.reload()}, 1300);

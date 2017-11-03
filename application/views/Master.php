@@ -6,6 +6,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Revisión y Gestión De Proyectos</title>
+  <link rel="icon" type="image/png" href="http://localhost:81/ProComite2/Plantilla/assets/img/logo2.png" />
+
   <!-- Bootstrap Styles-->
   <link href="Plantilla/assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FontAwesome Styles-->
@@ -40,7 +42,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<?php base_url();?>Controllerhome"><strong>ProComité</strong></a>
+        <a class="navbar-brand" href="<?php base_url();?>Controllerhome"><img src="Plantilla/assets/img/logo.png" style="width:27%; margin-top:-2%;">
+            <h4 style="margin-top:-23%; margin-left:33%; font-weight:600;">Comité de<br> evaluación</h4>
+        </a>
+
       </div>
 
       <ul class="nav navbar-top-links navbar-right">
@@ -121,21 +126,21 @@
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
       <li>
-        <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-dashboard"></i> Instructores</a>
+        <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-male"></i> Instructores</a>
       </li>
       <li>
-        <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-table"></i> Aprendices</a>
+        <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-user"></i> Aprendices</a>
       </li>
 
     <!-- Fichas grupo -->
     <li>
-      <a href="#"><i class="fa fa-qrcode"></i> Fichas de grupo <span class="fa arrow"></span></a>
+      <a href="#"><i class="fa fa-users"></i> Fichas de grupo <span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">
         <li>
-          <a href="<?php base_url();?>ControllerFicha" data-toggle="tooltip" title="Registrar, Consultar, Modificar" data-placement="right"><i class="fa fa-thumb-tack" aria-hidden="true"></i>Gestionar fichas grupo</a>
+          <a href="<?php base_url();?>ControllerFicha" data-toggle="tooltip" title="Registrar, Consultar, Modificar" data-placement="right"><i class="fa fa-file" aria-hidden="true"></i>Gestionar fichas grupo</a>
         </li>
         <li>
-          <a href="<?php base_url(); ?>ControllerLlenarfichagrupo"><i class="fa fa-plus-square" aria-hidden="true"></i>Asociar aprendices</a>
+          <a href="<?php base_url(); ?>ControllerLlenarfichagrupo"><i class="fa fa-refresh" aria-hidden="true"></i>Asociar aprendices</a>
         </li>
       </ul>
     </li>
@@ -144,13 +149,13 @@
       <a href="#"><i class="fa fa-fw fa-file"></i>Fichas de Proyecto <span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">
         <li>
-          <a href="<?PHP base_url(); ?>ControllerFichaproyecto" data-toggle="tooltip" title="Registrar, Consultar, Modificar"  data-placement="right"><i class="fa fa-thumb-tack" aria-hidden="true"></i>Gestionar fichas proyecto</a>
+          <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-briefcase"></i> Clientes</a>
         </li>
         <li>
-          <a href="<?php base_url(); ?>ControllerLlenarfichapro"><i class="fa fa-plus-square" aria-hidden="true"></i>Asociar aprendices</a>
+          <a href="<?PHP base_url(); ?>ControllerFichaproyecto" data-toggle="tooltip" title="Registrar, Consultar, Modificar"  data-placement="right"><i class="fa fa-exchange" aria-hidden="true"></i>Gestionar fichas proyecto</a>
         </li>
         <li>
-          <a href="<?php base_url();?>ControllerCliente" ><i class="fa fa-desktop"></i> Clientes</a>
+          <a href="<?php base_url(); ?>ControllerLlenarfichapro"><i class="fa fa-plus" aria-hidden="true"></i>Asociar aprendices</a>
         </li>
       </ul>
 
@@ -160,19 +165,20 @@
     <a href="#"><i class="fa fa-qrcode"></i> Comité <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level">
       <li>
-        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-bar-chart-o"></i> Registrar Programación</a>
+        <a href="<?php base_url();?>ControllerProgramacion"><i class="fa fa-calendar"></i> Registrar Programación</a>
       </li>
       <li>
-        <a href="<?php base_url(); ?>Controllerlistprograma"><i class="fa fa-list" aria-hidden="true"></i>Listar programación</a>
+        <a href="<?php base_url(); ?>Controllerlistprograma"><i class="fa fa-file-text-o" aria-hidden="true"></i>Listar programación</a>
       </li>
       <li>
-        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check"></i> Asistencia</a>
+        <a href="<?php base_url();?>ControllerAsistenciaprogramacion"><i class="fa fa-check-square-o"></i> Asistencia</a>
       </li>
       <li>
         <a href="<?php base_url(); ?>ControllerEvaluarFichas"><i class="fa fa-edit"></i> Evaluar Ficha</a>
       </li>
     </ul>
     </li>
+
   </ul>
 
 </div>

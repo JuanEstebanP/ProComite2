@@ -38,7 +38,7 @@ var txtCorreo =$('#txtCorreo').val();
     }).done(function(data){
       swal(
         'Exitoso!',
-        'El instructor fue agragado satisfactoriamente!',
+        'El instructor fue registrado satisfactoriamente!',
         'success'
       );
       setTimeout(function(){location.reload()}, 1300);

@@ -34,9 +34,9 @@ class MdlFichaproyecto extends CI_Model
     return $this->db->query("CALL sp_consultaAprendices('$id')")->result_array();
     }
 
-    function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtEstado,$txtFichagrupo)
+    function InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtFichagrupo)
     {
-      $this->db->query("call sp_insertarFichaproyecto('$txtNombre','$txtObjetivo','$destino','$txtVersion','$txtCliente','$txtFichagrupo','$txtEstado')");
+      $this->db->query("call sp_insertarFichaproyecto('$txtNombre','$txtObjetivo','$destino','$txtVersion','$txtCliente','$txtFichagrupo')");
     }
     function EditCodigo($id_ficha)
     {
@@ -55,6 +55,18 @@ class MdlFichaproyecto extends CI_Model
       $query->free_result();
       return $res;
     }
+
+    // function InsertarFichaproyecto($data){
+    //
+  	// 	$this->db->query("call sp_insertarFichaproyecto('$data')");
+  	// 	if ($this->db->affected_rows() > 0) {
+  	// 		return true;
+  	// 	}
+  	// 	else{
+  	// 		return false;
+  	// 	}
+    //
+  	// }
 
 
 

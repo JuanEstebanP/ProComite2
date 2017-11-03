@@ -29,13 +29,47 @@ class ControllerProgramacion extends CI_Controller
     $txthora = $this->input->post('hora');
     $txtlugar = $this->input->post('lugar');
     $this->MdlProgamacion->registrarProgramacion($txttitulo,$txtfecha, $txthora, $txtlugar);
+
+    $this->load->library("email");
+
+     //configuracion para gmail
+     $configGmail = array(
+    'protocol' => 'mail',
+   'smtp_host' => 'mail.gmail.com',
+   'smtp_port' => 465,
+       'smtp_crypto' => 'ssl',
+   'smtp_user' => 'jepulgarin16@misena.edu.co',
+   'smtp_pass' => 'juanesteban1',
+   'mailtype' => 'html',
+   'charset' => 'utf-8',
+   'newline' => "\r\n"
+     );
+
+$txtmensaje = "El día ";
+$txtmensaje .= $txtfecha;
+$txtmensaje .= " se tiene programado un comité en ";
+$txtmensaje .= $txtlugar;
+$txtmensaje .= " a las ";
+$txtmensaje .= $txthora;
+
+    $instructores = $this->MdlProgamacion->consultarcorreintruc();
+    foreach ($instructores as $key) {
+
+
+     $this->email->initialize($configGmail);
+
+     $this->email->from('jepulgarin16@misena.edu.co');
+     $this->email->to($key);
+     $this->email->subject('Comité De Evaluación');
+     $this->email->message($txtmensaje);
+     $this->email->send();
+}
     $id = $this->input->post('id');
     foreach ($id as $i) {
 
       $this->MdlProgamacion->dtllcomitefichas($i);
     }
     echo json_encode(array("status" => TRUE));
-    $this->load->library('My_PHPMailer');
 
 
   }
