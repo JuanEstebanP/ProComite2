@@ -8,9 +8,7 @@ include 'Master.php';
       Fichas De Proyectos <small></small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Data</li>
+      <li><a href="<?php base_url() ?>Controllerhome">Pagina principal</a></li>
     </ol>
 
   </div>
@@ -111,14 +109,14 @@ include 'Master.php';
               <thead>
                 <tr>
                   <th class="center">#</th>
-                  <th>Titulo Proyecto</th>
+                  <th>Titulo proyecto</th>
                   <th>Objetivo General</th>
                   <th>Versión</th>
                   <th>Cliente</th>
-                  <th>Ficha De Grupo A La Que Pertenece</th>
+                  <th>Ficha a la que pertenece</th>
                   <th>Estado</th>
                   <th>Editar</th>
-                  <th>Consultar Aprendices</th>
+                  <th>Consultar aprendices</th>
                   <!-- <th>detalle</th> -->
                 </tr>
               </thead>
@@ -253,8 +251,7 @@ MODAL PARA EDITAR -->
                 <input  name="fileC" type="file" class="form-control input-md"  accept="application/pdf" >
               </div>
             </div>
-
-            <div class="form-group">
+div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
               <div class="col-md-4">
                 <input id="txtVersionModificar" name="txtVersionModificar" type="text" placeholder="1.1..."  class="form-control input-md" required="true">

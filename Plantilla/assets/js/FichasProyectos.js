@@ -113,68 +113,6 @@ function regisProyecto() {
       alert("fail");
     });
   }
-  function inicio(){
-	$("#msg-error").hide();
-	mostrarDatos("");
-	$("#buscar").keyup(function(){
-		buscar = $("#buscar").val();
-		mostrarDatos(buscar);
-	});
-	$("#btnbuscar").click(function(){
-		mostrarDatos("");
-		$("#buscar").val("");
-	});
-	$("#btnactualizar").click(actualizar);
-	$("#form-create-empleado").submit(function (event){
-
-		event.preventDefault();
-		var formData = new FormData($("#form-create-empleado")[0]);
-		$.ajax({
-			url:$("form").attr("action"),
-			type:$("form").attr("method"),
-			data:formData,
-			cache:false,
-			contentType:false,
-			processData:false,
-
-			success:function(respuesta){
-				if (respuesta==="exito") {
-					alert("Los datos han sido guardados correctamente");
-					$("#msg-error").hide();
-					$("#form-create-empleado")[0].reset();
-				}
-				else if(respuesta==="error"){
-					alert("Los datos no se pudo guardar");
-				}
-				else{
-					$("#msg-error").show();
-					$(".list-errors").html(respuesta);
-				}
-			}
-		});
-	});
-
-	$("body").on("click","#listaEmpleados a",function(event){
-		event.preventDefault();
-		idsele = $(this).attr("href");
-		nombressele = $(this).parent().parent().children("td:eq(1)").text();
-		apellidossele = $(this).parent().parent().children("td:eq(2)").text();
-		dnisele = $(this).parent().parent().children("td:eq(3)").text();
-		telefonosele = $(this).parent().parent().children("td:eq(4)").text();
-		emailsele = $(this).parent().parent().children("td:eq(5)").text();
-
-		$("#idsele").val(idsele);
-		$("#nombressele").val(nombressele);
-		$("#apellidossele").val(apellidossele);
-		$("#dnisele").val(dnisele);
-		$("#telefonosele").val(telefonosele);
-		$("#emailsele").val(emailsele);
-	});
-	$("body").on("click","#listaEmpleados button",function(event){
-		idsele = $(this).attr("value");
-		eliminar(idsele);
-	});
-}
 
 
 

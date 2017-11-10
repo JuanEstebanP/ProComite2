@@ -50,47 +50,41 @@ class ControllerAprendiz extends CI_Controller
   }
 
   function ImportarExcel(){
-
-    //obtenemos el archivo .csv
-
+    require_once 'PHPExcel/Classes/PHPExcel.php';
+    $archivo = $_FILES['file']['name']; //captura el nombre del archivo
     $tipo = $_FILES['file']['type'];
-    $tamanio = $_FILES['file']['size'];
-    $archivotmp = $_FILES['file']['tmp_name'];
-    //cargamos el archivo
-    $lineas = file($archivotmp);
-    //inicializamos variable a 0, esto nos ayudará a indicarle que no lea la primera línea
-    $i=0;
-    //Recorremos el bucle para leer línea por línea
-    foreach ($lineas as $linea_num => $linea)
-    {
-      //abrimos bucle
-      /*si es diferente a 0 significa que no se encuentra en la primera línea
-      (con los títulos de las columnas) y por lo tanto puede leerla*/
-      if($i != 0)
-      {
-        //abrimos condición, solo entrará en la condición a partir de la segunda pasada del bucle.
-        /* La funcion explode nos ayuda a delimitar los campos, por lo tanto irá
-        leyendo hasta que encuentre un ; */
-        $datos = explode(";",$linea);
-        //$arr = array();
-        //Almacenamos los datos que vamos leyendo en una variable
-        $nombre = trim($datos[0]);
-        $apellido = trim($datos[1]);
-        $documento = trim($datos[2]);
-        $correo = trim($datos[3]);
-        $estado = trim($datos[4]);
+    $carpeta = "./";
+    opendir($carpeta);
+    $destino =  $carpeta.$_FILES['file']['name'];
+    copy($_FILES['file']['tmp_name'],$destino);
 
-        //guardamos en base de datos la línea leida
-        $this->MdlAprendiz->Importar($nombre,$apellido,$documento,$correo,$estado);
+    $objPHPExcel = PHPExcel_IOFactory::load($archivo);
 
-        //cerramos condición
-      }
+    $dataArr = array();
 
-      /*Cuando pase la primera pasada se incrementará nuestro valor y a la siguiente pasada ya
-      entraremos en la condición, de esta manera conseguimos que no lea la primera línea.*/
-      $i++;
-      //cerramos bucle
+    foreach ($objPHPExcel->getWorksheetIterator() as $archivo) {
+        $archivoTitle     = $archivo->getTitle();
+        $highestRow         = $archivo->getHighestRow();
+        $highestColumn      = $archivo->getHighestColumn();
+        $highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
+
+        for ($row = 1; $row <= $highestRow; ++ $row) {
+            for ($col = 0; $col < $highestColumnIndex; ++ $col) {
+                $cell = $archivo->getCellByColumnAndRow($col, $row);
+                $val = $cell->getValue();
+                $dataArr[$row][$col] = $val;
+            }
+        }
     }
-  }
+    
+    foreach($dataArr as $val){
+    $this->MdlAprendiz->Importar($val['0'],$val['1'],$val['2'],$val['3'],$val['4']);
+    }
+    redirect('ControllerAprendiz');
+
+    }
+
+
+
 }
 ?>

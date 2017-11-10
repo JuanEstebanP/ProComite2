@@ -3,15 +3,13 @@ include 'Master.php';
 ?>
 
 <div id="page-wrapper" >
-  
+
   <div class="header">
     <h1 class="page-header">
       Aprendices <small></small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Data</li>
+      <li><a href="<?php base_url() ?>Controllerhome">Pagina principal</a></li>
     </ol>
 
   </div>
@@ -88,7 +86,7 @@ include 'Master.php';
               <div class="form-group">
                 <label class="col-md-4 control-label" for="filebutton">Cargar archivo:</label>
                 <div class="col-md-4">
-                  <input id="file" name="file" class="input-file" type="file">
+                    <input type="file" name="file" accept=".xlsx" required/></label>
                 </div>
               </div>
 

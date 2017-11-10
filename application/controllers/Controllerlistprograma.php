@@ -214,9 +214,9 @@ class Controllerlistprograma extends CI_Controller {
                     <tr>
                       <th>#</th>
                       <th>Nombre</th>
-                      <th>Aprellidos</th>
-                      <th>Documento</th>
-                      <th>Correo</th>
+                      <th>Objetivo general</th>
+                      <th>Versión</th>
+                      <th>Cliente</th>
                       <th>Estado</th>
                     </tr>
                 </thead>

@@ -43,7 +43,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="<?php base_url();?>Controllerhome"><img src="Plantilla/assets/img/logo.png" style="width:27%; margin-top:-2%;">
-            <h4 style="margin-top:-23%; margin-left:33%; font-weight:600;">Comité de<br> evaluación</h4>
+            <h4 style="margin-top:-23%; margin-left:33%; font-weight:600;">Comité de<br> proyectos</h4>
         </a>
 
       </div>

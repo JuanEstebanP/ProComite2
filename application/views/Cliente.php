@@ -5,12 +5,10 @@ include 'Master.php';
 <div id="page-wrapper" >
   <div class="header">
     <h1 class="page-header">
-      Cliente 
+      Cliente
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Data</li>
+      <li><a href="<?php base_url() ?>Controllerhome">Pagina principal</a></li>
     </ol>
   </div>
 

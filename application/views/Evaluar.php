@@ -9,9 +9,7 @@ include 'Master.php';
       Gestión y Evaluación <small>Best form elements.</small>
     </h1>
     <ol class="breadcrumb">
-      <li><a href="<?php base_url() ?>Controllerhome">Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Data</li>
+      <li><a href="<?php base_url() ?>Controllerhome">Pagina principal</a></li>
     </ol>
   </div>
 
@@ -187,7 +185,7 @@ MODAL PARA CAMBIAR ESTADO Y AGREGAR OBSERVACIONES
       <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
           <tr>
-            <th class="center">Fecha Observación</th>
+            <th class="center">Fecha</th>
             <th class="center">Observación</th>
           </tr>
         </thead>

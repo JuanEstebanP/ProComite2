@@ -7,9 +7,7 @@
   </h1>
   <div class="header">
     <ol class="breadcrumb">
-      <li><a href="<?php base_url();?>Controllerhome">Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Data</li>
+      <li><a href="<?php base_url() ?>Controllerhome">Pagina principal</a></li>
     </ol>
   </div>
 
