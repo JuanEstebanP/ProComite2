@@ -13,9 +13,14 @@ class ControllerFicha extends CI_Controller
 
   function index()
   {
-    $data['Ficha2'] = $this->MdlFicha->ConsultarFichas();
-    $data['Ficha'] = $this->MdlFicha->conInstructor();
-    $this->load->view('Ficha',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['Ficha2'] = $this->MdlFicha->ConsultarFichas();
+      $data['Ficha'] = $this->MdlFicha->conInstructor();
+      $this->load->view('Ficha',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
 
     //$this->load->view('Ficha',$data);
   }

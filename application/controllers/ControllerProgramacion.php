@@ -13,10 +13,16 @@ class ControllerProgramacion extends CI_Controller
 
   public function index()
   {
+    if ($this->session->userdata('usuario')) {
+      $data['fichasXestado'] = $this->MdlProgamacion->fichasXestado();
+      //  $data['Programacion'] = $this->MdlProgamacion->consultarProgramacion();
+      $this->load->view('RegistrarProgramacion',$data);
 
-    $data['fichasXestado'] = $this->MdlProgamacion->fichasXestado();
-    //  $data['Programacion'] = $this->MdlProgamacion->consultarProgramacion();
-    $this->load->view('RegistrarProgramacion',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
+
 
   }
 

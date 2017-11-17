@@ -15,8 +15,13 @@ class ControllerCliente extends CI_Controller
 
   function index()
   {
-    $data['Cliente'] = $this->MdlCliente->ConsultarClientes();
-    $this->load->view('Cliente',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['Cliente'] = $this->MdlCliente->ConsultarClientes();
+      $this->load->view('Cliente',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
   }
 
   function RegistrarCliente()

@@ -12,9 +12,14 @@ class ControllerEvaluarFichas extends CI_Controller
   function index()
   {
 
-    $data['EstadosF'] = $this->MdlEvaluarFicha->EstadosFicha();
-    $data['fichasArh'] = $this->MdlEvaluarFicha->CosultarFichas();
-    $this->load->view('Evaluar',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['EstadosF'] = $this->MdlEvaluarFicha->EstadosFicha();
+      $data['fichasArh'] = $this->MdlEvaluarFicha->CosultarFichas();
+      $this->load->view('Evaluar',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
 
   }
 

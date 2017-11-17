@@ -14,8 +14,14 @@ class ControllerAprendiz extends CI_Controller
   function index()
   {
 
+
+    if ($this->session->userdata('usuario')) {
     $data['Aprendiz'] = $this->MdlAprendiz->ConsultarAprendices();
     $this->load->view('Aprendices',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
   }
   function InsertarAprendiz(){
 
@@ -51,7 +57,7 @@ class ControllerAprendiz extends CI_Controller
 
   function ImportarExcel(){
     require_once 'PHPExcel/Classes/PHPExcel.php';
-    $archivo = $_FILES['file']['name']; //captura el nombre del archivo
+    $archivo = $_FILES['file']['name'];
     $tipo = $_FILES['file']['type'];
     $carpeta = "./";
     opendir($carpeta);
@@ -76,10 +82,11 @@ class ControllerAprendiz extends CI_Controller
             }
         }
     }
-    
+
     foreach($dataArr as $val){
     $this->MdlAprendiz->Importar($val['0'],$val['1'],$val['2'],$val['3'],$val['4']);
     }
+
     redirect('ControllerAprendiz');
 
     }

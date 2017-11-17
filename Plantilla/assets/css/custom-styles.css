@@ -16,7 +16,15 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: #323232;
 }
+#a{
+text-decoration: none;
+color: white !important;
 
+
+}
+#a:hover{
+  color: white;
+}
  #wrapper {
     width: 100%;
 }

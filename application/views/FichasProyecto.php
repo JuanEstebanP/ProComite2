@@ -248,10 +248,10 @@ MODAL PARA EDITAR -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Archivo ficha:</label>
               <div class="col-md-4">
-                <input  name="fileC" type="file" class="form-control input-md"  accept="application/pdf" >
+                <input  name="fileC" type="file" class="form-control input-md"   >
               </div>
             </div>
-div class="form-group">
+<div class="form-group">
               <label class="col-md-4 control-label" for="textinput">Versión Del Poyecto: </label>
               <div class="col-md-4">
                 <input id="txtVersionModificar" name="txtVersionModificar" type="text" placeholder="1.1..."  class="form-control input-md" required="true">
@@ -296,25 +296,24 @@ div class="form-group">
               </tr>
             </thead>
             <tbody>
-              <!-- <?php foreach ($fichasB as $f ){ ?>
+              <?php foreach ($fichasB as $f ){ ?>
               <tr class="odd gradeX">
               <td name="Url"><?php echo '<a href="'.$f['Url'].'"> '.substr($f['Url'],10).' </a>' ?></td>
             </tr>
 
-          <?php } ?> -->
+          <?php } ?>
         </tbody>
       </table>
 
+
+
     </div>
   </div>
-  <div class="modal-footer">
-    <button type="submit" name="fileC" class="btn btn-primary">Enviar</button>
 
-  </div>
 
 
 </div>
-
+      <button type="submit" name="fileC" class="btn btn-primary">Enviar</button>
 </div>
 </div>
 <!-- <script src="Plantilla/assets/js/Validaciones/ProyectoValid.js"></script> -->

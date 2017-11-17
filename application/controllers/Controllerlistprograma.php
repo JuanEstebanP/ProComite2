@@ -14,9 +14,15 @@ class Controllerlistprograma extends CI_Controller {
 
   function index()
   {
-    $data['fichas'] = $this->Mdllistprograma->fichasGrupo();
-    $data['programaciones'] = $this->Mdllistprograma->programaciones();
-    $this->load->view('ListarProgra',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['fichas'] = $this->Mdllistprograma->fichasGrupo();
+      $data['programaciones'] = $this->Mdllistprograma->programaciones();
+      $this->load->view('ListarProgra',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
+
   }
 
   public function editarProgramacion(){

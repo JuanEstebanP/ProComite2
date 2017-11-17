@@ -12,13 +12,18 @@ class ControllerFichaproyecto extends CI_Controller
   }
   function index()
   {
-    $dt = $this->input->post('txtidfichaG');
-    $data['fichasG'] = $this->MdlFichaproyecto->FichasBG($dt);
+    if ($this->session->userdata('usuario')) {
+      $dt = $this->input->post('txtidfichaG');
+      $data['fichasG'] = $this->MdlFichaproyecto->FichasBG($dt);
 
-    $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
-    $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();
-    $data['ficha'] = $this->MdlFichaproyecto->ConsultarFichasGrupos();
-    $this->load->view('FichasProyecto',$data);
+      $data['Ficha2'] = $this->MdlFichaproyecto->ConsultarFichasproyectos();
+      $data['Fichaproyectos'] = $this->MdlFichaproyecto->conCliente();
+      $data['ficha'] = $this->MdlFichaproyecto->ConsultarFichasGrupos();
+      $this->load->view('FichasProyecto',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
 
     //$this->load->view('Ficha',$data);
 
@@ -41,7 +46,7 @@ class ControllerFichaproyecto extends CI_Controller
   $txtFichagrupo = $this->input->post('txtFichagrupo');
   $this->MdlFichaproyecto->InsertarFichaproyecto($txtNombre,$txtObjetivo,$destino,$txtVersion,$txtCliente,$txtFichagrupo);
 
-  
+
 
 }
 

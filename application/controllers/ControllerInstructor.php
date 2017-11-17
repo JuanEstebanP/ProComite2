@@ -13,8 +13,13 @@ class ControllerInstructor extends CI_Controller
 
   function index()
   {
-    $data['Instructor'] = $this->MdlInstructor->ConsultarInstructores();
-    $this->load->view('Instructores',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['Instructor'] = $this->MdlInstructor->ConsultarInstructores();
+      $this->load->view('Instructores',$data);
+    }else {
+      redirect('ControllerLogin');
+    }
+
     //  var_dump($dato);
     //    exit();
   }

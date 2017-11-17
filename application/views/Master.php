@@ -8,6 +8,7 @@
   <title>Revisión y Gestión De Proyectos</title>
   <link rel="icon" type="image/png" href="http://localhost:81/ProComite2/Plantilla/assets/img/logo2.png" />
 
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
   <!-- Bootstrap Styles-->
   <link href="Plantilla/assets/css/bootstrap.css" rel="stylesheet" />
   <!-- FontAwesome Styles-->
@@ -92,6 +93,7 @@
     </li>
     <li class="divider"></li>
     <li>
+
       <a href="#">
         <div>
           <i class="fa fa-upload fa-fw"></i> Server Rebooted
@@ -103,17 +105,32 @@
   <!-- /.dropdown-alerts -->
 </li>
 <!-- /.dropdown -->
+
 <li class="dropdown">
-  <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+  <a id="a" class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" >
+
+    <?php if ($this->session->userdata('usuario')) {
+    $usuario = $this->session->userdata('usuario');
+          echo $usuario;
+        }
+   ?> <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down">
+    </i>
   </a>
+
   <ul class="dropdown-menu dropdown-user">
-    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+    <li><a href="#"><i class="fa fa-user fa-fw"></i>
+
+<?php if ($this->session->userdata('usuario')) {
+  $usuario = $this->session->userdata('usuario');
+        echo $usuario;
+      }
+ ?>
+</a>
     </li>
     <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
     </li>
     <li class="divider"></li>
-    <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+    <li><a href="<?php base_url();?>ControllerLogin/logout"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
     </li>
   </ul>
   <!-- /.dropdown-user -->
@@ -125,16 +142,19 @@
 <nav class="navbar-default navbar-side" role="navigation">
   <div class="sidebar-collapse">
     <ul class="nav" id="main-menu">
+
       <li>
         <a href="<?php base_url();?>ControllerInstructor"><i class="fa fa-male"></i> Instructores</a>
       </li>
+
+
       <li>
         <a href="<?php base_url(); ?>ControllerAprendiz "><i class="fa fa-user"></i> Aprendices</a>
       </li>
 
     <!-- Fichas grupo -->
     <li>
-      <a href="#"><i class="fa fa-users"></i> Fichas de grupo <span class="fa arrow"></span></a>
+      <a href=""><i class="fa fa-users"></i> Fichas de grupo <span class="fa arrow"></span></a>
       <ul class="nav nav-second-level">
         <li>
           <a href="<?php base_url();?>ControllerFicha" data-toggle="tooltip" title="Registrar, Consultar, Modificar" data-placement="right"><i class="fa fa-file" aria-hidden="true"></i>Gestionar fichas grupo</a>
@@ -158,7 +178,6 @@
           <a href="<?php base_url(); ?>ControllerLlenarfichapro"><i class="fa fa-plus" aria-hidden="true"></i>Asociar aprendices</a>
         </li>
       </ul>
-
     </li>
 
     <li>
@@ -191,7 +210,11 @@
 <!-- <script src="Plantilla/assets/js/alertify.js"> </script> -->
 
 <!-- <script src="/vendor/bootstrap-multiselect/js/bootstrap-multiselect.js"></script> -->
+<!-- Compiled and minified CSS -->
 
+
+<!-- Compiled and minified JavaScript -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
 <script src="Plantilla/assets/js/jquery-3.2.1.min.js"></script>
 <!-- JQuery Validate -->
 <script src="Plantilla/assets/js/jquery.validate.min.js"></script>

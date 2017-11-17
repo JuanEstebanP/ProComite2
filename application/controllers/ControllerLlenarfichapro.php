@@ -16,9 +16,15 @@ class ControllerLlenarfichapro extends CI_Controller
 
   function index()
   {
-    $data['fichasGrupo'] = $this->MdlLlenarfichapro->Fichasgru();
-    $data['IdFichas'] = $this->MdlLlenarfichapro->IdFichasPro();
-    $this->load->view('Llenarfichapro', $data);
+    if ($this->session->userdata('usuario')) {
+      $data['fichasGrupo'] = $this->MdlLlenarfichapro->Fichasgru();
+      $data['IdFichas'] = $this->MdlLlenarfichapro->IdFichasPro();
+      $this->load->view('Llenarfichapro', $data);
+
+    }else {
+      redirect('ControllerLogin');
+    }
+
 
 
 

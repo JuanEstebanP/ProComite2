@@ -1,75 +1,58 @@
-<style media="screen">
 
 
-body {
-background: #eee !important;
-}
+  <link href="Plantilla/assets/css/styleLogin.css" rel="stylesheet" />
 
-.wrapper {
-margin-top: 80px;
-margin-bottom: 80px;
-}
+  <link rel="stylesheet" href="Plantilla/assets/css/alertify.css">
 
-.form-signin {
-max-width: 380px;
-padding: 15px 35px 45px;
-margin: 0 auto;
-background-color: #fff;
-border: 1px solid rgba(0,0,0,0.1);
 
-.form-signin-heading,
-.checkbox {
-  margin-bottom: 30px;
-}
-}
-
-.checkbox {
-  font-weight: normal;
-}
-
-.form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-  @include box-sizing(border-box);
-
-  &:focus {
-    z-index: 2;
-  }
-}
-
-input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-input[type="password"] {
-  margin-bottom: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-
-}
-
-</style>
+  <title>Login Comité de proyectos</title>
+<body class="wrapper">
 
 
 
+	<div class="container">
+		<h1>Comité de Proyectos</h1>
+
+		<form class="form" method="POST">
+			<input type="text" name="usuario" id="usuario" placeholder="Usuario">
+			<input type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
+			<button type="submit" id="login-button">Iniciar Sesión</button>
+		</form>
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+
+	</div>
+</body>
+
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script src="Plantilla/assets/js/login.js"></script>
+<script src="Plantilla/assets/js/alertify.js"></script>
+
+<!-- <link href="Plantilla/assets/css/bootstrap.css" rel="stylesheet" />
+<link href="Plantilla/assets/css/styleLogin.css" rel="stylesheet" />
+<title>Login</title>
+<link rel="icon" type="image/png" href="http://localhost:81/ProComite2/Plantilla/assets/img/logo2.png" />
 <div class="wrapper">
-  <form class="form-signin">
-    <h2 class="form-signin-heading">Login comité de  programación</h2>
-    <input type="text" class="form-control" name="username" placeholder="Email Address" required="" autofocus="" />
-    <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
-    <br><br><br>
-    <label class="checkbox">
+  <form class="form-signin" style="margin-top: 15%; border:;" method="POST">
+    <h2 class="form-signin-heading">Login comité de programación</h2>
+    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Usuario" required="" autofocus="" /> <br>
+    <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" required=""/>
 
-      <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
-    </label>
-    <div class="">
 
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
         </div>
   </form>
-</div>
+</div> -->

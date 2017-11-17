@@ -44,6 +44,7 @@ function Editar(data){
     alert("error");
   });
 }
+
 function ok()
 {
   alertify.success("Registro Exitoso!");

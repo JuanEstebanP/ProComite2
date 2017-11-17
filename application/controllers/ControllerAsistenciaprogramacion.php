@@ -16,9 +16,15 @@ class ControllerAsistenciaprogramacion extends CI_Controller
 
 function index()
 {
-$data['programacion'] = $this->MdlAsistenciaProgramacion->consultarProgramaciones();
-$data["instructores"] = $this->MdlAsistenciaProgramacion->instructores();
-$this->load->view('AsistenciaProgramacion',$data);
+  if ($this->session->userdata('usuario')) {
+    $data['programacion'] = $this->MdlAsistenciaProgramacion->consultarProgramaciones();
+    $data["instructores"] = $this->MdlAsistenciaProgramacion->instructores();
+    $this->load->view('AsistenciaProgramacion',$data);
+  }else {
+    redirect('ControllerLogin');
+  }
+
+
 }
 
 function insertDetalleAsistencia()

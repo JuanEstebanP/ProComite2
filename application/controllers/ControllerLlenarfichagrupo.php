@@ -13,9 +13,14 @@ class ControllerLlenarfichagrupo extends CI_Controller
 
   function index()
   {
-    $data['Ficha'] = $this->MdlLlenarfichagrupo->conFicha();
-    $data['Aprendiz'] = $this->MdlLlenarfichagrupo->consultaAprendices();
-    $this->load->view('Llenarfichagrupo',$data);
+    if ($this->session->userdata('usuario')) {
+      $data['Ficha'] = $this->MdlLlenarfichagrupo->conFicha();
+      $data['Aprendiz'] = $this->MdlLlenarfichagrupo->consultaAprendices();
+      $this->load->view('Llenarfichagrupo',$data);
+
+    }else {
+      redirect('ControllerLogin');
+    }
 
   }
   function insertarDetallefichagrupo()
